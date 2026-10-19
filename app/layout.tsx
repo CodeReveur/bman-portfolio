@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { Providers } from './providers';
-import { GalaxyCanvas, GalaxyNavbar, GalaxyFooter, DynamicTabHeader, CosmicCursor } from '@/components';
+import { GalaxyCanvas, GalaxyNavbar, GalaxyFooter, DynamicTabHeader, SpaceshipCursor, GravitationalWarp } from '@/components';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -112,8 +112,11 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} bg-white dark:bg-black text-zinc-900 dark:text-white antialiased selection:bg-zinc-900 selection:text-white dark:selection:bg-white dark:selection:text-black flex flex-col min-h-screen transition-colors duration-200`}
       >
         <Providers>
-          {/* Custom black small cursor point with black hole disappearance */}
-          <CosmicCursor />
+          {/* Relativistic Spaceship Cursor with directional banking & event horizon suction */}
+          <SpaceshipCursor />
+
+          {/* Gravitational Warping on DOM Sections & Divs near the Black Hole */}
+          <GravitationalWarp />
 
           {/* Dynamic Tab Title per page navigated & wave back when tab is ignored */}
           <DynamicTabHeader />

@@ -47,6 +47,12 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+@media (pointer: fine) {
+  html, body, button, a, input, select, textarea, [role="button"], * {
+    cursor: none !important;
+  }
+}
+
 body {
   background-color: var(--bg);
   color: var(--fg);
