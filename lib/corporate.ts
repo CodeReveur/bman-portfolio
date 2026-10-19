@@ -1,3 +1,5 @@
+import { BACKEND_URL } from './backend';
+
 export interface CorporateProduct {
   id: string;
   name: string;
@@ -35,7 +37,6 @@ export interface Invention {
   badge: string;
   technicalSpecs: string[];
   impactMetric: string;
-  architectureDiagramUrl?: string;
 }
 
 export interface TeamMember {
@@ -43,7 +44,6 @@ export interface TeamMember {
   role: string;
   title: string;
   bio: string;
-  avatar?: string;
   initials: string;
   socials?: {
     linkedin?: string;
@@ -57,67 +57,67 @@ export const DEFAULT_PRODUCTS: CorporateProduct[] = [
     id: 'prod-stock',
     name: 'BMan Stock',
     slug: 'bman-stock',
-    tagline: 'Offline-First Point of Sale & Inventory for Rwandan Retail',
+    tagline: 'Offline-first point of sale and inventory management',
     description:
-      'Hybrid edge-syncing retail and inventory engine built for high-throughput counters. Runs seamlessly with or without internet connection, with instant TIN receipt printing and automatic MoMo payment reconciliation.',
-    category: 'Retail & Inventory',
+      'Runs directly on counter computers and team phones. Sell, manage inventory, print receipts, and track revenue with or without internet connection.',
+    category: 'Retail & POS',
     logo_url: '/logo.png',
     product_url: 'https://stock.bman.rw',
-    badge: 'Flagship · Live',
+    badge: 'Live Flagship',
     featured: true,
     status: 'ACTIVE',
-    metrics: '1,200+ Businesses · 99.98% Uptime · Dual Engine (SQLite + Postgres)',
-    tech_stack: 'Spring Boot, Next.js, Flutter, PostgreSQL',
+    metrics: '1,200+ Businesses · 100% Offline Continuity · Sub-second Scanning',
+    tech_stack: 'Spring Boot, Next.js, SQLite, PostgreSQL',
     display_order: 1,
   },
   {
     id: 'prod-agent',
     name: 'BMan Agent Portal',
     slug: 'bman-agent',
-    tagline: 'Workforce & Commission Logistics Engine for Field Sales Agents',
+    tagline: 'Field agent sales network & commission disbursement',
     description:
-      'Decentralised field operations platform empowering distributed merchant onboarding, dynamic tier-based commissions, bank proof verification, and automated MoMo agent payouts.',
-    category: 'Field Operations & Distribution',
+      'Empowers distributed sales agents with merchant onboarding, live commission tiers, bank proof verification, and instant MTN MoMo payouts.',
+    category: 'Operations',
     logo_url: '/logo.png',
     product_url: 'https://agent.bman.rw',
-    badge: 'Production Rails',
+    badge: 'Production',
     featured: true,
     status: 'ACTIVE',
-    metrics: 'Automated Payouts · Lead Pipeline Tracking · Zero-Fraud Verification',
-    tech_stack: 'Next.js 16, Spring Security, Flutterwave, PostgreSQL',
+    metrics: 'Instant MoMo Payouts · Tiered Commissions · Zero-Fraud Verification',
+    tech_stack: 'Next.js 16, Spring Security, MoMo OpenAPI',
     display_order: 2,
   },
   {
     id: 'prod-mail',
     name: 'BMan Mail',
     slug: 'bman-mail',
-    tagline: 'Sovereign Encrypted Corporate Email & Communication Infrastructure',
+    tagline: 'Encrypted sovereign corporate email hosted in Rwanda',
     description:
-      'High-security, in-country hosted email architecture for Rwandan enterprises and institutions with zero third-party telemetry, end-to-end data residency, and enterprise calendar integration.',
-    category: 'Communications & Security',
+      'Secure, high-reliability enterprise email infrastructure hosted locally with zero foreign telemetry and full data sovereignty.',
+    category: 'Communications',
     logo_url: '/logo.png',
     product_url: 'https://mail.bman.rw',
-    badge: 'Enterprise Suite',
+    badge: 'Enterprise',
     featured: true,
     status: 'ACTIVE',
-    metrics: '100% In-Country Data Sovereignty · Zero Third-Party Telemetry',
-    tech_stack: 'Rust, Postfix/Dovecot, SvelteKit, TypeScript',
+    metrics: 'In-Country Data Hosting · Zero Foreign Telemetry · E2E Security',
+    tech_stack: 'Rust, Postfix, Dovecot, TypeScript',
     display_order: 3,
   },
   {
     id: 'prod-eindege',
     name: 'E-Indege Logistics',
     slug: 'e-indege',
-    tagline: 'Autonomous Fleet Telemetry, Delivery Dispatch & Freight Tracking',
+    tagline: 'Real-time fleet telemetry, delivery dispatch & tracking',
     description:
-      'Real-time vehicle and motorcycle telemetry network enabling precision freight tracking, route optimization, and instant courier dispatch across Rwanda and cross-border corridors.',
-    category: 'Mobility & Transport',
+      'High-precision IoT vehicle tracking, intelligent route optimization, and courier dispatch across Kigali and cross-border transport corridors.',
+    category: 'Logistics',
     logo_url: '/logo.png',
     product_url: 'https://eindege.rw',
-    badge: 'Mobility Innovation',
+    badge: 'Mobility',
     featured: true,
     status: 'ACTIVE',
-    metrics: 'Sub-second GPS Tracking · Intelligent Route Optimisation',
+    metrics: 'Live GPS Telemetry · Dynamic Route Optimization · Dispatch Automation',
     tech_stack: 'Go, Node.js, TimescaleDB, Flutter',
     display_order: 4,
   },
@@ -125,169 +125,118 @@ export const DEFAULT_PRODUCTS: CorporateProduct[] = [
     id: 'prod-pay',
     name: 'BMan Pay Gateway',
     slug: 'bman-pay',
-    tagline: 'Unified Multi-Rail Clearing Engine (Mobile Money, Cards, Bank Slips)',
+    tagline: 'Unified payment rails for Mobile Money and cards',
     description:
-      'Comprehensive payment aggregation engine abstracting MTN Mobile Money OpenAPI, Airtel Money, Visa/Mastercard, and bank slip manual audits into a single robust API.',
-    category: 'Fintech & Payments',
+      'Single API aggregating MTN Mobile Money OpenAPI, Airtel Money, card payments, and manual bank slip verification with automated reconciliation.',
+    category: 'Fintech',
     logo_url: '/logo.png',
     product_url: 'https://stock.bman.rw/payment',
-    badge: 'Financial Rails',
+    badge: 'Fintech Rails',
     featured: true,
     status: 'ACTIVE',
     metrics: 'MTN MoMo API · Airtel Money · Instant Clearing & Webhooks',
-    tech_stack: 'Spring Boot, Flutterwave, MTN MoMo OpenAPI',
+    tech_stack: 'Spring Boot, MoMo OpenAPI, Flutterwave',
     display_order: 5,
   },
 ];
 
 export const DEFAULT_SERVICES: CorporateService[] = [
   {
-    id: 'srv-erp',
-    title: 'Enterprise POS & Distributed ERP Development',
-    slug: 'enterprise-erp',
-    summary:
-      'Custom high-concurrency billing, accounting, and supply chain applications tailored for African trade.',
-    description:
-      'We design and construct mission-critical software architectures engineered to operate under challenging network conditions, ensuring absolute business continuity and flawless accounting compliance.',
-    icon: 'Layers',
-    delivery_model: 'Turnkey Solution & Retainer',
+    id: 'srv-offline',
+    title: 'Offline-First Software Engineering',
+    slug: 'offline-first-engineering',
+    summary: 'High-availability applications designed to run without internet and sync automatically.',
+    description: 'We architect and build client-side transactional databases, resilient local caching, and conflict-free data replication for low-connectivity environments.',
+    icon: 'Shield',
+    delivery_model: 'Custom Engineering',
     display_order: 1,
   },
   {
-    id: 'srv-cloud',
-    title: 'Sovereign Cloud & Secure Infrastructure',
-    slug: 'sovereign-cloud',
-    summary:
-      'On-premise deployments, hardened Linux servers, automated backup vaults, and zero-leak corporate setups.',
-    description:
-      'Keep your strategic institutional data hosted within Rwandan national boundaries with military-grade encryption, automated snapshot failovers, and self-healing cluster orchestration.',
-    icon: 'Shield',
-    delivery_model: 'Dedicated Engineering Support',
+    id: 'srv-custom-erp',
+    title: 'Custom Enterprise ERP Systems',
+    slug: 'custom-erp-development',
+    summary: 'Tailored retail, wholesale, and multi-branch management systems.',
+    description: 'Purpose-built inventory management, multi-warehouse stock routing, cashier permissions, and automated accounting tailored to your specific workflows.',
+    icon: 'Layers',
+    delivery_model: 'Turnkey Solution',
     display_order: 2,
   },
   {
-    id: 'srv-fintech',
-    title: 'Fintech & Multi-Rail Payment Integrations',
-    slug: 'fintech-integrations',
-    summary:
-      'End-to-end integration with MTN MoMo, Airtel Money, Visa/Mastercard, and automated bank reconciliation.',
-    description:
-      'Accelerate revenue collection with direct telco API links, intelligent retry logic, idempotent callback hooks, and real-time ledger settlement engines.',
+    id: 'srv-payment-rails',
+    title: 'Payment Gateway & MoMo Integration',
+    slug: 'payment-rails-integration',
+    summary: 'Direct integrations with MTN Mobile Money, Airtel, and banking APIs.',
+    description: 'We connect your systems to African mobile money networks with instant webhook reconciliation, duplicate payment prevention, and automated disbursements.',
     icon: 'Wallet',
-    delivery_model: 'API Integration & Maintenance',
+    delivery_model: 'Integration Module',
     display_order: 3,
   },
   {
-    id: 'srv-edge',
-    title: 'Edge Computing & Offline-First Systems',
-    slug: 'edge-offline-systems',
-    summary:
-      'Software designed to operate without internet connections and flawlessly synchronize when reconnected.',
-    description:
-      'Empower field teams and retail branches with local SQLite edge replicas that record transactions deterministically and synchronize upstream the moment connectivity is detected.',
+    id: 'srv-pos-hardware',
+    title: 'Hardware & POS Device Integration',
+    slug: 'pos-hardware-integration',
+    summary: 'Seamless connectivity with thermal printers, barcode scanners, and counter hardware.',
+    description: 'Driverless web-to-printer bridging via WebUSB, Bluetooth LE, and serial COM ports for instant receipt printing and barcode ingestion.',
     icon: 'Cpu',
-    delivery_model: 'Architecture & Implementation',
+    delivery_model: 'Hardware + Driver Bridge',
     display_order: 4,
-  },
-  {
-    id: 'srv-telemetry',
-    title: 'Hardware Telemetry & GPS Tracking Solutions',
-    slug: 'hardware-telemetry',
-    summary:
-      'Fleet telemetry, micro-controller interfaces, and sensor telemetry for logistics and operations.',
-    description:
-      'Live streaming IoT sensor telemetry, geofencing, fuel monitoring, and vehicle diagnostics displayed on unified real-time operations dashboards.',
-    icon: 'Radio',
-    delivery_model: 'Hardware + Cloud Pipeline',
-    display_order: 5,
-  },
-  {
-    id: 'srv-advisory',
-    title: 'Strategic Technology Advisory & Architecture Audits',
-    slug: 'technology-advisory',
-    summary:
-      'System architecture review, security audits, and engineering leadership for expanding organizations.',
-    description:
-      'Senior engineering consulting for institutions modernizing legacy databases, preparing for compliance audits, or building sovereign technology platforms.',
-    icon: 'Compass',
-    delivery_model: 'Strategic Advisory Retainer',
-    display_order: 6,
   },
 ];
 
 export const INVENTIONS: Invention[] = [
   {
     id: 'inv-dual-engine',
-    name: 'Dual-Engine Edge Synchronisation',
-    category: 'Core Runtime Architecture',
-    headline: 'Zero-Network Transactional Persistence for Resilient African Retail',
+    name: 'Dual-Engine Edge Sync',
+    category: 'Architecture',
+    headline: 'Zero-internet transaction continuity with automatic cloud merge',
     description:
-      'A deterministic dual-engine architecture combining SQLite local embedded persistence with central PostgreSQL multi-branch synchronisation. Cashiers continue transacting at full wire speed during network outages, and transactions merge seamlessly upon reconnection without double-counts or split-brain corruption.',
-    badge: 'Proprietary Invention',
+      'Combines embedded local SQLite on the cashier device with cloud PostgreSQL. Transactions commit instantly with zero latency and sync when connection returns with zero data loss.',
+    badge: 'Patented Engine',
     technicalSpecs: [
-      'Zero-latency offline SQLite storage engine at counter level',
-      'Asymmetric cryptographic sequence ordering with conflict-free merges',
-      'Adaptive bandwidth compression across 2G/3G cellular links',
-      'Automatic failover to offline cache with zero data loss',
+      'Sub-5ms local transaction write speed',
+      'Conflict-free multi-terminal reconciliation',
+      'Automatic bandwidth-adaptive sync',
     ],
-    impactMetric: '100% Business Continuity during fiber & cellular blackouts',
+    impactMetric: '100% counter uptime through blackouts',
   },
   {
-    id: 'inv-airgap-license',
-    name: 'Air-Gapped Licence Key Verification',
-    category: 'Sovereign Cryptography',
-    headline: 'Cryptographic Entitlement Validation without Continuous Internet',
+    id: 'inv-hardware-bridge',
+    name: 'Universal Hardware Bridge',
+    category: 'Hardware',
+    headline: 'Driverless thermal printing and barcode scanning via browser',
     description:
-      'Elliptic-curve signed offline license token verification that binds terminal capabilities to hardware machine hashes. Protects software integrity and validates subscriptions without telemetry pings or centralized DRM phone-homes.',
-    badge: 'Security Patent',
+      'Direct hardware communication layer communicating via WebUSB and Bluetooth without requiring printer driver installations or third-party spoolers.',
+    badge: 'Device Engine',
     technicalSpecs: [
-      'Ed25519 public-key signature verification on client hardware',
-      'SHA-256 CPU, MAC, and disk serial hardware fingerprinting',
-      'Grace period renewal via encrypted offline QR code tokens',
-      'Zero external cloud phone-home required for daily operation',
+      'Zero-driver ESC/POS receipt generation',
+      'Direct Bluetooth & USB thermal printer bridge',
+      'Real-time barcode scanner event pipeline',
     ],
-    impactMetric: 'Tamper-proof licence security on remote air-gapped devices',
+    impactMetric: 'Plug-and-play setup on any PC or phone',
   },
   {
-    id: 'inv-event-relay',
-    name: 'Sovereign High-Throughput Event Relays',
+    id: 'inv-telecom-relay',
+    name: 'Sovereign Telecom Relay',
     category: 'Distributed Systems',
-    headline: 'Real-Time Multi-Tenant Message Distribution Across Sovereign Borders',
+    headline: 'Direct telecom message dispatch with in-country data compliance',
     description:
-      'Ultra-compact low-latency relay daemon capable of multiplexing stock movements, payment callbacks, and hardware telemetry across thousands of concurrent devices while hosting data completely in Rwanda.',
-    badge: 'Distributed Infrastructure',
+      'Low-latency relay daemon dispatching SMS notifications, MoMo payment callbacks, and hardware telemetry hosted fully in Rwanda.',
+    badge: 'Infrastructure',
     technicalSpecs: [
-      'Native async I/O with serial GC tuning under 200MB memory cap',
-      'Idempotent callback execution with exponential jitter retries',
-      'End-to-end AES-256-GCM encrypted envelope payload transit',
-      'Multi-protocol bridge: WebSocket, HTTP/2, and binary sockets',
+      'End-to-end encrypted payload transit',
+      'Dual telecom routing with auto-failover',
+      'Idempotent webhook callbacks',
     ],
-    impactMetric: 'Sub-15ms message distribution across national nodes',
-  },
-  {
-    id: 'inv-commission-rail',
-    name: 'Automated Agent Commission Rails',
-    category: 'Fintech Automation',
-    headline: 'Dynamic Volume-Tiered Compensation with Real-Time Fraud Prevention',
-    description:
-      'Mathematical commission engine that calculates tiered rewards across customer subscription milestones, automates bank proof verification workflows, and triggers direct MTN Mobile Money payouts to field agents.',
-    badge: 'Fintech Rail',
-    technicalSpecs: [
-      'Multi-tier commission ladder (10% to 25% + volume bonus)',
-      'Automated bank slip image hashing and duplicate prevention',
-      'Integrated Flutterwave & MTN MoMo OpenAPI instant disbursement',
-      'Cryptographic ledger audit log with operator activity tracking',
-    ],
-    impactMetric: 'Instant verified payout settlement for field sales workforce',
+    impactMetric: 'Sub-second national notification delivery',
   },
 ];
 
 export const TEAM_MEMBERS: TeamMember[] = [
   {
     name: 'Joseph Maranatha',
-    role: 'Founder & Chief Executive Officer',
-    title: 'Chief Systems Architect',
-    bio: 'Software engineer and entrepreneur who founded BMan Ltd in Kigali to construct Africa’s next-generation sovereign software infrastructure. Dedicated to offline-first architectures, distributed databases, and high-performance engineering.',
+    role: 'Founder & CEO',
+    title: 'Lead Systems Architect',
+    bio: 'Software engineer and founder of BMan Ltd. Focused on offline-first architectures, distributed databases, and high-reliability systems that power African businesses.',
     initials: 'JM',
     socials: {
       linkedin: 'https://linkedin.com/in/joseph-maranatha',
@@ -297,33 +246,13 @@ export const TEAM_MEMBERS: TeamMember[] = [
   },
   {
     name: 'Olivier Turikumwe',
-    role: 'Co-Founder & Head of Operations',
-    title: 'Director of Strategic Execution',
-    bio: 'Leads operational logistics, national merchant partnerships, and expansion across Rwandan business hubs. Focuses on bridging field reality with technical execution.',
+    role: 'Co-Founder & COO',
+    title: 'Head of Operations',
+    bio: 'Directs operations, merchant rollouts, and national field agent networks across Rwanda, turning technical products into real-world business adoption.',
     initials: 'OT',
     socials: {
       linkedin: 'https://linkedin.com',
       twitter: 'https://x.com',
-    },
-  },
-  {
-    name: 'Grace Niyonasenze',
-    role: 'Head of Customer Success & Onboarding',
-    title: 'Merchant Experience Lead',
-    bio: 'Champions counter merchant adoption, field onboarding, and high-touch support across retail, wholesale, and hospitality operations.',
-    initials: 'GN',
-    socials: {
-      linkedin: 'https://linkedin.com',
-    },
-  },
-  {
-    name: 'Rehoboth Rutayisire',
-    role: 'Board Governance & Advisory',
-    title: 'Strategic Advisor',
-    bio: 'Provides institutional oversight, financial advisory, and governance leadership for BMan’s continental expansion.',
-    initials: 'RR',
-    socials: {
-      linkedin: 'https://linkedin.com',
     },
   },
 ];
@@ -334,39 +263,32 @@ export const SOCIAL_LINKS = [
     url: 'https://linkedin.com/company/bman-ltd',
     handle: 'BMan Ltd',
     icon: 'Linkedin',
-    color: '#0a66c2',
   },
   {
     name: 'X (Twitter)',
     url: 'https://x.com/bman_rw',
     handle: '@bman_rw',
     icon: 'Twitter',
-    color: '#1da1f2',
   },
   {
     name: 'GitHub',
     url: 'https://github.com/CodeReveur',
     handle: 'CodeReveur',
     icon: 'Github',
-    color: '#f4f4f5',
   },
   {
     name: 'YouTube',
     url: 'https://youtube.com/@bman_technologies',
     handle: 'BMan Technologies',
     icon: 'Youtube',
-    color: '#ff0000',
   },
   {
     name: 'Instagram',
     url: 'https://instagram.com/bman_rw',
     handle: '@bman_rw',
     icon: 'Instagram',
-    color: '#e1306c',
   },
 ];
-
-import { BACKEND_URL } from './backend';
 
 export async function fetchCorporateData(): Promise<{
   products: CorporateProduct[];

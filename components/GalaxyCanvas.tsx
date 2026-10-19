@@ -60,18 +60,19 @@ export default function GalaxyCanvas() {
     };
     window.addEventListener('mousemove', handleMouseMove);
 
-    // Rainbow and cosmic colors
+    // Predominantly white and cool silver stars with rare micro rainbow stars
     const starColors = [
-      '#10b981', // BMan Emerald
-      '#34d399', // Mint glow
-      '#06b6d4', // Cyan nebula
-      '#38bdf8', // Sky blue
-      '#8b5cf6', // Violet star
-      '#a855f7', // Purple aurora
-      '#ec4899', // Pink star
-      '#fbbf24', // Solar gold
-      '#ffffff', // Pure stellar white
+      '#ffffff', // Stellar white
+      '#ffffff',
+      '#ffffff',
+      '#ffffff',
+      '#f4f4f5',
+      '#e4e4e7',
       '#e0e7ff', // Ice blue
+      '#dbeafe',
+      '#34d399', // Subtle emerald
+      '#38bdf8', // Subtle cyan
+      '#f472b6', // Subtle rose
     ];
 
     // Build Galaxy Stars (Spiral Arms + Core Cluster)

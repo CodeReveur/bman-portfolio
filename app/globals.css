@@ -2,11 +2,24 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* ---------------------------------------------------------------------------
+   BMan Monochromatic White & Black Design Tokens
+   Pure black (#000000 / #09090b), crisp white (#ffffff),
+   with very few, subtle rainbow accents only where necessary.
+--------------------------------------------------------------------------- */
 :root {
   color-scheme: dark;
-  --bg: #030712;
-  --fg: #f9fafb;
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --bg: #000000;
+  --bg-subtle: #09090b;
+  --surface: #0e0e11;
+  --surface-hover: #17171c;
+  --border: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.2);
+  --fg: #ffffff;
+  --fg-muted: #a1a1aa;
+  --fg-subtle: #71717a;
+
+  --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 }
 
@@ -17,34 +30,19 @@ html {
 }
 
 body {
-  background-color: #030712;
-  color: #f9fafb;
-  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  background-color: #000000;
+  color: #ffffff;
+  font-family: var(--font-sans);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.015em;
 }
 
 /* ---------------------------------------------------------------------------
-   Cosmic Galaxy & Rainbow Effects
+   Micro Rainbow Accent (Very few, subtle, where necessary)
 --------------------------------------------------------------------------- */
-
-@keyframes gradient-x {
-  0%, 100% {
-    background-size: 200% 200%;
-    background-position: left center;
-  }
-  50% {
-    background-size: 200% 200%;
-    background-position: right center;
-  }
-}
-
-.animate-gradient-x {
-  animation: gradient-x 6s ease infinite;
-}
-
-@keyframes rainbow-orbit {
+@keyframes rainbow-shift {
   0% {
     filter: hue-rotate(0deg);
   }
@@ -53,45 +51,59 @@ body {
   }
 }
 
-.animate-rainbow-orbit {
-  animation: rainbow-orbit 12s linear infinite;
+.rainbow-dot {
+  background: linear-gradient(135deg, #ff4d4d, #f9cb28, #34d399, #00c6ff, #9d50bb);
+  animation: rainbow-shift 10s linear infinite;
 }
 
-@keyframes pulse-slow {
-  0%, 100% {
-    opacity: 0.3;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.6;
-    transform: scale(1.05);
-  }
+.rainbow-border-hover:hover {
+  border-image: linear-gradient(135deg, #ff4d4d, #f9cb28, #34d399, #00c6ff, #9d50bb) 1;
 }
 
-.animate-pulse-slow {
-  animation: pulse-slow 8s ease-in-out infinite;
+.rainbow-badge {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 77, 77, 0.12),
+    rgba(249, 203, 40, 0.12),
+    rgba(52, 211, 153, 0.12),
+    rgba(0, 198, 255, 0.12),
+    rgba(157, 80, 187, 0.12)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-/* Custom Scrollbar */
+/* Crisp Monochrome Card */
+.mono-card {
+  background: #09090b;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mono-card:hover {
+  background: #111114;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 5px;
+  height: 5px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #030712;
+  background: #000000;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.2);
   border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.4);
 }
 
 ::selection {
-  background-color: #06b6d4;
-  color: #030712;
+  background-color: #ffffff;
+  color: #000000;
 }

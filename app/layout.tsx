@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
+import { GalaxyCanvas, GalaxyNavbar, GalaxyFooter } from '@/components';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -18,19 +19,18 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://bman.rw'),
   title: {
-    default: 'BMan Technologies — Sovereign Software Systems & Innovations',
+    default: 'BMan Technologies — Software for African commerce',
     template: '%s · BMan Technologies',
   },
   description:
-    'BMan Ltd engineers sovereign software infrastructure, offline-first POS networks, telemetry, and high-impact inventions across Rwanda and East Africa.',
+    'BMan Ltd engineers offline-first retail systems, distributed sales networks, and resilient software infrastructure from Kigali, Rwanda.',
   keywords: [
     'BMan',
     'BMan Technologies',
     'Rwanda Tech',
     'Kigali Software',
     'Offline-First POS',
-    'African Inventions',
-    'Enterprise Cloud',
+    'BMan Stock',
     'Joseph Maranatha',
     'Olivier Turikumwe',
   ],
@@ -43,9 +43,9 @@ export const metadata: Metadata = {
     apple: '/icon.png',
   },
   openGraph: {
-    title: 'BMan Technologies — Sovereign Software Systems & Innovations',
+    title: 'BMan Technologies — Software for African commerce',
     description:
-      'Engineering the sovereign technological backbone of East Africa: offline-first retail networks, intelligent logistics, distributed telemetry, and corporate platforms.',
+      'Offline-first retail engines, distributed sales networks, and resilient infrastructure built for African businesses.',
     url: 'https://bman.rw',
     siteName: 'BMan Technologies',
     images: [
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
         url: '/logo.png',
         width: 1200,
         height: 630,
-        alt: 'BMan Technologies Corporate Universe',
+        alt: 'BMan Technologies',
       },
     ],
     locale: 'en_US',
@@ -61,9 +61,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'BMan Technologies — Sovereign Software Systems & Innovations',
+    title: 'BMan Technologies — Software for African commerce',
     description:
-      'Engineering the sovereign technological backbone of East Africa: offline-first retail networks, intelligent logistics, and distributed telemetry.',
+      'Offline-first retail engines, distributed sales networks, and resilient infrastructure built for African businesses.',
     creator: '@bman_rw',
     images: ['/logo.png'],
   },
@@ -74,7 +74,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#030712',
+  themeColor: '#000000',
   colorScheme: 'dark',
 };
 
@@ -89,9 +89,21 @@ export default function RootLayout({
         <link rel="icon" href="/icon.png" sizes="any" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} bg-[#030712] text-zinc-100 antialiased selection:bg-cyan-500 selection:text-black`}
+        className={`${geistSans.variable} ${geistMono.variable} bg-black text-white antialiased selection:bg-white selection:text-black flex flex-col min-h-screen`}
       >
-        {children}
+        {/* Galaxy Starfield Background across all pages */}
+        <GalaxyCanvas />
+
+        {/* Global Floating Navbar */}
+        <GalaxyNavbar />
+
+        {/* Page Content */}
+        <div className="relative z-10 flex-1 flex flex-col pt-24 pb-16">
+          {children}
+        </div>
+
+        {/* Global Minimal Footer */}
+        <GalaxyFooter />
       </body>
     </html>
   );
