@@ -18,21 +18,21 @@ export default function ProductsClient({ products }: { products: CorporateProduc
     switch (status) {
       case 'Finished':
         return (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
             {t('products.status_finished')}
           </span>
         );
       case 'In development':
         return (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
             <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
             {t('products.status_in_dev')}
           </span>
         );
       case 'Inactive':
         return (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-zinc-100 dark:bg-white/5 text-zinc-500 border border-zinc-200 dark:border-white/10">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-zinc-100 dark:bg-white/5 text-zinc-500 border border-zinc-200 dark:border-white/10">
             <span className="w-1.5 h-1.5 rounded-full bg-zinc-400" />
             {t('products.status_inactive')}
           </span>
@@ -44,10 +44,10 @@ export default function ProductsClient({ products }: { products: CorporateProduc
     <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
       {/* 1. Centered Page Header */}
       <div className="mb-12 sm:mb-16 text-center max-w-2xl mx-auto">
-        <h1 className="text-3xl sm:text-5xl font-normal tracking-[-0.04em] text-zinc-900 dark:text-white">
+        <h1 className="text-3xl sm:text-5xl font-medium tracking-tight text-zinc-900 dark:text-white">
           {t('products.title')}
         </h1>
-        <p className="mt-3 text-sm text-zinc-600 dark:text-zinc-400 font-light max-w-lg mx-auto leading-relaxed">
+        <p className="mt-3 text-base sm:text-lg text-zinc-600 dark:text-zinc-300 font-normal max-w-lg mx-auto leading-relaxed">
           {t('products.subtitle')}
         </p>
       </div>
@@ -57,12 +57,12 @@ export default function ProductsClient({ products }: { products: CorporateProduc
         {products.map((product) => (
           <div
             key={product.id || product.slug}
-            className="p-6 sm:p-8 rounded-3xl mono-card flex flex-col md:flex-row md:items-center justify-between gap-6"
+            className="p-7 sm:p-8 rounded-3xl mono-card flex flex-col md:flex-row md:items-center justify-between gap-6"
           >
             {/* Left Info */}
             <div className="max-w-2xl">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-8 h-8 rounded-full bg-black p-1 flex items-center justify-center border border-black/10 dark:border-white/10 shrink-0">
+                <div className="w-9 h-9 rounded-full bg-black p-1.5 flex items-center justify-center border border-black/10 dark:border-white/10 shrink-0">
                   <Image
                     src={product.logo_url || '/logo.png'}
                     alt={product.name}
@@ -72,20 +72,20 @@ export default function ProductsClient({ products }: { products: CorporateProduc
                   />
                 </div>
                 <div>
-                  <h2 className="text-xl font-medium text-zinc-900 dark:text-white tracking-tight">
+                  <h2 className="text-xl sm:text-2xl font-medium text-zinc-900 dark:text-white tracking-tight">
                     {product.name}
                   </h2>
                 </div>
-                <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-zinc-100 dark:bg-white/5 border border-black/5 dark:border-white/10 text-zinc-700 dark:text-zinc-300">
+                <span className="text-xs font-mono px-3 py-1 rounded-full bg-zinc-100 dark:bg-white/5 border border-black/5 dark:border-white/10 text-zinc-700 dark:text-zinc-300">
                   {product.badge || product.category}
                 </span>
               </div>
 
-              <p className="text-sm font-normal text-zinc-800 dark:text-zinc-300">
+              <p className="text-base font-normal text-zinc-800 dark:text-zinc-200">
                 {product.tagline}
               </p>
 
-              <p className="mt-2 text-xs text-zinc-600 dark:text-zinc-400 font-light leading-relaxed">
+              <p className="mt-2 text-sm sm:text-base text-zinc-600 dark:text-zinc-400 font-normal leading-relaxed">
                 {product.description}
               </p>
 
@@ -95,7 +95,7 @@ export default function ProductsClient({ products }: { products: CorporateProduc
                   {product.metrics.split('·').map((item, i) => (
                     <span
                       key={i}
-                      className="text-[11px] px-2.5 py-0.5 rounded-md bg-zinc-100 dark:bg-white/5 text-zinc-700 dark:text-zinc-300 font-light"
+                      className="text-xs px-3 py-1 rounded-lg bg-zinc-100 dark:bg-white/5 text-zinc-700 dark:text-zinc-300 font-normal"
                     >
                       {item.trim()}
                     </span>
@@ -105,7 +105,7 @@ export default function ProductsClient({ products }: { products: CorporateProduc
 
               {/* Stack */}
               {product.tech_stack && (
-                <div className="mt-3 text-[11px] font-mono text-zinc-400 dark:text-zinc-500">
+                <div className="mt-3 text-xs font-mono text-zinc-500">
                   Stack: {product.tech_stack}
                 </div>
               )}
@@ -118,10 +118,10 @@ export default function ProductsClient({ products }: { products: CorporateProduc
                   href={product.product_url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-medium bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200 transition-colors shadow-sm"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200 transition-colors shadow-sm"
                 >
                   <span>{t('products.launch')}</span>
-                  <ArrowUpRight size={13} />
+                  <ArrowUpRight size={14} />
                 </a>
               ) : (
                 <span className="text-xs text-zinc-400 font-mono">In Development</span>
@@ -134,10 +134,10 @@ export default function ProductsClient({ products }: { products: CorporateProduc
       {/* 3. Contributed Projects & Success Stories Section */}
       <div className="mt-24 pt-14 border-t border-black/10 dark:border-white/10">
         <div className="mb-10 text-center max-w-2xl mx-auto">
-          <h2 className="text-2xl sm:text-4xl font-normal tracking-[-0.03em] text-zinc-900 dark:text-white">
+          <h2 className="text-2xl sm:text-4xl font-medium tracking-tight text-zinc-900 dark:text-white">
             {t('products.projects_title')}
           </h2>
-          <p className="mt-2 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 font-light max-w-xl mx-auto leading-relaxed">
+          <p className="mt-2 text-sm sm:text-base text-zinc-600 dark:text-zinc-400 font-normal max-w-xl mx-auto leading-relaxed">
             {t('products.projects_subtitle')}
           </p>
 
@@ -145,40 +145,40 @@ export default function ProductsClient({ products }: { products: CorporateProduc
           <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
             <button
               onClick={() => setFilter('ALL')}
-              className={`px-3.5 py-1 text-xs rounded-full transition-colors ${
+              className={`px-4 py-1.5 text-xs sm:text-sm rounded-full transition-colors ${
                 filter === 'ALL'
                   ? 'bg-zinc-900 text-white dark:bg-white dark:text-black font-medium'
-                  : 'bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white'
+                  : 'bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white font-normal'
               }`}
             >
               {t('products.filter_all')} ({CONTRIBUTED_PROJECTS.length})
             </button>
             <button
               onClick={() => setFilter('Finished')}
-              className={`px-3.5 py-1 text-xs rounded-full transition-colors ${
+              className={`px-4 py-1.5 text-xs sm:text-sm rounded-full transition-colors ${
                 filter === 'Finished'
                   ? 'bg-emerald-600 text-white font-medium'
-                  : 'bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:text-emerald-500'
+                  : 'bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:text-emerald-500 font-normal'
               }`}
             >
               {t('products.status_finished')} ({CONTRIBUTED_PROJECTS.filter((p) => p.status === 'Finished').length})
             </button>
             <button
               onClick={() => setFilter('In development')}
-              className={`px-3.5 py-1 text-xs rounded-full transition-colors ${
+              className={`px-4 py-1.5 text-xs sm:text-sm rounded-full transition-colors ${
                 filter === 'In development'
                   ? 'bg-amber-600 text-white font-medium'
-                  : 'bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:text-amber-500'
+                  : 'bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:text-amber-500 font-normal'
               }`}
             >
               {t('products.status_in_dev')} ({CONTRIBUTED_PROJECTS.filter((p) => p.status === 'In development').length})
             </button>
             <button
               onClick={() => setFilter('Inactive')}
-              className={`px-3.5 py-1 text-xs rounded-full transition-colors ${
+              className={`px-4 py-1.5 text-xs sm:text-sm rounded-full transition-colors ${
                 filter === 'Inactive'
                   ? 'bg-zinc-700 text-white font-medium'
-                  : 'bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:text-zinc-300'
+                  : 'bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:text-zinc-300 font-normal'
               }`}
             >
               {t('products.status_inactive')} ({CONTRIBUTED_PROJECTS.filter((p) => p.status === 'Inactive').length})
@@ -191,43 +191,43 @@ export default function ProductsClient({ products }: { products: CorporateProduc
           {filteredProjects.map((project) => (
             <div
               key={project.id}
-              className="p-6 sm:p-7 rounded-3xl mono-card flex flex-col justify-between"
+              className="p-7 sm:p-8 rounded-3xl mono-card flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between gap-2 mb-3">
-                  <span className="text-[11px] font-mono text-zinc-500">
+                  <span className="text-xs font-mono text-zinc-500">
                     {project.category} · {project.year}
                   </span>
                   {getStatusBadge(project.status)}
                 </div>
 
-                <h3 className="text-lg font-medium text-zinc-900 dark:text-white tracking-tight">
+                <h3 className="text-xl font-medium text-zinc-900 dark:text-white tracking-tight">
                   {project.title}
                 </h3>
-                <div className="text-xs text-zinc-500 font-mono mt-0.5">
+                <div className="text-xs sm:text-sm text-zinc-500 font-mono mt-1">
                   Client: {project.client}
                 </div>
 
-                <p className="mt-3 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 font-light leading-relaxed">
+                <p className="mt-3 text-sm text-zinc-600 dark:text-zinc-400 font-normal leading-relaxed">
                   {project.summary}
                 </p>
 
                 {/* Impact Metric */}
-                <div className="mt-4 p-3 rounded-xl bg-zinc-50 dark:bg-zinc-950 border border-black/5 dark:border-white/5">
-                  <div className="text-[10px] font-mono text-zinc-400 uppercase tracking-wider">
+                <div className="mt-4 p-3.5 rounded-xl bg-zinc-50 dark:bg-zinc-950 border border-black/5 dark:border-white/5">
+                  <div className="text-xs font-mono text-zinc-400 uppercase tracking-wider">
                     Key Outcome &amp; Impact
                   </div>
-                  <div className="text-xs font-medium text-zinc-800 dark:text-zinc-200 mt-0.5">
+                  <div className="text-sm font-medium text-zinc-800 dark:text-zinc-200 mt-1">
                     {project.impact}
                   </div>
                 </div>
 
                 {/* Deliverables Tags */}
-                <div className="mt-4 flex flex-wrap gap-1.5">
+                <div className="mt-4 flex flex-wrap gap-2">
                   {project.deliverables.map((item, dIdx) => (
                     <span
                       key={dIdx}
-                      className="text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-100 dark:bg-white/5 text-zinc-600 dark:text-zinc-400"
+                      className="text-xs font-mono px-2.5 py-1 rounded bg-zinc-100 dark:bg-white/5 text-zinc-600 dark:text-zinc-400"
                     >
                       {item}
                     </span>

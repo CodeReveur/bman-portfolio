@@ -48,10 +48,10 @@ export default function ContactPage() {
     <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
       {/* Centered Page Header */}
       <div className="mb-12 sm:mb-16 text-center max-w-2xl mx-auto">
-        <h1 className="text-3xl sm:text-5xl font-normal tracking-[-0.04em] text-zinc-900 dark:text-white">
+        <h1 className="text-3xl sm:text-5xl font-medium tracking-tight text-zinc-900 dark:text-white">
           {t('contact.title')}
         </h1>
-        <p className="mt-3 text-sm text-zinc-600 dark:text-zinc-400 font-light max-w-lg mx-auto leading-relaxed">
+        <p className="mt-3 text-base sm:text-lg text-zinc-600 dark:text-zinc-300 font-normal max-w-lg mx-auto leading-relaxed">
           {t('contact.subtitle')}
         </p>
       </div>
@@ -59,36 +59,36 @@ export default function ContactPage() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Contact Info & Socials */}
         <div className="lg:col-span-5 space-y-6">
-          <div className="p-6 rounded-3xl mono-card space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-zinc-100 dark:bg-zinc-900 border border-black/10 dark:border-white/10 flex items-center justify-center text-zinc-900 dark:text-white shrink-0">
-                <MapPin size={15} />
+          <div className="p-7 rounded-3xl mono-card space-y-5">
+            <div className="flex items-center gap-3.5">
+              <div className="w-9 h-9 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-black/10 dark:border-white/10 flex items-center justify-center text-zinc-900 dark:text-white shrink-0">
+                <MapPin size={17} />
               </div>
               <div>
-                <div className="text-xs font-medium text-zinc-900 dark:text-white">{t('contact.headquarters')}</div>
-                <div className="text-xs text-zinc-500 font-light">KN 3 Rd, Downtown Kigali, Rwanda</div>
+                <div className="text-sm font-medium text-zinc-900 dark:text-white">{t('contact.headquarters')}</div>
+                <div className="text-sm text-zinc-500 font-normal">KN 3 Rd, Downtown Kigali, Rwanda</div>
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-zinc-100 dark:bg-zinc-900 border border-black/10 dark:border-white/10 flex items-center justify-center text-zinc-900 dark:text-white shrink-0">
-                <Mail size={15} />
+            <div className="flex items-center gap-3.5">
+              <div className="w-9 h-9 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-black/10 dark:border-white/10 flex items-center justify-center text-zinc-900 dark:text-white shrink-0">
+                <Mail size={17} />
               </div>
               <div>
-                <div className="text-xs font-medium text-zinc-900 dark:text-white">{t('contact.general_email')}</div>
-                <a href="mailto:contact@bman.rw" className="text-xs text-zinc-700 dark:text-zinc-300 hover:text-black dark:hover:text-white font-mono transition-colors">
+                <div className="text-sm font-medium text-zinc-900 dark:text-white">{t('contact.general_email')}</div>
+                <a href="mailto:contact@bman.rw" className="text-sm text-zinc-700 dark:text-zinc-300 hover:text-black dark:hover:text-white font-mono transition-colors">
                   contact@bman.rw
                 </a>
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-zinc-100 dark:bg-zinc-900 border border-black/10 dark:border-white/10 flex items-center justify-center text-zinc-900 dark:text-white shrink-0">
-                <Phone size={15} />
+            <div className="flex items-center gap-3.5">
+              <div className="w-9 h-9 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-black/10 dark:border-white/10 flex items-center justify-center text-zinc-900 dark:text-white shrink-0">
+                <Phone size={17} />
               </div>
               <div>
-                <div className="text-xs font-medium text-zinc-900 dark:text-white">{t('contact.direct_line')}</div>
-                <a href="tel:+250788000000" className="text-xs text-zinc-500 font-mono">
+                <div className="text-sm font-medium text-zinc-900 dark:text-white">{t('contact.direct_line')}</div>
+                <a href="tel:+250788000000" className="text-sm text-zinc-500 font-mono">
                   +250 788 000 000
                 </a>
               </div>
@@ -96,11 +96,11 @@ export default function ContactPage() {
           </div>
 
           {/* Verified Social Media Channels */}
-          <div className="p-6 rounded-3xl mono-card">
+          <div className="p-7 rounded-3xl mono-card">
             <div className="text-xs font-mono uppercase tracking-wider text-zinc-500 mb-3">
               {t('contact.verified_socials')}
             </div>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2.5">
               {SOCIAL_LINKS.map((social) => {
                 const Icon = getSocialIcon(social.icon);
                 return (
@@ -109,11 +109,11 @@ export default function ContactPage() {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-100 dark:bg-black border border-black/10 dark:border-white/10 hover:border-black/30 dark:hover:border-white/30 text-xs text-zinc-700 dark:text-zinc-300 hover:text-black dark:hover:text-white transition-all group"
+                    className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-100 dark:bg-black border border-black/10 dark:border-white/10 hover:border-black/30 dark:hover:border-white/30 text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 hover:text-black dark:hover:text-white transition-all group font-normal"
                   >
-                    <Icon size={12} className="text-zinc-500 group-hover:text-black dark:group-hover:text-white transition-colors" />
+                    <Icon size={14} className="text-zinc-500 group-hover:text-black dark:group-hover:text-white transition-colors" />
                     <span>{social.name}</span>
-                    <ArrowUpRight size={11} className="text-zinc-400 group-hover:text-black dark:group-hover:text-white transition-colors" />
+                    <ArrowUpRight size={12} className="text-zinc-400 group-hover:text-black dark:group-hover:text-white transition-colors" />
                   </a>
                 );
               })}
@@ -123,14 +123,14 @@ export default function ContactPage() {
 
         {/* Quick Message Form */}
         <div className="lg:col-span-7">
-          <div className="p-6 sm:p-8 rounded-3xl mono-card">
+          <div className="p-7 sm:p-9 rounded-3xl mono-card">
             {submitted ? (
               <div className="py-12 text-center flex flex-col items-center justify-center">
-                <div className="w-10 h-10 rounded-full bg-zinc-900 text-white dark:bg-white dark:text-black flex items-center justify-center mb-4">
-                  <CheckCircle2 size={20} />
+                <div className="w-12 h-12 rounded-full bg-zinc-900 text-white dark:bg-white dark:text-black flex items-center justify-center mb-4">
+                  <CheckCircle2 size={24} />
                 </div>
-                <h2 className="text-base font-medium text-zinc-900 dark:text-white">{t('contact.form_success_title')}</h2>
-                <p className="mt-2 text-xs text-zinc-500 max-w-sm font-light">
+                <h2 className="text-lg font-medium text-zinc-900 dark:text-white">{t('contact.form_success_title')}</h2>
+                <p className="mt-2 text-sm text-zinc-500 max-w-sm font-normal">
                   {t('contact.form_success_desc')}
                 </p>
               </div>
@@ -138,7 +138,7 @@ export default function ContactPage() {
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1.5">
+                    <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1.5">
                       {t('contact.form_name')}
                     </label>
                     <input
@@ -147,11 +147,11 @@ export default function ContactPage() {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="e.g. Jean Damascene"
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-zinc-50 dark:bg-black border border-black/10 dark:border-white/10 text-xs text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:border-black dark:focus:border-white transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-black border border-black/10 dark:border-white/10 text-sm text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:border-black dark:focus:border-white transition-colors"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1.5">
+                    <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1.5">
                       {t('contact.form_contact')}
                     </label>
                     <input
@@ -160,13 +160,13 @@ export default function ContactPage() {
                       value={formData.contact}
                       onChange={(e) => setFormData({ ...formData, contact: e.target.value })}
                       placeholder="e.g. jean@company.rw"
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-zinc-50 dark:bg-black border border-black/10 dark:border-white/10 text-xs text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:border-black dark:focus:border-white transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-black border border-black/10 dark:border-white/10 text-sm text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:border-black dark:focus:border-white transition-colors"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1.5">
+                  <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1.5">
                     {t('contact.form_message')}
                   </label>
                   <textarea
@@ -175,16 +175,16 @@ export default function ContactPage() {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Tell us about your project or inquiry..."
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-zinc-50 dark:bg-black border border-black/10 dark:border-white/10 text-xs text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:border-black dark:focus:border-white transition-colors resize-none"
+                    className="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-black border border-black/10 dark:border-white/10 text-sm text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:border-black dark:focus:border-white transition-colors resize-none"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2 rounded-full text-xs font-medium bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200 transition-colors shadow-sm"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full text-sm font-medium bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200 transition-colors shadow-sm"
                 >
                   <span>{t('contact.form_send')}</span>
-                  <Send size={12} />
+                  <Send size={14} />
                 </button>
               </form>
             )}

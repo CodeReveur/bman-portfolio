@@ -4,7 +4,7 @@
 
 /* ---------------------------------------------------------------------------
    BMan Design Tokens: Dual Theme (Pure White & Pure Black)
-   With minimal micro-rainbow accents.
+   Typography: Apple iPhone SF Pro Font Family with medium readability scale.
 --------------------------------------------------------------------------- */
 :root {
   color-scheme: light;
@@ -20,8 +20,9 @@
   --nav-bg: rgba(255, 255, 255, 0.85);
   --footer-bg: rgba(255, 255, 255, 0.95);
 
-  --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  /* iPhone SF Pro Font Family Stack */
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: "SF Mono", SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas, monospace;
 }
 
 .dark,
@@ -94,8 +95,8 @@ body {
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {

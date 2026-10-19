@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, ShieldCheck, Zap, Server, CheckCircle2, Handshake } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Zap, Server, CheckCircle2 } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { PARTNERS } from '@/lib/corporate';
 
@@ -37,29 +37,29 @@ export default function HomePage() {
   return (
     <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 flex flex-col gap-24 sm:gap-32">
       {/* 1. Hero Section */}
-      <section className="text-center pt-8 sm:pt-14">
+      <section className="text-center pt-10 sm:pt-16">
         {/* Main Headline */}
-        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-normal tracking-[-0.04em] text-zinc-900 dark:text-white leading-[1.06] max-w-4xl mx-auto text-balance">
+        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tight text-zinc-900 dark:text-white leading-[1.08] max-w-4xl mx-auto text-balance">
           {t('home.title')}
         </h1>
 
         {/* Subtitle */}
-        <p className="mt-6 text-base sm:text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed font-light text-pretty">
+        <p className="mt-6 text-lg sm:text-xl text-zinc-600 dark:text-zinc-300 max-w-2xl mx-auto leading-relaxed font-normal text-pretty">
           {t('home.subtitle')}
         </p>
 
         {/* CTAs */}
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3.5">
           <Link
             href="/products"
-            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-medium bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200 transition-colors shadow-sm"
+            className="inline-flex items-center gap-2 px-7 py-3 rounded-full text-sm sm:text-base font-medium bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200 transition-colors shadow-sm"
           >
             <span>{t('home.cta_products')}</span>
-            <ArrowRight size={14} />
+            <ArrowRight size={15} />
           </Link>
           <Link
             href="/about"
-            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-medium bg-zinc-100 text-zinc-700 hover:text-black border border-black/10 dark:bg-zinc-950 dark:text-zinc-300 dark:hover:text-white dark:border-white/10 dark:hover:border-white/20 transition-colors"
+            className="inline-flex items-center gap-2 px-7 py-3 rounded-full text-sm sm:text-base font-medium bg-zinc-100 text-zinc-800 hover:text-black border border-black/10 dark:bg-zinc-950 dark:text-zinc-300 dark:hover:text-white dark:border-white/10 dark:hover:border-white/20 transition-colors"
           >
             <span>{t('home.cta_about')}</span>
           </Link>
@@ -68,11 +68,11 @@ export default function HomePage() {
         {/* Key Operational Numbers */}
         <div className="mt-16 pt-10 border-t border-black/10 dark:border-white/10 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           {stats.map((stat, i) => (
-            <div key={i} className="p-2">
-              <div className="text-2xl sm:text-3xl font-medium tracking-tight text-zinc-900 dark:text-white">
+            <div key={i} className="p-3">
+              <div className="text-3xl sm:text-4xl font-semibold tracking-tight text-zinc-900 dark:text-white">
                 {stat.value}
               </div>
-              <div className="text-xs text-zinc-500 dark:text-zinc-400 mt-1 font-light">
+              <div className="text-sm text-zinc-500 dark:text-zinc-400 mt-1 font-normal">
                 {stat.label}
               </div>
             </div>
@@ -84,75 +84,75 @@ export default function HomePage() {
       <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <Link
           href="/products"
-          className="p-6 sm:p-8 rounded-3xl mono-card flex flex-col justify-between group"
+          className="p-7 sm:p-8 rounded-3xl mono-card flex flex-col justify-between group"
         >
           <div>
-            <div className="text-[11px] font-mono text-zinc-400 dark:text-zinc-500 uppercase tracking-wider mb-2">
+            <div className="text-xs font-mono text-zinc-400 dark:text-zinc-500 uppercase tracking-wider mb-2">
               {t('home.card_products_tag')}
             </div>
-            <h3 className="text-xl font-medium text-zinc-900 dark:text-white group-hover:opacity-85 transition-opacity">
+            <h3 className="text-xl sm:text-2xl font-medium text-zinc-900 dark:text-white group-hover:opacity-85 transition-opacity">
               {t('home.card_products_title')}
             </h3>
-            <p className="mt-3 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 font-light leading-relaxed">
+            <p className="mt-3 text-sm sm:text-base text-zinc-600 dark:text-zinc-300 font-normal leading-relaxed">
               {t('home.card_products_desc')}
             </p>
           </div>
-          <div className="mt-8 pt-4 border-t border-black/5 dark:border-white/5 flex items-center justify-between text-xs text-zinc-600 dark:text-zinc-400 group-hover:text-black dark:group-hover:text-white transition-colors">
+          <div className="mt-8 pt-4 border-t border-black/5 dark:border-white/5 flex items-center justify-between text-sm text-zinc-600 dark:text-zinc-400 group-hover:text-black dark:group-hover:text-white transition-colors font-medium">
             <span>{t('home.cta_products')}</span>
-            <ArrowRight size={13} className="transition-transform group-hover:translate-x-1" />
+            <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
           </div>
         </Link>
 
         <Link
           href="/services"
-          className="p-6 sm:p-8 rounded-3xl mono-card flex flex-col justify-between group"
+          className="p-7 sm:p-8 rounded-3xl mono-card flex flex-col justify-between group"
         >
           <div>
-            <div className="text-[11px] font-mono text-zinc-400 dark:text-zinc-500 uppercase tracking-wider mb-2">
+            <div className="text-xs font-mono text-zinc-400 dark:text-zinc-500 uppercase tracking-wider mb-2">
               {t('home.card_services_tag')}
             </div>
-            <h3 className="text-xl font-medium text-zinc-900 dark:text-white group-hover:opacity-85 transition-opacity">
+            <h3 className="text-xl sm:text-2xl font-medium text-zinc-900 dark:text-white group-hover:opacity-85 transition-opacity">
               {t('home.card_services_title')}
             </h3>
-            <p className="mt-3 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 font-light leading-relaxed">
+            <p className="mt-3 text-sm sm:text-base text-zinc-600 dark:text-zinc-300 font-normal leading-relaxed">
               {t('home.card_services_desc')}
             </p>
           </div>
-          <div className="mt-8 pt-4 border-t border-black/5 dark:border-white/5 flex items-center justify-between text-xs text-zinc-600 dark:text-zinc-400 group-hover:text-black dark:group-hover:text-white transition-colors">
+          <div className="mt-8 pt-4 border-t border-black/5 dark:border-white/5 flex items-center justify-between text-sm text-zinc-600 dark:text-zinc-400 group-hover:text-black dark:group-hover:text-white transition-colors font-medium">
             <span>{t('nav.services')}</span>
-            <ArrowRight size={13} className="transition-transform group-hover:translate-x-1" />
+            <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
           </div>
         </Link>
 
         <Link
           href="/about"
-          className="p-6 sm:p-8 rounded-3xl mono-card flex flex-col justify-between group"
+          className="p-7 sm:p-8 rounded-3xl mono-card flex flex-col justify-between group"
         >
           <div>
-            <div className="text-[11px] font-mono text-zinc-400 dark:text-zinc-500 uppercase tracking-wider mb-2">
+            <div className="text-xs font-mono text-zinc-400 dark:text-zinc-500 uppercase tracking-wider mb-2">
               {t('home.card_about_tag')}
             </div>
-            <h3 className="text-xl font-medium text-zinc-900 dark:text-white group-hover:opacity-85 transition-opacity">
+            <h3 className="text-xl sm:text-2xl font-medium text-zinc-900 dark:text-white group-hover:opacity-85 transition-opacity">
               {t('home.card_about_title')}
             </h3>
-            <p className="mt-3 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 font-light leading-relaxed">
+            <p className="mt-3 text-sm sm:text-base text-zinc-600 dark:text-zinc-300 font-normal leading-relaxed">
               {t('home.card_about_desc')}
             </p>
           </div>
-          <div className="mt-8 pt-4 border-t border-black/5 dark:border-white/5 flex items-center justify-between text-xs text-zinc-600 dark:text-zinc-400 group-hover:text-black dark:group-hover:text-white transition-colors">
+          <div className="mt-8 pt-4 border-t border-black/5 dark:border-white/5 flex items-center justify-between text-sm text-zinc-600 dark:text-zinc-400 group-hover:text-black dark:group-hover:text-white transition-colors font-medium">
             <span>{t('home.cta_about')}</span>
-            <ArrowRight size={13} className="transition-transform group-hover:translate-x-1" />
+            <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
           </div>
         </Link>
       </section>
 
       {/* 3. Architectural Pillars */}
-      <section className="pt-6">
+      <section className="pt-4">
         <div className="text-center max-w-xl mx-auto mb-12">
           <h2 className="text-2xl sm:text-3xl font-medium tracking-tight text-zinc-900 dark:text-white">
             {t('home.pillars_title')}
           </h2>
-          <p className="mt-2 text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 font-light">
+          <p className="mt-2.5 text-sm sm:text-base text-zinc-500 dark:text-zinc-400 font-normal leading-relaxed">
             {t('home.pillars_subtitle')}
           </p>
         </div>
@@ -161,14 +161,14 @@ export default function HomePage() {
           {pillars.map((pillar, idx) => {
             const Icon = pillar.icon;
             return (
-              <div key={idx} className="p-6 rounded-3xl mono-card">
-                <div className="w-10 h-10 rounded-2xl bg-zinc-100 dark:bg-zinc-900 border border-black/10 dark:border-white/10 flex items-center justify-center text-zinc-900 dark:text-white mb-5">
-                  <Icon size={18} />
+              <div key={idx} className="p-7 rounded-3xl mono-card">
+                <div className="w-11 h-11 rounded-2xl bg-zinc-100 dark:bg-zinc-900 border border-black/10 dark:border-white/10 flex items-center justify-center text-zinc-900 dark:text-white mb-5">
+                  <Icon size={20} />
                 </div>
-                <h3 className="text-base font-medium text-zinc-900 dark:text-white tracking-tight">
+                <h3 className="text-lg font-medium text-zinc-900 dark:text-white tracking-tight">
                   {pillar.title}
                 </h3>
-                <p className="mt-2 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 font-light leading-relaxed">
+                <p className="mt-2.5 text-sm text-zinc-600 dark:text-zinc-400 font-normal leading-relaxed">
                   {pillar.description}
                 </p>
               </div>
@@ -180,10 +180,10 @@ export default function HomePage() {
       {/* 4. Partners & Trusted Rails Section (Near Footer Section) */}
       <section className="pt-10 border-t border-black/10 dark:border-white/10 mb-8">
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <h2 className="text-2xl sm:text-4xl font-normal tracking-[-0.03em] text-zinc-900 dark:text-white">
+          <h2 className="text-2xl sm:text-4xl font-medium tracking-tight text-zinc-900 dark:text-white">
             {t('home.partners_title')}
           </h2>
-          <p className="mt-3 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 font-light max-w-lg mx-auto leading-relaxed">
+          <p className="mt-3 text-sm sm:text-base text-zinc-600 dark:text-zinc-400 font-normal max-w-lg mx-auto leading-relaxed">
             {t('home.partners_subtitle')}
           </p>
         </div>
@@ -192,21 +192,21 @@ export default function HomePage() {
           {PARTNERS.map((partner, idx) => (
             <div
               key={idx}
-              className="p-5 rounded-2xl mono-card flex flex-col justify-between"
+              className="p-6 rounded-2xl mono-card flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs font-semibold text-zinc-900 dark:text-white font-mono">
+                  <span className="text-sm font-semibold text-zinc-900 dark:text-white font-mono">
                     {partner.logoText}
                   </span>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-zinc-100 dark:bg-white/5 text-zinc-600 dark:text-zinc-400">
+                  <span className="text-xs font-mono px-2.5 py-0.5 rounded-full bg-zinc-100 dark:bg-white/5 text-zinc-600 dark:text-zinc-400">
                     {partner.category}
                   </span>
                 </div>
-                <h3 className="text-sm font-medium text-zinc-900 dark:text-white">
+                <h3 className="text-base font-medium text-zinc-900 dark:text-white">
                   {partner.name}
                 </h3>
-                <p className="mt-1.5 text-xs text-zinc-600 dark:text-zinc-400 font-light leading-relaxed">
+                <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400 font-normal leading-relaxed">
                   {partner.description}
                 </p>
               </div>

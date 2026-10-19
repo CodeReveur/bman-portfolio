@@ -33,10 +33,10 @@ export default function AboutPage() {
     <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
       {/* 1. Centered Page Header */}
       <div className="mb-12 sm:mb-16 text-center max-w-2xl mx-auto">
-        <h1 className="text-3xl sm:text-5xl font-normal tracking-[-0.04em] text-zinc-900 dark:text-white">
+        <h1 className="text-3xl sm:text-5xl font-medium tracking-tight text-zinc-900 dark:text-white">
           {t('about.title')}
         </h1>
-        <p className="mt-3 text-sm text-zinc-600 dark:text-zinc-400 font-light max-w-lg mx-auto leading-relaxed">
+        <p className="mt-3 text-base sm:text-lg text-zinc-600 dark:text-zinc-300 font-normal max-w-lg mx-auto leading-relaxed">
           {t('about.subtitle')}
         </p>
       </div>
@@ -47,10 +47,10 @@ export default function AboutPage() {
           <h2 className="text-xl sm:text-2xl font-medium text-zinc-900 dark:text-white tracking-tight">
             Engineering for real-world resilience in Kigali.
           </h2>
-          <p className="mt-4 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 font-light leading-relaxed">
+          <p className="mt-4 text-sm sm:text-base text-zinc-600 dark:text-zinc-300 font-normal leading-relaxed">
             BMan Technologies was founded with a singular conviction: African business software cannot assume Silicon Valley connectivity conditions. When cloud-only software breaks during midday fiber cuts or power fluctuations, real shops stop selling, lines form, and merchants lose livelihoods.
           </p>
-          <p className="mt-3 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 font-light leading-relaxed">
+          <p className="mt-3 text-sm sm:text-base text-zinc-600 dark:text-zinc-300 font-normal leading-relaxed">
             We build sovereign systems engineered from the counter up: local-first transactional databases that run on counter PCs and smartphones without internet, sync automatically when bandwidth returns, and keep Rwandan enterprise data safely hosted within domestic borders.
           </p>
         </div>
@@ -59,10 +59,10 @@ export default function AboutPage() {
       {/* 3. Leadership & Founders */}
       <div className="mb-16">
         <div className="mb-8 text-center max-w-xl mx-auto">
-          <h2 className="text-2xl font-medium tracking-tight text-zinc-900 dark:text-white">
+          <h2 className="text-2xl sm:text-3xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Leadership &amp; Architecture
           </h2>
-          <p className="text-xs text-zinc-500 dark:text-zinc-400 font-light mt-1">
+          <p className="text-sm sm:text-base text-zinc-500 dark:text-zinc-400 font-normal mt-2">
             Engineers and operators guiding BMan&apos;s product development and nationwide deployment.
           </p>
         </div>
@@ -71,14 +71,14 @@ export default function AboutPage() {
           {TEAM_MEMBERS.map((member) => (
             <div
               key={member.name}
-              className="p-6 sm:p-8 rounded-3xl mono-card flex flex-col justify-between"
+              className="p-7 sm:p-8 rounded-3xl mono-card flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <div className="w-10 h-10 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-black/10 dark:border-white/20 flex items-center justify-center text-zinc-900 dark:text-white text-xs font-medium tracking-tight">
+                  <div className="w-11 h-11 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-black/10 dark:border-white/20 flex items-center justify-center text-zinc-900 dark:text-white text-sm font-semibold tracking-tight">
                     {member.initials}
                   </div>
-                  <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-zinc-100 dark:bg-white/5 border border-black/5 dark:border-white/10 text-zinc-700 dark:text-zinc-300">
+                  <span className="text-xs font-mono px-3 py-1 rounded-full bg-zinc-100 dark:bg-white/5 border border-black/5 dark:border-white/10 text-zinc-700 dark:text-zinc-300">
                     {member.role}
                   </span>
                 </div>
@@ -86,11 +86,11 @@ export default function AboutPage() {
                 <h3 className="text-xl font-medium text-zinc-900 dark:text-white tracking-tight">
                   {member.name}
                 </h3>
-                <div className="text-xs font-mono text-zinc-500 dark:text-zinc-400 mt-0.5">
+                <div className="text-xs sm:text-sm font-mono text-zinc-500 dark:text-zinc-400 mt-1">
                   {member.title}
                 </div>
 
-                <p className="mt-4 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-light">
+                <p className="mt-4 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
                   {member.bio}
                 </p>
               </div>
@@ -106,7 +106,7 @@ export default function AboutPage() {
                       className="text-zinc-400 hover:text-black dark:hover:text-white transition-colors"
                       aria-label="LinkedIn"
                     >
-                      <Linkedin size={15} />
+                      <Linkedin size={16} />
                     </a>
                   )}
                   {member.socials.twitter && (
@@ -117,7 +117,7 @@ export default function AboutPage() {
                       className="text-zinc-400 hover:text-black dark:hover:text-white transition-colors"
                       aria-label="Twitter"
                     >
-                      <Twitter size={15} />
+                      <Twitter size={16} />
                     </a>
                   )}
                   {member.socials.github && (
@@ -128,7 +128,7 @@ export default function AboutPage() {
                       className="text-zinc-400 hover:text-black dark:hover:text-white transition-colors"
                       aria-label="GitHub"
                     >
-                      <Github size={15} />
+                      <Github size={16} />
                     </a>
                   )}
                 </div>
@@ -145,10 +145,10 @@ export default function AboutPage() {
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {tenets.map((tenet, idx) => (
-            <div key={idx} className="p-6 rounded-3xl mono-card">
+            <div key={idx} className="p-7 rounded-3xl mono-card">
               <div className="text-xs font-mono text-zinc-900 dark:text-white mb-2">0{idx + 1}</div>
-              <h4 className="text-sm font-medium text-zinc-900 dark:text-white tracking-tight">{tenet.title}</h4>
-              <p className="mt-2 text-xs text-zinc-600 dark:text-zinc-400 font-light leading-relaxed">{tenet.desc}</p>
+              <h4 className="text-base font-medium text-zinc-900 dark:text-white tracking-tight">{tenet.title}</h4>
+              <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400 font-normal leading-relaxed">{tenet.desc}</p>
             </div>
           ))}
         </div>
@@ -157,33 +157,33 @@ export default function AboutPage() {
       {/* 5. Careers & Engineering Culture */}
       <div className="p-8 sm:p-10 rounded-3xl mono-card">
         <div className="max-w-2xl mb-6">
-          <h3 className="text-lg font-medium text-zinc-900 dark:text-white tracking-tight">
+          <h3 className="text-xl font-medium text-zinc-900 dark:text-white tracking-tight">
             {t('about.careers_title')}
           </h3>
-          <p className="mt-2 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 font-light leading-relaxed">
+          <p className="mt-2 text-sm sm:text-base text-zinc-600 dark:text-zinc-400 font-normal leading-relaxed">
             {t('about.careers_subtitle')}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
           {careerTracks.map((role, idx) => (
-            <div key={idx} className="p-4 rounded-2xl bg-zinc-50 dark:bg-black border border-black/5 dark:border-white/10 flex flex-col justify-between">
-              <span className="text-xs font-medium text-zinc-900 dark:text-white">{role.title}</span>
-              <span className="text-[10px] font-mono text-zinc-500 mt-2">{role.stack}</span>
+            <div key={idx} className="p-5 rounded-2xl bg-zinc-50 dark:bg-black border border-black/5 dark:border-white/10 flex flex-col justify-between">
+              <span className="text-sm font-medium text-zinc-900 dark:text-white">{role.title}</span>
+              <span className="text-xs font-mono text-zinc-500 mt-2">{role.stack}</span>
             </div>
           ))}
         </div>
 
         <div className="pt-4 border-t border-black/10 dark:border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <span className="text-xs text-zinc-500 font-light">
+          <span className="text-sm text-zinc-500 font-normal">
             Kigali Office · High agency &amp; craftsmanship · Direct economic impact
           </span>
           <a
             href="mailto:careers@bman.rw"
-            className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full text-xs font-medium bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200 transition-colors shrink-0 w-fit shadow-sm"
+            className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full text-sm font-medium bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200 transition-colors shrink-0 w-fit shadow-sm"
           >
             <span>careers@bman.rw</span>
-            <ArrowUpRight size={13} />
+            <ArrowUpRight size={14} />
           </a>
         </div>
       </div>

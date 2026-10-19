@@ -47,19 +47,19 @@ export default function GalaxyFooter() {
             <Image
               src="/logo.png"
               alt="BMan"
-              width={22}
-              height={22}
+              width={24}
+              height={24}
               className="w-5 h-5 object-contain"
             />
-            <span className="text-xs font-medium text-zinc-900 dark:text-white flex items-center gap-1.5">
+            <span className="text-sm font-medium text-zinc-900 dark:text-white flex items-center gap-1.5">
               BMan Technologies Ltd
               <span className="w-1.5 h-1.5 rounded-full rainbow-dot" />
             </span>
-            <span className="text-xs text-zinc-500 font-light">· {t('footer.location')}</span>
+            <span className="text-sm text-zinc-500 font-normal">· {t('footer.location')}</span>
           </div>
 
           {/* Quick Page Links */}
-          <div className="flex flex-wrap items-center gap-5 text-xs text-zinc-600 dark:text-zinc-400">
+          <div className="flex flex-wrap items-center gap-6 text-sm text-zinc-600 dark:text-zinc-400 font-normal">
             <Link href="/products" className="hover:text-black dark:hover:text-white transition-colors">
               {t('nav.products')}
             </Link>
@@ -77,15 +77,15 @@ export default function GalaxyFooter() {
           {/* Back to top */}
           <button
             onClick={scrollToTop}
-            className="p-1.5 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-black/10 dark:border-white/10 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors"
+            className="p-2 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-black/10 dark:border-white/10 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors"
             aria-label="Back to top"
           >
-            <ArrowUp size={13} />
+            <ArrowUp size={15} />
           </button>
         </div>
 
         {/* Bottom Socials & Copyright */}
-        <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500 font-light">
+        <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500 font-normal">
           <div>
             © {new Date().getFullYear()} BMan Technologies. {t('footer.rights')}
           </div>
@@ -101,9 +101,9 @@ export default function GalaxyFooter() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.name}
-                  className="w-7 h-7 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-black/5 dark:border-white/5 flex items-center justify-center text-zinc-500 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:border-black/20 dark:hover:border-white/20 transition-colors"
+                  className="w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-black/5 dark:border-white/5 flex items-center justify-center text-zinc-500 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:border-black/20 dark:hover:border-white/20 transition-colors"
                 >
-                  <Icon size={12} />
+                  <Icon size={14} />
                 </a>
               );
             })}

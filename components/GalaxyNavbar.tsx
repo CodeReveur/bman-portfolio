@@ -31,34 +31,34 @@ export default function GalaxyNavbar() {
 
   return (
     <header className="fixed top-4 inset-x-0 mx-auto max-w-5xl z-50 px-4 sm:px-6 lg:px-8">
-      <nav className="w-full flex items-center justify-between h-13 px-4 sm:px-5 rounded-full bg-white/80 dark:bg-black/85 border border-black/10 dark:border-white/10 shadow-sm dark:shadow-[0_8px_30px_rgb(0,0,0,0.8)] backdrop-blur-xl transition-colors">
+      <nav className="w-full flex items-center justify-between h-14 px-4 sm:px-6 rounded-full bg-white/80 dark:bg-black/85 border border-black/10 dark:border-white/10 shadow-sm dark:shadow-[0_8px_30px_rgb(0,0,0,0.8)] backdrop-blur-xl transition-colors">
         {/* Brand Logo -> Home */}
         <Link href="/" className="flex items-center gap-2.5 pl-1 group" title="BMan Technologies">
-          <div className="relative w-6 h-6 rounded-full overflow-hidden bg-black flex items-center justify-center border border-black/10 dark:border-white/20">
+          <div className="relative w-7 h-7 rounded-full overflow-hidden bg-black flex items-center justify-center border border-black/10 dark:border-white/20">
             <Image
               src="/logo.png"
               alt="BMan"
-              width={20}
-              height={20}
-              className="w-4 h-4 object-contain"
+              width={22}
+              height={22}
+              className="w-5 h-5 object-contain"
               priority
             />
           </div>
-          <span className="text-xs font-semibold tracking-tight text-zinc-900 dark:text-white flex items-center gap-1.5">
+          <span className="text-sm font-semibold tracking-tight text-zinc-900 dark:text-white flex items-center gap-1.5">
             BMan
             <span className="w-1.5 h-1.5 rounded-full rainbow-dot" />
           </span>
         </Link>
 
         {/* Desktop Navigation Links */}
-        <div className="hidden md:flex items-center gap-1">
+        <div className="hidden md:flex items-center gap-1.5">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-3.5 py-1 text-xs transition-all duration-150 rounded-full ${
+                className={`px-4 py-1.5 text-sm transition-all duration-150 rounded-full ${
                   isActive
                     ? 'bg-zinc-900 text-white dark:bg-white dark:text-black font-medium shadow-sm'
                     : 'text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 font-normal'
@@ -71,20 +71,20 @@ export default function GalaxyNavbar() {
         </div>
 
         {/* Right Controls: Language Switcher, Theme Switcher, Action Button */}
-        <div className="hidden md:flex items-center gap-2">
+        <div className="hidden md:flex items-center gap-2.5">
           {/* i18n Language Switcher */}
           <div className="relative">
             <button
               onClick={() => setLangMenuOpen(!langMenuOpen)}
-              className="flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-mono text-zinc-700 dark:text-zinc-300 rounded-full hover:bg-black/5 dark:hover:bg-white/5 border border-black/10 dark:border-white/10 transition-colors"
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono text-zinc-700 dark:text-zinc-300 rounded-full hover:bg-black/5 dark:hover:bg-white/5 border border-black/10 dark:border-white/10 transition-colors"
               title="Change Language"
             >
-              <Globe size={12} className="text-zinc-500" />
+              <Globe size={13} className="text-zinc-500" />
               <span className="uppercase font-medium">{lang}</span>
             </button>
 
             {langMenuOpen && (
-              <div className="absolute right-0 mt-2 p-1 w-24 rounded-xl bg-white dark:bg-zinc-900 border border-black/10 dark:border-white/10 shadow-xl backdrop-blur-xl flex flex-col z-50">
+              <div className="absolute right-0 mt-2 p-1.5 w-28 rounded-2xl bg-white dark:bg-zinc-900 border border-black/10 dark:border-white/10 shadow-xl backdrop-blur-xl flex flex-col z-50">
                 {languages.map((item) => (
                   <button
                     key={item.code}
@@ -92,7 +92,7 @@ export default function GalaxyNavbar() {
                       setLang(item.code);
                       setLangMenuOpen(false);
                     }}
-                    className={`px-2.5 py-1 text-xs text-left rounded-lg transition-colors flex items-center justify-between ${
+                    className={`px-3 py-1.5 text-xs text-left rounded-xl transition-colors flex items-center justify-between ${
                       lang === item.code
                         ? 'bg-zinc-100 dark:bg-white/10 text-black dark:text-white font-medium'
                         : 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-white/5'
@@ -109,11 +109,11 @@ export default function GalaxyNavbar() {
           {/* Dark / White Theme Toggle */}
           <button
             onClick={toggleTheme}
-            className="p-1.5 rounded-full text-zinc-700 dark:text-zinc-300 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 border border-black/10 dark:border-white/10 transition-colors"
+            className="p-2 rounded-full text-zinc-700 dark:text-zinc-300 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 border border-black/10 dark:border-white/10 transition-colors"
             title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} mode`}
             aria-label="Toggle Theme"
           >
-            {theme === 'dark' ? <Sun size={14} /> : <Moon size={14} />}
+            {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
           </button>
 
           {/* Action Button: Launch Stock */}
@@ -121,22 +121,22 @@ export default function GalaxyNavbar() {
             href="https://stock.bman.rw"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 px-3.5 py-1 text-xs font-medium text-white bg-zinc-900 hover:bg-zinc-800 dark:text-black dark:bg-white dark:hover:bg-zinc-200 rounded-full transition-colors ml-1"
+            className="inline-flex items-center gap-1.5 px-4 py-1.5 text-sm font-medium text-white bg-zinc-900 hover:bg-zinc-800 dark:text-black dark:bg-white dark:hover:bg-zinc-200 rounded-full transition-colors ml-1 shadow-sm"
           >
             <span>{t('nav.launch_stock')}</span>
-            <ArrowUpRight size={12} />
+            <ArrowUpRight size={13} />
           </a>
         </div>
 
         {/* Mobile Hamburger Toggle & Quick Controls */}
-        <div className="flex md:hidden items-center gap-1.5">
+        <div className="flex md:hidden items-center gap-2">
           {/* Quick theme toggle on mobile */}
           <button
             onClick={toggleTheme}
             className="p-1.5 text-zinc-600 dark:text-zinc-400 rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
             aria-label="Toggle theme"
           >
-            {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
+            {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
           </button>
 
           <button
@@ -144,7 +144,7 @@ export default function GalaxyNavbar() {
             className="p-1.5 text-zinc-700 dark:text-zinc-300 hover:text-black dark:hover:text-white rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
             aria-label="Toggle navigation"
           >
-            {mobileOpen ? <X size={16} /> : <Menu size={16} />}
+            {mobileOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
       </nav>
@@ -159,7 +159,7 @@ export default function GalaxyNavbar() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className={`px-3.5 py-2 text-xs rounded-xl flex items-center justify-between transition-colors ${
+                className={`px-4 py-2.5 text-sm rounded-xl flex items-center justify-between transition-colors ${
                   isActive
                     ? 'bg-zinc-900 text-white dark:bg-white dark:text-black font-medium'
                     : 'text-zinc-700 dark:text-zinc-300 hover:bg-black/5 dark:hover:bg-white/5'
@@ -174,12 +174,12 @@ export default function GalaxyNavbar() {
           {/* Mobile Language Switcher Row */}
           <div className="pt-2 border-t border-black/10 dark:border-white/10 flex items-center justify-between mt-1 px-1">
             <span className="text-xs text-zinc-500 font-mono">Language:</span>
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-1.5">
               {languages.map((item) => (
                 <button
                   key={item.code}
                   onClick={() => setLang(item.code)}
-                  className={`px-2.5 py-1 text-xs rounded-lg font-mono transition-colors ${
+                  className={`px-3 py-1 text-xs rounded-lg font-mono transition-colors ${
                     lang === item.code
                       ? 'bg-zinc-900 text-white dark:bg-white dark:text-black font-medium'
                       : 'text-zinc-600 dark:text-zinc-400 hover:bg-black/5 dark:hover:bg-white/5'
@@ -196,10 +196,10 @@ export default function GalaxyNavbar() {
               href="https://stock.bman.rw"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-1.5 w-full py-2 text-xs font-medium text-white bg-zinc-900 dark:text-black dark:bg-white rounded-xl hover:opacity-90 transition-opacity"
+              className="flex items-center justify-center gap-1.5 w-full py-2.5 text-sm font-medium text-white bg-zinc-900 dark:text-black dark:bg-white rounded-xl hover:opacity-90 transition-opacity shadow-sm"
             >
               <span>{t('nav.launch_stock')}</span>
-              <ArrowUpRight size={13} />
+              <ArrowUpRight size={14} />
             </a>
           </div>
         </div>

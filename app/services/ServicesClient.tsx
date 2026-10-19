@@ -63,10 +63,10 @@ export default function ServicesClient({ services }: { services: CorporateServic
     <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
       {/* Centered Page Header */}
       <div className="mb-12 sm:mb-16 text-center max-w-2xl mx-auto">
-        <h1 className="text-3xl sm:text-5xl font-normal tracking-[-0.04em] text-zinc-900 dark:text-white">
+        <h1 className="text-3xl sm:text-5xl font-medium tracking-tight text-zinc-900 dark:text-white">
           {t('services.title')}
         </h1>
-        <p className="mt-3 text-sm text-zinc-600 dark:text-zinc-400 font-light max-w-lg mx-auto leading-relaxed">
+        <p className="mt-3 text-base sm:text-lg text-zinc-600 dark:text-zinc-300 font-normal max-w-lg mx-auto leading-relaxed">
           {t('services.subtitle')}
         </p>
       </div>
@@ -78,35 +78,35 @@ export default function ServicesClient({ services }: { services: CorporateServic
           return (
             <div
               key={service.id || service.slug}
-              className="p-6 sm:p-8 rounded-3xl mono-card flex flex-col justify-between"
+              className="p-7 sm:p-8 rounded-3xl mono-card flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <div className="w-9 h-9 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-black/10 dark:border-white/10 flex items-center justify-center text-zinc-900 dark:text-white">
-                    <Icon size={18} />
+                  <div className="w-10 h-10 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-black/10 dark:border-white/10 flex items-center justify-center text-zinc-900 dark:text-white">
+                    <Icon size={20} />
                   </div>
-                  <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-zinc-100 dark:bg-white/5 border border-black/5 dark:border-white/10 text-zinc-600 dark:text-zinc-400">
+                  <span className="text-xs font-mono px-3 py-1 rounded-full bg-zinc-100 dark:bg-white/5 border border-black/5 dark:border-white/10 text-zinc-700 dark:text-zinc-300">
                     {service.delivery_model || 'Engineering'}
                   </span>
                 </div>
 
-                <h2 className="text-lg font-medium text-zinc-900 dark:text-white tracking-tight">
+                <h2 className="text-xl font-medium text-zinc-900 dark:text-white tracking-tight">
                   {service.title}
                 </h2>
 
-                <p className="mt-2 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 font-light leading-relaxed">
+                <p className="mt-3 text-sm sm:text-base text-zinc-600 dark:text-zinc-400 font-normal leading-relaxed">
                   {service.description || service.summary}
                 </p>
               </div>
 
               <div className="mt-6 pt-4 border-t border-black/10 dark:border-white/10 flex items-center justify-between">
-                <span className="text-xs text-zinc-500 font-light">Custom Scope &amp; Rollout</span>
+                <span className="text-sm text-zinc-500 font-normal">Custom Scope &amp; Rollout</span>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-1.5 text-xs font-medium text-zinc-900 dark:text-white hover:opacity-80 transition-opacity"
+                  className="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 dark:text-white hover:opacity-80 transition-opacity"
                 >
                   <span>{t('services.inquire')}</span>
-                  <ArrowRight size={13} />
+                  <ArrowRight size={14} />
                 </Link>
               </div>
             </div>
@@ -120,22 +120,22 @@ export default function ServicesClient({ services }: { services: CorporateServic
           <h2 className="text-2xl sm:text-3xl font-medium tracking-tight text-zinc-900 dark:text-white">
             {t('services.process_title')}
           </h2>
-          <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 font-light mt-1">
+          <p className="text-sm sm:text-base text-zinc-500 dark:text-zinc-400 font-normal mt-2">
             Deterministic technical execution from requirements to counter deployment.
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {processSteps.map((step) => (
-            <div key={step.num} className="p-5 rounded-2xl mono-card flex flex-col justify-between">
+            <div key={step.num} className="p-6 rounded-2xl mono-card flex flex-col justify-between">
               <div>
                 <span className="text-xs font-mono text-zinc-400 dark:text-zinc-500 mb-2 block">
                   {step.num}
                 </span>
-                <h3 className="text-sm font-medium text-zinc-900 dark:text-white tracking-tight">
+                <h3 className="text-base font-medium text-zinc-900 dark:text-white tracking-tight">
                   {step.title}
                 </h3>
-                <p className="mt-2 text-xs text-zinc-600 dark:text-zinc-400 font-light leading-relaxed">
+                <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400 font-normal leading-relaxed">
                   {step.desc}
                 </p>
               </div>
