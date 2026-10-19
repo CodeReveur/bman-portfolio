@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { Providers } from './providers';
-import { GalaxyCanvas, GalaxyNavbar, GalaxyFooter } from '@/components';
+import { GalaxyCanvas, GalaxyNavbar, GalaxyFooter, DynamicTabHeader } from '@/components';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -20,7 +20,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://bman.rw'),
   title: {
-    default: 'BMAN — We Create, Develop & Partner Software',
+    default: 'BMAN · We Create, Develop & Partner Software',
     template: '%s · BMAN',
   },
   description:
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     apple: '/icon.png',
   },
   openGraph: {
-    title: 'BMAN — We Create, Develop & Partner Software',
+    title: 'BMAN · We Create, Develop & Partner Software',
     description:
       'A technology company creating, developing, and partnering resilient software systems, retail platforms, and distributed networks.',
     url: 'https://bman.rw',
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'BMAN — We Create, Develop & Partner Software',
+    title: 'BMAN · We Create, Develop & Partner Software',
     description:
       'A technology company creating, developing, and partnering resilient software systems, retail platforms, and distributed networks.',
     creator: '@bman_rw',
@@ -112,6 +112,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} bg-white dark:bg-black text-zinc-900 dark:text-white antialiased selection:bg-zinc-900 selection:text-white dark:selection:bg-white dark:selection:text-black flex flex-col min-h-screen transition-colors duration-200`}
       >
         <Providers>
+          {/* Dynamic Tab Title per page navigated & wave back when tab is ignored */}
+          <DynamicTabHeader />
+
           {/* Ambient Galaxy Starfield Background across all pages */}
           <GalaxyCanvas />
 

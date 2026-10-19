@@ -1,7 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%">
-  <rect width="120" height="120" rx="28" fill="#047857"/>
-  <path d="M42 46h36l-4 34H46L42 46z" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linejoin="round"/>
-  <path d="M50 46v-8a10 10 0 0 1 20 0v8" fill="none" stroke="#A7F3D0" stroke-width="4" stroke-linecap="round"/>
-  <circle cx="60" cy="62" r="4" fill="#A7F3D0"/>
-  <text x="60" y="98" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="11" fill="#FFFFFF" text-anchor="middle" letter-spacing="1">RETAILERS</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 70" width="100%" height="100%" fill="none">
+  <!-- Retailers Shield / Shopping Emblem -->
+  <g transform="translate(10, 8)">
+    <path d="M26 6L6 14v16c0 14 20 24 20 24s20-10 20-24V14L26 6z" fill="#047857"/>
+    <path d="M18 26h16l-2 14H20l-2-14z" fill="#FFFFFF"/>
+    <path d="M22 26v-4a4 4 0 0 1 8 0v4" stroke="#FFFFFF" stroke-width="2" fill="none"/>
+  </g>
+  
+  <!-- Typography -->
+  <text x="68" y="36" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="16" fill="#047857" letter-spacing="0.5">RWANDA RETAILERS</text>
+  <text x="68" y="52" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="12" fill="#10B981" letter-spacing="2">NETWORK ALLIANCE</text>
 </svg>

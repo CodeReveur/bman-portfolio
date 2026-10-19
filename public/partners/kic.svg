@@ -1,7 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%">
-  <rect width="120" height="120" rx="28" fill="#1E1B4B"/>
-  <circle cx="60" cy="52" r="22" fill="none" stroke="#6366F1" stroke-width="3.5"/>
-  <circle cx="60" cy="52" r="10" fill="#06B6D4"/>
-  <path d="M42 52h36M60 34v36" stroke="#6366F1" stroke-width="2"/>
-  <text x="60" y="96" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="13" fill="#A5B4FC" text-anchor="middle" letter-spacing="1.5">KIC</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 70" width="100%" height="100%" fill="none">
+  <!-- KIC Geometric Innovation Emblem -->
+  <g transform="translate(10, 8)">
+    <polygon points="26,6 48,18 48,44 26,56 4,44 4,18" fill="none" stroke="#6366F1" stroke-width="3"/>
+    <circle cx="26" cy="31" r="10" fill="#06B6D4"/>
+    <line x1="26" y1="6" x2="26" y2="21" stroke="#6366F1" stroke-width="2.5"/>
+    <line x1="48" y1="44" x2="34" y2="36" stroke="#6366F1" stroke-width="2.5"/>
+    <line x1="4" y1="44" x2="18" y2="36" stroke="#6366F1" stroke-width="2.5"/>
+  </g>
+  
+  <!-- Typography -->
+  <text x="75" y="36" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="20" fill="#6366F1" letter-spacing="1">KIGALI</text>
+  <text x="75" y="52" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="12" fill="#06B6D4" letter-spacing="1.5">INNOVATION CITY</text>
 </svg>

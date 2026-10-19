@@ -1,6 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%">
-  <rect width="120" height="120" rx="28" fill="#FFCC00"/>
-  <ellipse cx="60" cy="60" rx="46" ry="32" fill="none" stroke="#003B5C" stroke-width="5"/>
-  <text x="60" y="66" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="22" fill="#003B5C" text-anchor="middle" letter-spacing="-0.5">MoMo</text>
-  <circle cx="92" cy="42" r="4" fill="#003B5C"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 70" width="100%" height="100%" fill="none">
+  <!-- MTN Oval Emblem -->
+  <ellipse cx="40" cy="35" rx="34" ry="24" fill="#FFCC00"/>
+  <ellipse cx="40" cy="35" rx="30" ry="20" fill="none" stroke="#003B5C" stroke-width="2.5"/>
+  <text x="40" y="42" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="16" fill="#003B5C" text-anchor="middle" letter-spacing="-0.5">MTN</text>
+  
+  <!-- MoMo Typography -->
+  <text x="90" y="45" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="28" fill="#FFCC00" letter-spacing="-0.5">Mo</text>
+  <text x="135" y="45" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="28" fill="#00B4D8" letter-spacing="-0.5">Mo</text>
 </svg>

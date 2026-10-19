@@ -14,7 +14,7 @@ export default function PartnerSlideshow({ partners }: PartnerSlideshowProps) {
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
-      const offset = direction === 'left' ? -260 : 260;
+      const offset = direction === 'left' ? -280 : 280;
       scrollRef.current.scrollBy({ left: offset, behavior: 'smooth' });
     }
   };
@@ -23,16 +23,16 @@ export default function PartnerSlideshow({ partners }: PartnerSlideshowProps) {
   const displayPartners = [...partners, ...partners];
 
   return (
-    <div className="relative w-full overflow-hidden py-4 select-none group">
-      {/* Edge Gradient Masks for Cinematic Sliding In/Out */}
-      <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-28 z-10 bg-gradient-to-r from-[var(--bg)] to-transparent" />
-      <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-28 z-10 bg-gradient-to-l from-[var(--bg)] to-transparent" />
+    <div className="relative w-full overflow-hidden py-10 select-none group">
+      {/* Edge Gradient Masks for Smooth Gliding In and Out */}
+      <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-32 z-10 bg-gradient-to-r from-[var(--bg)] to-transparent" />
+      <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-32 z-10 bg-gradient-to-l from-[var(--bg)] to-transparent" />
 
-      {/* Manual Navigation Controls (Fades in on hover) */}
+      {/* Manual Navigation Controls (Fade in on hover) */}
       <button
         onClick={() => scroll('left')}
         aria-label="Previous partner"
-        className="hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/90 dark:bg-zinc-900/90 border border-black/10 dark:border-white/10 shadow-lg items-center justify-center text-zinc-700 dark:text-zinc-200 hover:text-black dark:hover:text-white hover:scale-110 opacity-0 group-hover:opacity-100 transition-all cursor-pointer backdrop-blur-md"
+        className="hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/80 dark:bg-zinc-900/80 border border-black/10 dark:border-white/10 shadow-lg items-center justify-center text-zinc-700 dark:text-zinc-200 hover:text-black dark:hover:text-white hover:scale-110 opacity-0 group-hover:opacity-100 transition-all cursor-pointer backdrop-blur-md"
       >
         <ChevronLeft size={18} />
       </button>
@@ -40,42 +40,47 @@ export default function PartnerSlideshow({ partners }: PartnerSlideshowProps) {
       <button
         onClick={() => scroll('right')}
         aria-label="Next partner"
-        className="hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/90 dark:bg-zinc-900/90 border border-black/10 dark:border-white/10 shadow-lg items-center justify-center text-zinc-700 dark:text-zinc-200 hover:text-black dark:hover:text-white hover:scale-110 opacity-0 group-hover:opacity-100 transition-all cursor-pointer backdrop-blur-md"
+        className="hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/80 dark:bg-zinc-900/80 border border-black/10 dark:border-white/10 shadow-lg items-center justify-center text-zinc-700 dark:text-zinc-200 hover:text-black dark:hover:text-white hover:scale-110 opacity-0 group-hover:opacity-100 transition-all cursor-pointer backdrop-blur-md"
       >
         <ChevronRight size={18} />
       </button>
 
-      {/* Sliding Track */}
+      {/* Sliding Track with Wave Motion */}
       <div
         ref={scrollRef}
         className="flex overflow-x-auto no-scrollbar scroll-smooth"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
-        <div className="animate-slide-marquee flex gap-5 py-2 px-4">
-          {displayPartners.map((partner, idx) => (
-            <div
-              key={`${partner.name}-${idx}`}
-              className="flex-shrink-0 w-[190px] sm:w-[220px] p-5 sm:p-6 rounded-2xl mono-card flex flex-col items-center justify-center text-center transition-all duration-300 hover:scale-[1.03] hover:border-emerald-500/40 hover:shadow-xl cursor-default"
-            >
-              {/* Partner Logo (On Top) */}
-              <div className="w-16 h-16 sm:w-20 sm:h-20 mb-3.5 flex items-center justify-center p-2 rounded-2xl bg-zinc-50 dark:bg-white/[0.04] border border-black/5 dark:border-white/10 shrink-0 transition-transform duration-300 group-hover:scale-105">
-                <Image
-                  src={partner.logoUrl}
-                  alt={partner.name}
-                  width={64}
-                  height={64}
-                  className="max-w-full max-h-full object-contain"
-                />
-              </div>
+        <div className="animate-slide-marquee flex items-center gap-8 sm:gap-12 py-4 px-4">
+          {displayPartners.map((partner, idx) => {
+            // Stagger wave delay across partners so the whole row ripples like a fluid wave
+            const waveDelay = `${(idx % partners.length) * 0.55}s`;
 
-              {/* Partner Name (Directly Underneath Logo) */}
-              <div className="w-full">
-                <span className="block text-sm sm:text-base font-medium tracking-tight text-zinc-900 dark:text-zinc-100 truncate">
+            return (
+              <div
+                key={`${partner.name}-${idx}`}
+                className="animate-wave-motion flex-shrink-0 flex flex-col items-center justify-center text-center cursor-default transition-transform duration-300 hover:scale-105"
+                style={{ animationDelay: waveDelay }}
+              >
+                {/* Pure Photo Logo (NO card, NO background, larger prominent sizing) */}
+                <div className="relative h-16 sm:h-20 lg:h-22 w-40 sm:w-52 flex items-center justify-center">
+                  <Image
+                    src={partner.logoUrl}
+                    alt={partner.name}
+                    width={200}
+                    height={70}
+                    unoptimized
+                    className="max-h-full max-w-full object-contain filter drop-shadow-[0_2px_8px_rgba(0,0,0,0.06)] dark:drop-shadow-[0_2px_12px_rgba(255,255,255,0.08)]"
+                  />
+                </div>
+
+                {/* Partner Name Directly Underneath (NO card box/bg) */}
+                <span className="mt-2.5 text-xs sm:text-sm font-medium tracking-tight text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors whitespace-nowrap">
                   {partner.name}
                 </span>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>

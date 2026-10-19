@@ -392,10 +392,20 @@ export async function fetchCorporateData(): Promise<{
     });
     if (!res.ok) throw new Error('Failed to fetch corporate data');
     const data = await res.json();
+    const rawPartners = data.partners || [];
+    const partners: Partner[] = rawPartners.length
+      ? rawPartners.map((p: any) => ({
+          id: p.id,
+          name: p.name,
+          logoUrl: p.logoUrl || p.logo_url || '/partners/retailers.svg',
+          display_order: p.display_order ?? p.displayOrder ?? 0,
+        }))
+      : PARTNERS;
+
     return {
       products: data.products?.length ? data.products : DEFAULT_PRODUCTS,
       services: data.services?.length ? data.services : DEFAULT_SERVICES,
-      partners: data.partners?.length ? data.partners : PARTNERS,
+      partners,
     };
   } catch {
     return {

@@ -117,7 +117,7 @@ body {
   color: var(--bg);
 }
 
-/* Infinite Partner Slideshow Animation */
+/* Infinite Partner Slideshow Animation with Wave Movement */
 @keyframes slide-marquee {
   0% {
     transform: translateX(0);
@@ -127,13 +127,36 @@ body {
   }
 }
 
+@keyframes wave-glide {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-10px) rotate(-0.5deg);
+  }
+  50% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(10px) rotate(0.5deg);
+  }
+}
+
 .animate-slide-marquee {
   display: flex;
   width: max-content;
-  animation: slide-marquee 25s linear infinite;
+  animation: slide-marquee 30s linear infinite;
 }
 
 .animate-slide-marquee:hover {
+  animation-play-state: paused;
+}
+
+.animate-wave-motion {
+  animation: wave-glide 4.5s ease-in-out infinite;
+}
+
+.animate-wave-motion:hover {
   animation-play-state: paused;
 }
 
