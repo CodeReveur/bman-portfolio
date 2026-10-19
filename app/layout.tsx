@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { Providers } from './providers';
-import { GalaxyCanvas, GalaxyNavbar, GalaxyFooter, DynamicTabHeader } from '@/components';
+import { GalaxyCanvas, GalaxyNavbar, GalaxyFooter, DynamicTabHeader, CosmicCursor } from '@/components';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -20,42 +20,42 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://bman.rw'),
   title: {
-    default: 'BMAN · We Create, Develop & Partner Software',
-    template: '%s · BMAN',
+    default: 'BMan · We Create, Develop & Partner Software',
+    template: '%s · BMan',
   },
   description:
-    'BMAN is a technology company that creates, develops, and partners software systems, retail engines, and resilient digital infrastructure.',
+    'BMan is a technology company that creates, develops, and partners software systems, retail engines, and resilient digital infrastructure.',
   keywords: [
-    'BMAN',
+    'BMan',
     'Software Company',
     'Software Development',
     'Software Partner',
     'Offline-First POS',
-    'BMAN Stock',
+    'BMan Stock',
     'Kigali Software',
     'Joseph Maranatha',
     'Olivier Turikumwe',
   ],
-  authors: [{ name: 'BMAN', url: 'https://bman.rw' }],
-  creator: 'BMAN',
-  publisher: 'BMAN',
+  authors: [{ name: 'BMan', url: 'https://bman.rw' }],
+  creator: 'BMan',
+  publisher: 'BMan',
   icons: {
     icon: '/icon.png',
     shortcut: '/favicon.ico',
     apple: '/icon.png',
   },
   openGraph: {
-    title: 'BMAN · We Create, Develop & Partner Software',
+    title: 'BMan · We Create, Develop & Partner Software',
     description:
       'A technology company creating, developing, and partnering resilient software systems, retail platforms, and distributed networks.',
     url: 'https://bman.rw',
-    siteName: 'BMAN',
+    siteName: 'BMan',
     images: [
       {
         url: '/logo.png',
         width: 1200,
         height: 630,
-        alt: 'BMAN',
+        alt: 'BMan',
       },
     ],
     locale: 'en_US',
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'BMAN · We Create, Develop & Partner Software',
+    title: 'BMan · We Create, Develop & Partner Software',
     description:
       'A technology company creating, developing, and partnering resilient software systems, retail platforms, and distributed networks.',
     creator: '@bman_rw',
@@ -112,6 +112,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} bg-white dark:bg-black text-zinc-900 dark:text-white antialiased selection:bg-zinc-900 selection:text-white dark:selection:bg-white dark:selection:text-black flex flex-col min-h-screen transition-colors duration-200`}
       >
         <Providers>
+          {/* Custom black small cursor point with black hole disappearance */}
+          <CosmicCursor />
+
           {/* Dynamic Tab Title per page navigated & wave back when tab is ignored */}
           <DynamicTabHeader />
 

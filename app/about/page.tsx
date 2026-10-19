@@ -48,7 +48,7 @@ export default function AboutPage() {
             Engineering for real-world resilience in Kigali.
           </h2>
           <p className="mt-4 text-sm sm:text-base text-zinc-600 dark:text-zinc-300 font-normal leading-relaxed">
-            BMAN is a technology company that creates, develops, and partners software. We were founded with a singular conviction: mission-critical software cannot rely on idealized connectivity assumptions. When cloud-only systems stall during network cuts or power drops, businesses halt operations, queues form, and revenue is lost.
+            BMan is a technology company that creates, develops, and partners software. We were founded with a singular conviction: mission-critical software cannot rely on idealized connectivity assumptions. When cloud-only systems stall during network cuts or power drops, businesses halt operations, queues form, and revenue is lost.
           </p>
           <p className="mt-3 text-sm sm:text-base text-zinc-600 dark:text-zinc-300 font-normal leading-relaxed">
             We engineer resilient software from the ground up: local-first transactional architectures that operate continuously without internet, synchronize automatically when bandwidth returns, and keep enterprise data secure and compliant.
@@ -63,7 +63,7 @@ export default function AboutPage() {
             Leadership &amp; Architecture
           </h2>
           <p className="text-sm sm:text-base text-zinc-500 dark:text-zinc-400 font-normal mt-2">
-            Engineers and operators guiding BMAN&apos;s product development and nationwide deployment.
+            Engineers and operators guiding BMan&apos;s product development and nationwide deployment.
           </p>
         </div>
 
@@ -179,10 +179,10 @@ export default function AboutPage() {
             Kigali Office · High agency &amp; craftsmanship · Direct economic impact
           </span>
           <a
-            href="mailto:careers@bman.rw"
+            href="mailto:ceo@bman.rw"
             className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full text-sm font-medium bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200 transition-colors shrink-0 w-fit shadow-sm"
           >
-            <span>careers@bman.rw</span>
+            <span>ceo@bman.rw</span>
             <ArrowUpRight size={14} />
           </a>
         </div>

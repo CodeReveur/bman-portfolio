@@ -36,7 +36,7 @@ export const DICTIONARY: Translations = {
   },
   'nav.launch_stock': {
     en: 'Launch Stock',
-    rw: 'Tangira BMAN Stock',
+    rw: 'Tangira BMan Stock',
     fr: 'Lancer Stock',
   },
 
@@ -52,9 +52,9 @@ export const DICTIONARY: Translations = {
     fr: 'Nous créons, développons et accompagnons des logiciels.',
   },
   'home.subtitle': {
-    en: 'BMAN is a technology company. We engineer offline-first retail systems, scale digital sales networks, and partner with businesses to build resilient software infrastructure.',
-    rw: 'BMAN ni ikigo cy’ikoranabuhanga gikora, giteza imbere, kikanakorana n’ibigo byubaka sisitemu zicuruza n’imiyoboro y’ubucuruzi yizewe.',
-    fr: 'BMAN est une entreprise technologique. Nous concevons, développons et accompagnons des logiciels résilients et des réseaux de distribution.',
+    en: 'BMan is a technology company. We engineer offline-first retail systems, scale digital sales networks, and partner with businesses to build resilient software infrastructure.',
+    rw: 'BMan ni ikigo cy’ikoranabuhanga gikora, giteza imbere, kikanakorana n’ibigo byubaka sisitemu zicuruza n’imiyoboro y’ubucuruzi yizewe.',
+    fr: 'BMan est une entreprise technologique. Nous concevons, développons et accompagnons des logiciels résilients et des réseaux de distribution.',
   },
   'home.cta_products': {
     en: 'Explore Software',
@@ -62,14 +62,14 @@ export const DICTIONARY: Translations = {
     fr: 'Découvrir nos Logiciels',
   },
   'home.cta_about': {
-    en: 'About BMAN',
+    en: 'About BMan',
     rw: 'Abo Turi Bo',
-    fr: 'À propos de BMAN',
+    fr: 'À propos de BMan',
   },
   'home.pillars_title': {
-    en: 'Why Partner with BMAN',
-    rw: 'Impamvu BMAN Ari Umufatanyabikorwa Wizewe',
-    fr: 'Pourquoi Choisir BMAN',
+    en: 'Why Partner with BMan',
+    rw: 'Impamvu BMan Ari Umufatanyabikorwa Wizewe',
+    fr: 'Pourquoi Choisir BMan',
   },
   'home.pillars_subtitle': {
     en: 'We engineer software with high reliability, local-first persistence, and resilience to real-world infrastructure constraints.',
@@ -102,9 +102,9 @@ export const DICTIONARY: Translations = {
     fr: 'Logiciels Développés & Partenariats',
   },
   'home.card_products_desc': {
-    en: 'Software created and developed by BMAN: Stock POS, Agent Portal, Sovereign Mail, E-Indege Logistics, and Pay Gateway.',
-    rw: 'Porogaramu zakozwe na BMAN: Stock POS, Agent Portal, Sovereign Mail, E-Indege Logistics, na Pay Gateway.',
-    fr: 'Logiciels conçus et développés par BMAN : Stock POS, Agent Portal, Sovereign Mail, E-Indege Logistics et Pay Gateway.',
+    en: 'Software created and developed by BMan: Stock POS, Agent Portal, Sovereign Mail, E-Indege Logistics, and Pay Gateway.',
+    rw: 'Porogaramu zakozwe na BMan: Stock POS, Agent Portal, Sovereign Mail, E-Indege Logistics, na Pay Gateway.',
+    fr: 'Logiciels conçus et développés par BMan : Stock POS, Agent Portal, Sovereign Mail, E-Indege Logistics et Pay Gateway.',
   },
   'home.card_services_tag': {
     en: 'Development & Partnerships',
@@ -127,9 +127,9 @@ export const DICTIONARY: Translations = {
     fr: 'L’Entreprise',
   },
   'home.card_about_title': {
-    en: 'About BMAN',
+    en: 'About BMan',
     rw: 'Abo Turi Bo',
-    fr: 'À propos de BMAN',
+    fr: 'À propos de BMan',
   },
   'home.card_about_desc': {
     en: 'A Kigali technology company that creates, develops, and partners software built with zero third-party foreign telemetry.',
@@ -149,9 +149,9 @@ export const DICTIONARY: Translations = {
     fr: 'Logiciels Développés & Partenariats',
   },
   'products.subtitle': {
-    en: 'Software platforms created, developed, and partnered by BMAN to power modern enterprise operations.',
-    rw: 'Porogaramu zakozwe, zatejwe imbere, kandi zifatanyijwe na BMAN mu gufasha ubucuruzi bw’iki gihe.',
-    fr: 'Plateformes logicielles créées, développées et accompagnées par BMAN pour les entreprises modernes.',
+    en: 'Software platforms created, developed, and partnered by BMan to power modern enterprise operations.',
+    rw: 'Porogaramu zakozwe, zatejwe imbere, kandi zifatanyijwe na BMan mu gufasha ubucuruzi bw’iki gihe.',
+    fr: 'Plateformes logicielles créées, développées et accompagnées par BMan pour les entreprises modernes.',
   },
   'products.launch': {
     en: 'Launch Platform',
@@ -165,13 +165,13 @@ export const DICTIONARY: Translations = {
   },
   'products.projects_title': {
     en: 'Contributed & Partnered Projects',
-    rw: 'Imishinga BMAN Yakozeho n’Iyo Ifatanyije',
+    rw: 'Imishinga BMan Yakozeho n’Iyo Ifatanyije',
     fr: 'Projets Clients & Développements Partenaires',
   },
   'products.projects_subtitle': {
-    en: 'Software systems, POS deployments, and commercial contracts BMAN was hired to develop or partnered to engineer.',
-    rw: 'Amasoko akomeye, sisitemu z’amaduka, n’imishinga y’ubucuruzi BMAN yahawe gukora cyangwa yafatanyije n’abandi.',
-    fr: 'Systèmes d’entreprise, déploiements POS et contrats d’ingénierie créés, développés ou partenaires de BMAN.',
+    en: 'Software systems, POS deployments, and commercial contracts BMan was hired to develop or partnered to engineer.',
+    rw: 'Amasoko akomeye, sisitemu z’amaduka, n’imishinga y’ubucuruzi BMan yahawe gukora cyangwa yafatanyije n’abandi.',
+    fr: 'Systèmes d’entreprise, déploiements POS et contrats d’ingénierie créés, développés ou partenaires de BMan.',
   },
   'products.filter_all': {
     en: 'All Projects',
@@ -228,9 +228,9 @@ export const DICTIONARY: Translations = {
     fr: 'Direction & Principes',
   },
   'about.title': {
-    en: 'About BMAN',
+    en: 'About BMan',
     rw: 'Abo Turi Bo',
-    fr: 'À propos de BMAN',
+    fr: 'À propos de BMan',
   },
   'about.subtitle': {
     en: 'A technology company that creates, develops, and partners software designed to run through power outages and fiber cuts.',
@@ -320,9 +320,9 @@ export const DICTIONARY: Translations = {
     fr: 'Message Reçu',
   },
   'contact.form_success_desc': {
-    en: 'Thank you. A BMAN team member will review your message and follow up shortly.',
-    rw: 'Murakoze. Umukozi wa BMAN arasuzuma ubutumwa bwawe aguhamagare vuba.',
-    fr: 'Merci. Un membre de l’équipe BMAN étudiera votre message et vous répondra sous peu.',
+    en: 'Thank you. A BMan team member will review your message and follow up shortly.',
+    rw: 'Murakoze. Umukozi wa BMan arasuzuma ubutumwa bwawe aguhamagare vuba.',
+    fr: 'Merci. Un membre de l’équipe BMan étudiera votre message et vous répondra sous peu.',
   },
 
   // Footer
@@ -354,7 +354,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [lang, setLangState] = useState<Language>('en');
 
   useEffect(() => {
-    const saved = localStorage.getItem('bman_lang') as Language;
+    const saved = localStorage.getItem('BMan_lang') as Language;
     if (saved && (saved === 'en' || saved === 'rw' || saved === 'fr')) {
       setLangState(saved);
     }
@@ -362,7 +362,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 
   const setLang = (newLang: Language) => {
     setLangState(newLang);
-    localStorage.setItem('bman_lang', newLang);
+    localStorage.setItem('BMan_lang', newLang);
   };
 
   const t = (key: string): string => {

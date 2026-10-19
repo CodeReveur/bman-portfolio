@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
+import { getBlackHolePosition } from './CosmicCursor';
 
 interface Star {
   x: number;
@@ -13,6 +14,8 @@ interface Star {
   angle: number;
   radius: number;
   armIndex: number;
+  offsetX: number;
+  offsetY: number;
 }
 
 interface Meteor {
@@ -23,6 +26,15 @@ interface Meteor {
   angle: number;
   alpha: number;
   color: string;
+}
+
+interface AccretionParticle {
+  angle: number;
+  radius: number;
+  speed: number;
+  size: number;
+  color: string;
+  alpha: number;
 }
 
 export default function GalaxyCanvas() {
@@ -38,9 +50,9 @@ export default function GalaxyCanvas() {
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
-    // Mouse / Cursor interaction
-    let mouseX = width / 2;
-    let mouseY = height / 2;
+    // Mouse / Cursor interaction for magnetic field
+    let mouseX = -1000;
+    let mouseY = -1000;
     let targetTiltX = 0;
     let targetTiltY = 0;
     let currentTiltX = 0;
@@ -60,9 +72,9 @@ export default function GalaxyCanvas() {
     };
     window.addEventListener('mousemove', handleMouseMove);
 
-    // Predominantly white and cool silver stars with rare micro rainbow stars
+    // Predominantly white and cool silver stars with subtle jewel accents
     const starColors = [
-      '#ffffff', // Stellar white
+      '#ffffff',
       '#ffffff',
       '#ffffff',
       '#ffffff',
@@ -70,9 +82,9 @@ export default function GalaxyCanvas() {
       '#e4e4e7',
       '#e0e7ff', // Ice blue
       '#dbeafe',
-      '#34d399', // Subtle emerald
-      '#38bdf8', // Subtle cyan
-      '#f472b6', // Subtle rose
+      '#34d399', // Emerald
+      '#38bdf8', // Cyan
+      '#f472b6', // Rose
     ];
 
     // Build Galaxy Stars (Spiral Arms + Core Cluster)
@@ -82,9 +94,7 @@ export default function GalaxyCanvas() {
 
     for (let i = 0; i < STAR_COUNT; i++) {
       const armIndex = i % ARMS;
-      // Distance from center with cubic curve favoring inner galaxy
       const r = Math.pow(Math.random(), 2.2) * Math.min(width, height) * 0.85 + 20;
-      // Logarithmic spiral angle + random dispersion
       const armOffset = (armIndex * (2 * Math.PI)) / ARMS;
       const spiralAngle = r * 0.0035 + armOffset;
       const dispersion = (Math.random() - 0.5) * 0.4 * (r / 200 + 0.5);
@@ -105,12 +115,14 @@ export default function GalaxyCanvas() {
         angle,
         radius: r,
         armIndex,
+        offsetX: 0,
+        offsetY: 0,
       });
     }
 
-    // Background Twinkling Stardust (Independent of rotation)
+    // Background Twinkling Stardust
     const BG_STAR_COUNT = 180;
-    const bgStars: { x: number; y: number; size: number; alpha: number; delta: number }[] = [];
+    const bgStars: { x: number; y: number; size: number; alpha: number; delta: number; offsetX: number; offsetY: number }[] = [];
     for (let i = 0; i < BG_STAR_COUNT; i++) {
       bgStars.push({
         x: Math.random() * width,
@@ -118,6 +130,23 @@ export default function GalaxyCanvas() {
         size: Math.random() * 1.2 + 0.3,
         alpha: Math.random(),
         delta: (Math.random() - 0.5) * 0.015,
+        offsetX: 0,
+        offsetY: 0,
+      });
+    }
+
+    // Accretion Disk Particles for the Top-Left Black Hole
+    const ACCRETION_COUNT = 70;
+    const accretionParticles: AccretionParticle[] = [];
+    for (let i = 0; i < ACCRETION_COUNT; i++) {
+      const radius = Math.random() * 32 + 25; // Orbits between 25px and 57px
+      accretionParticles.push({
+        angle: Math.random() * Math.PI * 2,
+        radius,
+        speed: (Math.random() * 0.02 + 0.03) * (50 / radius),
+        size: Math.random() * 1.6 + 0.8,
+        color: i % 3 === 0 ? '#38bdf8' : i % 3 === 1 ? '#e0e7ff' : '#a855f7',
+        alpha: Math.random() * 0.8 + 0.2,
       });
     }
 
@@ -138,6 +167,7 @@ export default function GalaxyCanvas() {
     };
 
     let globalRotation = 0;
+    let blackHoleTime = 0;
 
     const render = () => {
       ctx.clearRect(0, 0, width, height);
@@ -148,6 +178,9 @@ export default function GalaxyCanvas() {
 
       const centerX = width / 2 + currentTiltX * 80;
       const centerY = height / 2 + currentTiltY * 60;
+      const bh = getBlackHolePosition(width, height);
+
+      blackHoleTime += 0.02;
 
       // 1. Draw Nebular Galaxy Core Glow
       const coreGradient = ctx.createRadialGradient(
@@ -167,18 +200,34 @@ export default function GalaxyCanvas() {
       ctx.fillStyle = coreGradient;
       ctx.fillRect(0, 0, width, height);
 
-      // 2. Draw Twinkling Background Stardust
+      // 2. Draw Twinkling Background Stardust with Cursor Magnetic Repulsion
+      const magneticRadius = 135;
       for (let i = 0; i < bgStars.length; i++) {
         const s = bgStars[i];
         s.alpha += s.delta;
         if (s.alpha > 0.95 || s.alpha < 0.15) s.delta = -s.delta;
+
+        // Magnetic repulsion from cursor
+        const dx = (s.x + s.offsetX) - mouseX;
+        const dy = (s.y + s.offsetY) - mouseY;
+        const dist = Math.hypot(dx, dy);
+
+        if (dist < magneticRadius && dist > 0) {
+          const force = Math.pow(1 - dist / magneticRadius, 2) * 22;
+          s.offsetX += (dx / dist) * force * 0.2;
+          s.offsetY += (dy / dist) * force * 0.2;
+        }
+        // Smooth return to resting state
+        s.offsetX *= 0.92;
+        s.offsetY *= 0.92;
+
         ctx.fillStyle = `rgba(255, 255, 255, ${s.alpha * 0.6})`;
         ctx.beginPath();
-        ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+        ctx.arc(s.x + s.offsetX, s.y + s.offsetY, s.size, 0, Math.PI * 2);
         ctx.fill();
       }
 
-      // 3. Draw Spiral Galaxy Stars with 3D Tilt Projection
+      // 3. Draw Spiral Galaxy Stars with 3D Tilt Projection + Magnetic Repulsion + Black Hole Suction
       globalRotation += 0.0009;
       const isDark = document.documentElement.classList.contains('dark');
 
@@ -186,17 +235,48 @@ export default function GalaxyCanvas() {
         const s = stars[i];
         s.angle += s.speed;
 
-        // Apply rotation + current tilt angle
         const cosAngle = Math.cos(s.angle + globalRotation);
         const sinAngle = Math.sin(s.angle + globalRotation);
 
-        // 3D projected coordinates with tilt
         const rawX = cosAngle * s.radius;
         const rawY = sinAngle * s.radius;
 
-        // Tilt deformation
-        const projX = centerX + rawX;
-        const projY = centerY + rawY * (0.62 + currentTiltY * 0.2) + s.z;
+        let projX = centerX + rawX + s.offsetX;
+        let projY = centerY + rawY * (0.62 + currentTiltY * 0.2) + s.z + s.offsetY;
+
+        // A) Magnetic Field Repulsion from Cursor:
+        // When cursor gets close, objects are repelled away along the magnetic vector
+        const mdx = projX - mouseX;
+        const mdy = projY - mouseY;
+        const mdist = Math.hypot(mdx, mdy);
+
+        if (mdist < magneticRadius && mdist > 0) {
+          const repulseForce = Math.pow(1 - mdist / magneticRadius, 1.8) * 38;
+          s.offsetX += (mdx / mdist) * repulseForce * 0.25;
+          s.offsetY += (mdy / mdist) * repulseForce * 0.25;
+        }
+
+        // B) Black Hole Gravitational Pull (Top-Left of the sky)
+        const bhdx = bh.x - projX;
+        const bhdy = bh.y - projY;
+        const bhdist = Math.hypot(bhdx, bhdy);
+
+        if (bhdist < bh.gravityRadius && bhdist > 0) {
+          const pullForce = Math.pow(1 - bhdist / bh.gravityRadius, 1.6) * 4.5;
+          s.offsetX += (bhdx / bhdist) * pullForce;
+          s.offsetY += (bhdy / bhdist) * pullForce;
+
+          // If swallowed by event horizon, respawn at outer rim
+          if (bhdist < bh.eventHorizonRadius) {
+            s.offsetX = 0;
+            s.offsetY = 0;
+            s.radius = Math.min(width, height) * 0.8 + Math.random() * 100;
+          }
+        }
+
+        // Smooth relaxation of displacement
+        s.offsetX *= 0.94;
+        s.offsetY *= 0.94;
 
         // Subtle twinkling
         const twinkle = Math.sin(s.angle * 4 + i) * 0.25 + 0.75;
@@ -248,13 +328,70 @@ export default function GalaxyCanvas() {
         ctx.lineTo(tailX, tailY);
         ctx.stroke();
 
-        // Meteor Head Glow
         ctx.fillStyle = '#ffffff';
         ctx.beginPath();
         ctx.arc(m.x, m.y, 1.5, 0, Math.PI * 2);
         ctx.fill();
       }
       ctx.globalAlpha = 1;
+
+      // 5. DRAW THE CELESTIAL BLACK HOLE IN THE SKY (TOP-LEFT)
+      // A) Gravitational Lensing Outer Halo
+      const lensGrad = ctx.createRadialGradient(
+        bh.x,
+        bh.y,
+        bh.eventHorizonRadius * 0.8,
+        bh.x,
+        bh.y,
+        bh.eventHorizonRadius * 3.4
+      );
+      lensGrad.addColorStop(0, 'rgba(0, 0, 0, 0.95)');
+      lensGrad.addColorStop(0.35, 'rgba(56, 189, 248, 0.25)'); // Cyan relativistic photon ring
+      lensGrad.addColorStop(0.65, 'rgba(168, 85, 247, 0.15)'); // Violet warping
+      lensGrad.addColorStop(1, 'transparent');
+
+      ctx.fillStyle = lensGrad;
+      ctx.beginPath();
+      ctx.arc(bh.x, bh.y, bh.eventHorizonRadius * 3.4, 0, Math.PI * 2);
+      ctx.fill();
+
+      // B) Swirling Accretion Disk Matter
+      for (let i = 0; i < accretionParticles.length; i++) {
+        const ap = accretionParticles[i];
+        ap.angle += ap.speed;
+
+        // Flatten disk in perspective
+        const px = bh.x + Math.cos(ap.angle) * ap.radius;
+        const py = bh.y + Math.sin(ap.angle) * (ap.radius * 0.45);
+
+        ctx.fillStyle = ap.color;
+        ctx.globalAlpha = ap.alpha * (0.6 + Math.sin(ap.angle + blackHoleTime) * 0.4);
+        ctx.beginPath();
+        ctx.arc(px, py, ap.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+
+      // C) Relativistic Photon Sphere Ring
+      ctx.save();
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.85)';
+      ctx.lineWidth = 1.4;
+      ctx.shadowColor = '#38bdf8';
+      ctx.shadowBlur = 12;
+      ctx.beginPath();
+      ctx.arc(bh.x, bh.y, bh.eventHorizonRadius + 1.5, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.restore();
+
+      // D) Deep Pitch Black Event Horizon Singularity Core
+      ctx.save();
+      ctx.fillStyle = '#000000';
+      ctx.shadowColor = '#000000';
+      ctx.shadowBlur = 8;
+      ctx.beginPath();
+      ctx.arc(bh.x, bh.y, bh.eventHorizonRadius, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
 
       animationFrameId = requestAnimationFrame(render);
     };

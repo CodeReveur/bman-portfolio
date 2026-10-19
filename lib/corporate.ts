@@ -157,7 +157,7 @@ export const CONTRIBUTED_PROJECTS: ContributedProject[] = [
     client: 'Gikondo Commercial Depots & Wholesale Hub',
     category: 'Wholesale & Retail ERP',
     summary:
-      'BMAN was contracted to build and deploy an offline-first POS and stock tracking network across 18 high-throughput wholesale counters, syncing local cash registers with warehouse inventory without internet reliance.',
+      'BMan was contracted to build and deploy an offline-first POS and stock tracking network across 18 high-throughput wholesale counters, syncing local cash registers with warehouse inventory without internet reliance.',
     impact: '100% counter uptime across 18 checkout lanes; zero sales halts during daytime fiber blackouts.',
     year: '2025–2026',
     status: 'Finished',
@@ -326,7 +326,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Joseph Maranatha',
     role: 'Founder & CEO',
     title: 'Lead Systems Architect',
-    bio: 'Software engineer and founder of BMAN. Focused on offline-first architectures, distributed databases, and high-reliability systems that power commercial enterprises from the counter up.',
+    bio: 'Software engineer and founder of BMan. Focused on offline-first architectures, distributed databases, and high-reliability systems that power commercial enterprises from the counter up.',
     initials: 'JM',
     socials: {
       linkedin: 'https://linkedin.com/in/joseph-maranatha',
@@ -351,7 +351,7 @@ export const SOCIAL_LINKS = [
   {
     name: 'LinkedIn',
     url: 'https://linkedin.com/company/bman-ltd',
-    handle: 'BMAN',
+    handle: 'BMan',
     icon: 'Linkedin',
   },
   {
@@ -369,7 +369,7 @@ export const SOCIAL_LINKS = [
   {
     name: 'YouTube',
     url: 'https://youtube.com/@bman_technologies',
-    handle: 'BMAN',
+    handle: 'BMan',
     icon: 'Youtube',
   },
   {

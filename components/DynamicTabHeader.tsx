@@ -13,15 +13,15 @@ export default function DynamicTabHeader() {
   const getPageTitle = (path: string): string => {
     switch (path) {
       case '/products':
-        return 'Products · BMAN';
+        return 'Products · BMan';
       case '/services':
-        return 'Services · BMAN';
+        return 'Services · BMan';
       case '/about':
-        return 'About · BMAN';
+        return 'About · BMan';
       case '/contact':
-        return 'Contact · BMAN';
+        return 'Contact · BMan';
       default:
-        return 'BMAN · We Create, Develop & Partner Software';
+        return 'BMan · We Create, Develop & Partner Software';
     }
   };
 
@@ -30,9 +30,9 @@ export default function DynamicTabHeader() {
     document.title = currentTitle;
 
     const complainMessages = [
-      '👋 Hey, come back! · BMAN',
-      '👋 We miss you! · BMAN',
-      '👋 Don’t leave yet! · BMAN',
+      '👋 Hey, come back! · BMan',
+      '👋 We miss you! · BMan',
+      '👋 Don’t leave yet! · BMan',
     ];
     let msgIndex = 0;
 

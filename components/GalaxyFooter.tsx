@@ -46,13 +46,13 @@ export default function GalaxyFooter() {
           <div className="flex items-center gap-2.5">
             <Image
               src="/logo.png"
-              alt="BMAN"
+              alt="BMan"
               width={28}
               height={28}
               className="w-7 h-7 object-contain shrink-0"
             />
             <span className="text-base font-medium text-zinc-900 dark:text-white flex items-center gap-1.5">
-              BMAN
+              BMan
               <span className="w-1.5 h-1.5 rounded-full rainbow-dot" />
             </span>
             <span className="text-sm text-zinc-500 font-normal">· {t('footer.location')}</span>
@@ -87,7 +87,7 @@ export default function GalaxyFooter() {
         {/* Bottom Socials & Copyright */}
         <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500 font-normal">
           <div>
-            © {new Date().getFullYear()} BMAN. {t('footer.rights')}
+            © {new Date().getFullYear()} BMan. {t('footer.rights')}
           </div>
 
           <div className="flex items-center gap-2.5">
