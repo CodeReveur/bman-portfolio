@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
+import { Providers } from './providers';
 import { GalaxyCanvas, GalaxyNavbar, GalaxyFooter } from '@/components';
 
 const geistSans = Geist({
@@ -74,8 +75,10 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#000000',
-  colorScheme: 'dark',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#000000' },
+  ],
 };
 
 export default function RootLayout({
@@ -84,26 +87,44 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html lang="en" className="dark scroll-smooth" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/icon.png" sizes="any" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                var saved = localStorage.getItem('bman_theme');
+                if (saved === 'light') {
+                  document.documentElement.classList.remove('dark');
+                  document.documentElement.classList.add('light');
+                } else {
+                  document.documentElement.classList.add('dark');
+                  document.documentElement.classList.remove('light');
+                }
+              } catch(e) {}
+            `,
+          }}
+        />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} bg-black text-white antialiased selection:bg-white selection:text-black flex flex-col min-h-screen`}
+        className={`${geistSans.variable} ${geistMono.variable} bg-white dark:bg-black text-zinc-900 dark:text-white antialiased selection:bg-zinc-900 selection:text-white dark:selection:bg-white dark:selection:text-black flex flex-col min-h-screen transition-colors duration-200`}
       >
-        {/* Galaxy Starfield Background across all pages */}
-        <GalaxyCanvas />
+        <Providers>
+          {/* Ambient Galaxy Starfield Background across all pages */}
+          <GalaxyCanvas />
 
-        {/* Global Floating Navbar */}
-        <GalaxyNavbar />
+          {/* Global Floating Navbar (Width matched to max-w-5xl) */}
+          <GalaxyNavbar />
 
-        {/* Page Content */}
-        <div className="relative z-10 flex-1 flex flex-col pt-24 pb-16">
-          {children}
-        </div>
+          {/* Page Content */}
+          <div className="relative z-10 flex-1 flex flex-col pt-24 pb-16">
+            {children}
+          </div>
 
-        {/* Global Minimal Footer */}
-        <GalaxyFooter />
+          {/* Global Minimal Footer */}
+          <GalaxyFooter />
+        </Providers>
       </body>
     </html>
   );

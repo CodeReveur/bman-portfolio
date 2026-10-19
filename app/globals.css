@@ -3,24 +3,41 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* ---------------------------------------------------------------------------
-   BMan Monochromatic White & Black Design Tokens
-   Pure black (#000000 / #09090b), crisp white (#ffffff),
-   with very few, subtle rainbow accents only where necessary.
+   BMan Design Tokens: Dual Theme (Pure White & Pure Black)
+   With minimal micro-rainbow accents.
 --------------------------------------------------------------------------- */
 :root {
-  color-scheme: dark;
-  --bg: #000000;
-  --bg-subtle: #09090b;
-  --surface: #0e0e11;
-  --surface-hover: #17171c;
-  --border: rgba(255, 255, 255, 0.1);
-  --border-strong: rgba(255, 255, 255, 0.2);
-  --fg: #ffffff;
-  --fg-muted: #a1a1aa;
+  color-scheme: light;
+  --bg: #ffffff;
+  --bg-subtle: #f9f9fb;
+  --fg: #09090b;
+  --fg-muted: #52525b;
   --fg-subtle: #71717a;
+  --border: rgba(0, 0, 0, 0.09);
+  --border-strong: rgba(0, 0, 0, 0.18);
+  --card-bg: #ffffff;
+  --card-bg-subtle: #f4f4f6;
+  --nav-bg: rgba(255, 255, 255, 0.85);
+  --footer-bg: rgba(255, 255, 255, 0.95);
 
   --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+.dark,
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #000000;
+  --bg-subtle: #09090b;
+  --fg: #ffffff;
+  --fg-muted: #a1a1aa;
+  --fg-subtle: #71717a;
+  --border: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.2);
+  --card-bg: #09090b;
+  --card-bg-subtle: #121216;
+  --nav-bg: rgba(0, 0, 0, 0.85);
+  --footer-bg: rgba(0, 0, 0, 0.92);
 }
 
 html {
@@ -30,13 +47,14 @@ html {
 }
 
 body {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: var(--bg);
+  color: var(--fg);
   font-family: var(--font-sans);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   letter-spacing: -0.015em;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 /* ---------------------------------------------------------------------------
@@ -56,32 +74,22 @@ body {
   animation: rainbow-shift 10s linear infinite;
 }
 
-.rainbow-border-hover:hover {
-  border-image: linear-gradient(135deg, #ff4d4d, #f9cb28, #34d399, #00c6ff, #9d50bb) 1;
-}
-
-.rainbow-badge {
-  background: linear-gradient(
-    90deg,
-    rgba(255, 77, 77, 0.12),
-    rgba(249, 203, 40, 0.12),
-    rgba(52, 211, 153, 0.12),
-    rgba(0, 198, 255, 0.12),
-    rgba(157, 80, 187, 0.12)
-  );
-  border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-/* Crisp Monochrome Card */
+/* Crisp Monochrome Card in Light & Dark */
 .mono-card {
-  background: #09090b;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--card-bg);
+  border: 1px solid var(--border);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
 }
 
 .mono-card:hover {
-  background: #111114;
-  border-color: rgba(255, 255, 255, 0.2);
+  background: var(--card-bg-subtle);
+  border-color: var(--border-strong);
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.08);
+}
+
+.dark .mono-card:hover {
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.5);
 }
 
 /* Scrollbar */
@@ -91,19 +99,19 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #000000;
+  background: var(--bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--border-strong);
   border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.4);
+  background: var(--fg-muted);
 }
 
 ::selection {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: var(--fg);
+  color: var(--bg);
 }

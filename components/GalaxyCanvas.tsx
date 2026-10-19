@@ -180,6 +180,7 @@ export default function GalaxyCanvas() {
 
       // 3. Draw Spiral Galaxy Stars with 3D Tilt Projection
       globalRotation += 0.0009;
+      const isDark = document.documentElement.classList.contains('dark');
 
       for (let i = 0; i < stars.length; i++) {
         const s = stars[i];
@@ -201,14 +202,15 @@ export default function GalaxyCanvas() {
         const twinkle = Math.sin(s.angle * 4 + i) * 0.25 + 0.75;
         const finalAlpha = s.alpha * twinkle;
 
-        ctx.fillStyle = s.color;
-        ctx.globalAlpha = Math.max(0.1, Math.min(1, finalAlpha));
+        const starFill = isDark ? s.color : '#0f172a';
+        ctx.fillStyle = starFill;
+        ctx.globalAlpha = isDark ? Math.max(0.1, Math.min(1, finalAlpha)) : Math.max(0.04, Math.min(0.2, finalAlpha * 0.25));
         ctx.beginPath();
         ctx.arc(projX, projY, s.size, 0, Math.PI * 2);
         ctx.fill();
 
         // Extra halo for large prominent stars
-        if (s.size > 1.8) {
+        if (s.size > 1.8 && isDark) {
           ctx.fillStyle = s.color;
           ctx.globalAlpha = finalAlpha * 0.3;
           ctx.beginPath();

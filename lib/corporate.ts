@@ -28,15 +28,25 @@ export interface CorporateService {
   display_order: number;
 }
 
-export interface Invention {
+export type ProjectStatus = 'Finished' | 'In development' | 'Inactive';
+
+export interface ContributedProject {
   id: string;
+  title: string;
+  client: string;
+  category: string;
+  summary: string;
+  impact: string;
+  year: string;
+  status: ProjectStatus;
+  deliverables: string[];
+}
+
+export interface Partner {
   name: string;
   category: string;
-  headline: string;
   description: string;
-  badge: string;
-  technicalSpecs: string[];
-  impactMetric: string;
+  logoText: string;
 }
 
 export interface TeamMember {
@@ -140,13 +150,128 @@ export const DEFAULT_PRODUCTS: CorporateProduct[] = [
   },
 ];
 
+export const CONTRIBUTED_PROJECTS: ContributedProject[] = [
+  {
+    id: 'proj-wholesale-pos',
+    title: 'Kigali Central Wholesale POS & Inventory Rollout',
+    client: 'Gikondo Commercial Depots & Wholesale Hub',
+    category: 'Wholesale & Retail ERP',
+    summary:
+      'BMan was contracted to build and deploy an offline-first POS and stock tracking network across 18 high-throughput wholesale counters, syncing local cash registers with warehouse inventory without internet reliance.',
+    impact: '100% counter uptime across 18 checkout lanes; zero sales halts during daytime fiber blackouts.',
+    year: '2025–2026',
+    status: 'Finished',
+    deliverables: ['Offline SQLite POS Engine', 'Multi-Register Sync', 'Thermal Receipt Driver', 'TIN Tax Reporting'],
+  },
+  {
+    id: 'proj-freight-telemetry',
+    title: 'Cross-Border Freight Telemetry & Fleet Tracking',
+    client: 'Trans-Kivu Logistics Consortium',
+    category: 'IoT & Telematics',
+    summary:
+      'Hired to design and deliver a real-time GPS and cellular telemetry tracking system for 48 commercial trucks operating across the Kigali–Rubavu–Goma transit corridor with offline route caching.',
+    impact: '32% reduction in unlogged idle stops and automated border geofence crossing alerts.',
+    year: '2025',
+    status: 'Finished',
+    deliverables: ['IoT Telemetry Firmware', 'Live Dispatch Dashboard', 'Fuel Sensor Logging', 'Sub-second Geofencing'],
+  },
+  {
+    id: 'proj-agent-disbursement',
+    title: 'Field Agent Sales Network & MoMo Payouts',
+    client: 'East Africa FMCG Distribution Network',
+    category: 'Fintech & Workforce',
+    summary:
+      'Engineered a distributed field sales agent mobile application, automated commission ledger, and batch MTN Mobile Money disbursement engine for 350+ regional sales representatives.',
+    impact: 'Agent payout cycle reduced from 5 business days to under 30 seconds with automated slip verification.',
+    year: '2024–2025',
+    status: 'Finished',
+    deliverables: ['Agent Mobile Portal', 'Tiered Commission Engine', 'MTN MoMo OpenAPI Batch Payouts', 'Bank Slip OCR'],
+  },
+  {
+    id: 'proj-hospitality-sync',
+    title: 'Multi-Resort Hospitality PMS & Kitchen Sync',
+    client: 'Rubavu Lakefront Hospitality Group',
+    category: 'Hospitality & POS',
+    summary:
+      'Currently developing a unified property management, restaurant counter billing, and kitchen ticket display system for multi-venue resort properties with local network mesh synchronization.',
+    impact: 'Synchronizes table orders and guest billing between outdoor bars and central kitchen with zero cloud dependency.',
+    year: '2026',
+    status: 'In development',
+    deliverables: ['Kitchen Display Engine', 'Mesh Network Sync', 'Multi-Terminal Table Billing', 'Guest Folio Ledger'],
+  },
+  {
+    id: 'proj-sacco-ledger',
+    title: 'Microfinance Cooperative Core Ledger & Member SMS',
+    client: 'Musanze Farmers SACCO Cooperative',
+    category: 'Microfinance & Telecom',
+    summary:
+      'Built a low-bandwidth branch accounting system and instant transaction notification gateway enabling rural agricultural cooperatives to log member deposits and send automated SMS receipts.',
+    impact: 'Over 8,200 rural members receiving instant deposit verification SMS notifications.',
+    year: '2024',
+    status: 'Finished',
+    deliverables: ['Double-Entry Ledger', 'SMS Gateway Integration', 'Branch Offline Cache', 'Loan Schedule Calculator'],
+  },
+  {
+    id: 'proj-courier-dispatch',
+    title: 'Urban Motorcycle On-Demand Courier Dispatch',
+    client: 'FastDrop Kigali Moto-Express',
+    category: 'On-Demand Mobility',
+    summary:
+      'Built a real-time motorcycle courier hailing, driver routing, and digital delivery confirmation app for Kigali metro package dispatches.',
+    impact: 'Handled over 25,000 package deliveries across Kigali before consolidation into E-Indege Logistics.',
+    year: '2023–2024',
+    status: 'Inactive',
+    deliverables: ['Driver Android App', 'Customer Tracking Link', 'Automated Dispatch Queue', 'MoMo In-App Pay'],
+  },
+];
+
+export const PARTNERS: Partner[] = [
+  {
+    name: 'MTN Mobile Money',
+    category: 'Payment Rails',
+    description: 'Official API integration partner for instant merchant collection and automated agent payouts.',
+    logoText: 'MTN MoMo',
+  },
+  {
+    name: 'Airtel Money Rwanda',
+    category: 'Telecom Clearing',
+    description: 'Direct cellular payment rails for nationwide retail counters and subscription renewals.',
+    logoText: 'Airtel Money',
+  },
+  {
+    name: 'Bank of Kigali',
+    category: 'Banking Rails',
+    description: 'Direct bank statement reconciliation and proof-of-payment audit verification.',
+    logoText: 'Bank of Kigali',
+  },
+  {
+    name: 'Rwanda Development Board',
+    category: 'Institutional Alliance',
+    description: 'Certified national technology enterprise advancing domestic Rwandan software sovereignty.',
+    logoText: 'RDB Rwanda',
+  },
+  {
+    name: 'Kigali Innovation City',
+    category: 'Ecosystem Partner',
+    description: 'Collaborative deep-tech engineering and local developer ecosystem mentorship.',
+    logoText: 'KIC Ecosystem',
+  },
+  {
+    name: 'Rwanda Retailers Network',
+    category: 'Commercial Merchant Alliance',
+    description: 'Over 1,200 participating shops, supermarkets, and wholesalers utilizing BMan POS.',
+    logoText: 'Retailers Alliance',
+  },
+];
+
 export const DEFAULT_SERVICES: CorporateService[] = [
   {
     id: 'srv-offline',
     title: 'Offline-First Software Engineering',
     slug: 'offline-first-engineering',
     summary: 'High-availability applications designed to run without internet and sync automatically.',
-    description: 'We architect and build client-side transactional databases, resilient local caching, and conflict-free data replication for low-connectivity environments.',
+    description:
+      'We architect client-side transactional databases, resilient local caching, and conflict-free data replication for retail and operational environments with unstable connectivity.',
     icon: 'Shield',
     delivery_model: 'Custom Engineering',
     display_order: 1,
@@ -156,7 +281,8 @@ export const DEFAULT_SERVICES: CorporateService[] = [
     title: 'Custom Enterprise ERP Systems',
     slug: 'custom-erp-development',
     summary: 'Tailored retail, wholesale, and multi-branch management systems.',
-    description: 'Purpose-built inventory management, multi-warehouse stock routing, cashier permissions, and automated accounting tailored to your specific workflows.',
+    description:
+      'Purpose-built inventory management, multi-warehouse stock routing, cashier permissions, and automated accounting tailored to your exact operational workflows.',
     icon: 'Layers',
     delivery_model: 'Turnkey Solution',
     display_order: 2,
@@ -166,7 +292,8 @@ export const DEFAULT_SERVICES: CorporateService[] = [
     title: 'Payment Gateway & MoMo Integration',
     slug: 'payment-rails-integration',
     summary: 'Direct integrations with MTN Mobile Money, Airtel, and banking APIs.',
-    description: 'We connect your systems to African mobile money networks with instant webhook reconciliation, duplicate payment prevention, and automated disbursements.',
+    description:
+      'We connect your business systems to African mobile money networks with instant webhook reconciliation, duplicate payment prevention, and automated disbursements.',
     icon: 'Wallet',
     delivery_model: 'Integration Module',
     display_order: 3,
@@ -176,58 +303,33 @@ export const DEFAULT_SERVICES: CorporateService[] = [
     title: 'Hardware & POS Device Integration',
     slug: 'pos-hardware-integration',
     summary: 'Seamless connectivity with thermal printers, barcode scanners, and counter hardware.',
-    description: 'Driverless web-to-printer bridging via WebUSB, Bluetooth LE, and serial COM ports for instant receipt printing and barcode ingestion.',
+    description:
+      'Driverless web-to-printer bridging via WebUSB, Bluetooth LE, and serial COM ports for instant receipt printing and sub-second barcode ingestion.',
     icon: 'Cpu',
     delivery_model: 'Hardware + Driver Bridge',
     display_order: 4,
   },
-];
-
-export const INVENTIONS: Invention[] = [
   {
-    id: 'inv-dual-engine',
-    name: 'Dual-Engine Edge Sync',
-    category: 'Architecture',
-    headline: 'Zero-internet transaction continuity with automatic cloud merge',
+    id: 'srv-telemetry',
+    title: 'Fleet Telemetry & IoT Tracking',
+    slug: 'fleet-telemetry-iot',
+    summary: 'Live GPS diagnostics, sensor logging, and automated geofence dispatch.',
     description:
-      'Combines embedded local SQLite on the cashier device with cloud PostgreSQL. Transactions commit instantly with zero latency and sync when connection returns with zero data loss.',
-    badge: 'Patented Engine',
-    technicalSpecs: [
-      'Sub-5ms local transaction write speed',
-      'Conflict-free multi-terminal reconciliation',
-      'Automatic bandwidth-adaptive sync',
-    ],
-    impactMetric: '100% counter uptime through blackouts',
+      'Hardware telematics firmware and cloud dashboards tracking delivery vehicles, motorcycle couriers, fuel consumption, and cargo transit in real time.',
+    icon: 'Radio',
+    delivery_model: 'Hardware + Firmware Pipeline',
+    display_order: 5,
   },
   {
-    id: 'inv-hardware-bridge',
-    name: 'Universal Hardware Bridge',
-    category: 'Hardware',
-    headline: 'Driverless thermal printing and barcode scanning via browser',
+    id: 'srv-audit',
+    title: 'Architecture Audits & Cloud Migration',
+    slug: 'architecture-audits',
+    summary: 'System architecture review, security audits, and database optimization.',
     description:
-      'Direct hardware communication layer communicating via WebUSB and Bluetooth without requiring printer driver installations or third-party spoolers.',
-    badge: 'Device Engine',
-    technicalSpecs: [
-      'Zero-driver ESC/POS receipt generation',
-      'Direct Bluetooth & USB thermal printer bridge',
-      'Real-time barcode scanner event pipeline',
-    ],
-    impactMetric: 'Plug-and-play setup on any PC or phone',
-  },
-  {
-    id: 'inv-telecom-relay',
-    name: 'Sovereign Telecom Relay',
-    category: 'Distributed Systems',
-    headline: 'Direct telecom message dispatch with in-country data compliance',
-    description:
-      'Low-latency relay daemon dispatching SMS notifications, MoMo payment callbacks, and hardware telemetry hosted fully in Rwanda.',
-    badge: 'Infrastructure',
-    technicalSpecs: [
-      'End-to-end encrypted payload transit',
-      'Dual telecom routing with auto-failover',
-      'Idempotent webhook callbacks',
-    ],
-    impactMetric: 'Sub-second national notification delivery',
+      'Senior engineering advisory for institutions modernizing legacy systems, preparing for regulatory audits, or repatriating data to sovereign domestic infrastructure.',
+    icon: 'Compass',
+    delivery_model: 'Advisory Retainer',
+    display_order: 6,
   },
 ];
 
@@ -236,7 +338,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Joseph Maranatha',
     role: 'Founder & CEO',
     title: 'Lead Systems Architect',
-    bio: 'Software engineer and founder of BMan Ltd. Focused on offline-first architectures, distributed databases, and high-reliability systems that power African businesses.',
+    bio: 'Software engineer and founder of BMan Ltd. Focused on offline-first architectures, distributed databases, and high-reliability systems that power African businesses from the counter up.',
     initials: 'JM',
     socials: {
       linkedin: 'https://linkedin.com/in/joseph-maranatha',
@@ -248,7 +350,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Olivier Turikumwe',
     role: 'Co-Founder & COO',
     title: 'Head of Operations',
-    bio: 'Directs operations, merchant rollouts, and national field agent networks across Rwanda, turning technical products into real-world business adoption.',
+    bio: 'Directs operations, merchant rollouts, and national field agent networks across Rwanda, turning technical products into real-world business adoption in markets across the country.',
     initials: 'OT',
     socials: {
       linkedin: 'https://linkedin.com',

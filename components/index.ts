@@ -1,10 +1,3 @@
 export { default as GalaxyCanvas } from './GalaxyCanvas';
 export { default as GalaxyNavbar } from './GalaxyNavbar';
-export { default as GalaxyHero } from './GalaxyHero';
-export { default as GalaxyInventions } from './GalaxyInventions';
-export { default as GalaxyProducts } from './GalaxyProducts';
-export { default as GalaxyServices } from './GalaxyServices';
-export { default as GalaxyAbout } from './GalaxyAbout';
-export { default as GalaxyCareers } from './GalaxyCareers';
-export { default as GalaxyContact } from './GalaxyContact';
 export { default as GalaxyFooter } from './GalaxyFooter';
