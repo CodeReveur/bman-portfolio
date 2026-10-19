@@ -73,6 +73,9 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  alternates: {
+    canonical: 'https://bman.rw',
+  },
 };
 
 export const viewport: Viewport = {
@@ -91,6 +94,34 @@ export default function RootLayout({
     <html lang="en" className="dark scroll-smooth" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/icon.png" sizes="any" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'BMan',
+              url: 'https://bman.rw',
+              logo: 'https://bman.rw/logo.png',
+              email: 'ceo@bman.rw',
+              telephone: '+250781121117',
+              description:
+                'BMan is a technology company that creates, develops, and partners software systems, retail engines, and resilient digital infrastructure.',
+              address: {
+                '@type': 'PostalAddress',
+                addressLocality: 'Kigali',
+                addressCountry: 'RW',
+              },
+              sameAs: [
+                'https://linkedin.com/company/bman-ltd',
+                'https://x.com/bman_rw',
+                'https://github.com/CodeReveur',
+                'https://youtube.com/@bman_technologies',
+                'https://instagram.com/bman_rw',
+              ],
+            }),
+          }}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `

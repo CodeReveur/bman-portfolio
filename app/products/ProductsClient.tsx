@@ -3,16 +3,23 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { ArrowUpRight, CheckCircle2, Briefcase, Clock, Check, AlertCircle } from 'lucide-react';
-import { CorporateProduct, CONTRIBUTED_PROJECTS, ProjectStatus } from '@/lib/corporate';
+import { CorporateProduct, ContributedProject, CONTRIBUTED_PROJECTS, ProjectStatus } from '@/lib/corporate';
 import { useLanguage } from '@/contexts/LanguageContext';
 
-export default function ProductsClient({ products }: { products: CorporateProduct[] }) {
+export default function ProductsClient({
+  products,
+  projects = CONTRIBUTED_PROJECTS,
+}: {
+  products: CorporateProduct[];
+  projects?: ContributedProject[];
+}) {
   const { t } = useLanguage();
   const [filter, setFilter] = useState<'ALL' | ProjectStatus>('ALL');
 
+  const sourceProjects = projects && projects.length > 0 ? projects : CONTRIBUTED_PROJECTS;
   const filteredProjects = filter === 'ALL'
-    ? CONTRIBUTED_PROJECTS
-    : CONTRIBUTED_PROJECTS.filter((p) => p.status === filter);
+    ? sourceProjects
+    : sourceProjects.filter((p) => p.status === filter);
 
   const getStatusBadge = (status: ProjectStatus) => {
     switch (status) {

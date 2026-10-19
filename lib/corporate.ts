@@ -380,10 +380,31 @@ export const SOCIAL_LINKS = [
   },
 ];
 
+export interface CorporateConfig {
+  company_name: string;
+  phone: string;
+  email: string;
+  support_email: string;
+  address: string;
+  working_hours: string;
+}
+
+export const DEFAULT_CONFIG: CorporateConfig = {
+  company_name: 'BMan',
+  phone: '+250 781 121 117',
+  email: 'ceo@bman.rw',
+  support_email: 'ceo@bman.rw',
+  address: 'Kigali, Rwanda',
+  working_hours: 'Mon – Fri: 8:00 AM – 6:00 PM CAT',
+};
+
 export async function fetchCorporateData(): Promise<{
   products: CorporateProduct[];
+  projects: ContributedProject[];
   services: CorporateService[];
   partners: Partner[];
+  team: TeamMember[];
+  config: CorporateConfig;
 }> {
   try {
     const baseUrl = typeof window === 'undefined' ? (process.env.INTERNAL_BACKEND_URL || BACKEND_URL) : '';
@@ -392,6 +413,7 @@ export async function fetchCorporateData(): Promise<{
     });
     if (!res.ok) throw new Error('Failed to fetch corporate data');
     const data = await res.json();
+
     const rawPartners = data.partners || [];
     const partners: Partner[] = rawPartners.length
       ? rawPartners.map((p: any) => ({
@@ -402,16 +424,79 @@ export async function fetchCorporateData(): Promise<{
         }))
       : PARTNERS;
 
+    const rawProjects = data.projects || [];
+    const projects: ContributedProject[] = rawProjects.length
+      ? rawProjects.map((p: any) => {
+          let status: ProjectStatus = 'Finished';
+          const rawStatus = (p.status || '').toUpperCase();
+          if (rawStatus === 'DEVELOPMENT' || rawStatus === 'IN DEVELOPMENT') {
+            status = 'In development';
+          } else if (rawStatus === 'INACTIVE' || rawStatus === 'ARCHIVED') {
+            status = 'Inactive';
+          }
+
+          const deliverables = p.tech_stack
+            ? p.tech_stack.split(/[·,]/).map((s: string) => s.trim()).filter(Boolean)
+            : [];
+
+          return {
+            id: p.id || p.slug,
+            title: p.name,
+            client: p.client_name || p.client || 'Enterprise Partner',
+            category: p.category || 'Software Architecture',
+            summary: p.description || p.tagline || '',
+            impact: p.metrics || p.impact || '',
+            year: p.badge || '2025–2026',
+            status,
+            deliverables: deliverables.length ? deliverables : ['Software Engineering', 'System Architecture'],
+          };
+        })
+      : CONTRIBUTED_PROJECTS;
+
+    const rawTeam = data.team || [];
+    const team: TeamMember[] = rawTeam.length
+      ? rawTeam.map((m: any) => ({
+          name: m.name,
+          role: m.role || 'Leader',
+          title: m.title || '',
+          bio: m.bio || '',
+          initials: m.name
+            ? m.name.split(' ').map((n: string) => n[0]).join('').slice(0, 2).toUpperCase()
+            : 'BM',
+          socials: {
+            linkedin: m.linkedin_url || undefined,
+            twitter: m.twitter_url || undefined,
+            github: m.github_url || undefined,
+          },
+        }))
+      : TEAM_MEMBERS;
+
+    const rawConfig = data.config || {};
+    const config: CorporateConfig = {
+      company_name: rawConfig.company_name || DEFAULT_CONFIG.company_name,
+      phone: rawConfig.phone || DEFAULT_CONFIG.phone,
+      email: rawConfig.email || DEFAULT_CONFIG.email,
+      support_email: rawConfig.email || DEFAULT_CONFIG.email, // Unified single email
+      address: rawConfig.address || DEFAULT_CONFIG.address,
+      working_hours: rawConfig.working_hours || DEFAULT_CONFIG.working_hours,
+    };
+
     return {
       products: data.products?.length ? data.products : DEFAULT_PRODUCTS,
+      projects,
       services: data.services?.length ? data.services : DEFAULT_SERVICES,
       partners,
+      team,
+      config,
     };
   } catch {
     return {
       products: DEFAULT_PRODUCTS,
+      projects: CONTRIBUTED_PROJECTS,
       services: DEFAULT_SERVICES,
       partners: PARTNERS,
+      team: TEAM_MEMBERS,
+      config: DEFAULT_CONFIG,
     };
   }
 }
