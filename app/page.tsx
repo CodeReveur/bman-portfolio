@@ -38,14 +38,6 @@ export default function HomePage() {
     <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 flex flex-col gap-24 sm:gap-32">
       {/* 1. Hero Section */}
       <section className="text-center pt-8 sm:pt-14">
-        {/* Location Badge */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-950 border border-black/10 dark:border-white/10 w-fit mx-auto mb-8">
-          <span className="w-1.5 h-1.5 rounded-full rainbow-dot" />
-          <span className="text-xs font-mono text-zinc-600 dark:text-zinc-300">
-            {t('home.badge')}
-          </span>
-        </div>
-
         {/* Main Headline */}
         <h1 className="text-4xl sm:text-6xl lg:text-7xl font-normal tracking-[-0.04em] text-zinc-900 dark:text-white leading-[1.06] max-w-4xl mx-auto text-balance">
           {t('home.title')}
@@ -188,10 +180,6 @@ export default function HomePage() {
       {/* 4. Partners & Trusted Rails Section (Near Footer Section) */}
       <section className="pt-10 border-t border-black/10 dark:border-white/10 mb-8">
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-950 border border-black/10 dark:border-white/10 text-xs font-mono text-zinc-600 dark:text-zinc-300 mb-3 mx-auto">
-            <Handshake size={13} />
-            <span>{t('home.partners_tag')}</span>
-          </div>
           <h2 className="text-2xl sm:text-4xl font-normal tracking-[-0.03em] text-zinc-900 dark:text-white">
             {t('home.partners_title')}
           </h2>

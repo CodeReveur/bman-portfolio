@@ -44,10 +44,6 @@ export default function ProductsClient({ products }: { products: CorporateProduc
     <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
       {/* 1. Centered Page Header */}
       <div className="mb-12 sm:mb-16 text-center max-w-2xl mx-auto">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-950 border border-black/10 dark:border-white/10 text-xs font-mono text-zinc-600 dark:text-zinc-300 mb-3 mx-auto">
-          <span className="w-1.5 h-1.5 rounded-full rainbow-dot" />
-          <span>{t('products.tag')}</span>
-        </div>
         <h1 className="text-3xl sm:text-5xl font-normal tracking-[-0.04em] text-zinc-900 dark:text-white">
           {t('products.title')}
         </h1>
@@ -138,10 +134,6 @@ export default function ProductsClient({ products }: { products: CorporateProduc
       {/* 3. Contributed Projects & Success Stories Section */}
       <div className="mt-24 pt-14 border-t border-black/10 dark:border-white/10">
         <div className="mb-10 text-center max-w-2xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-950 border border-black/10 dark:border-white/10 text-xs font-mono text-zinc-600 dark:text-zinc-300 mb-2 mx-auto">
-            <Briefcase size={12} />
-            <span>{t('products.projects_tag')}</span>
-          </div>
           <h2 className="text-2xl sm:text-4xl font-normal tracking-[-0.03em] text-zinc-900 dark:text-white">
             {t('products.projects_title')}
           </h2>

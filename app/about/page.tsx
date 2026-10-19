@@ -33,10 +33,6 @@ export default function AboutPage() {
     <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
       {/* 1. Centered Page Header */}
       <div className="mb-12 sm:mb-16 text-center max-w-2xl mx-auto">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-950 border border-black/10 dark:border-white/10 text-xs font-mono text-zinc-600 dark:text-zinc-300 mb-3 mx-auto">
-          <span className="w-1.5 h-1.5 rounded-full rainbow-dot" />
-          <span>{t('about.tag')}</span>
-        </div>
         <h1 className="text-3xl sm:text-5xl font-normal tracking-[-0.04em] text-zinc-900 dark:text-white">
           {t('about.title')}
         </h1>
@@ -48,9 +44,6 @@ export default function AboutPage() {
       {/* 2. Company Story & Origin */}
       <div className="mb-16 p-8 sm:p-10 rounded-3xl mono-card">
         <div className="max-w-3xl">
-          <span className="text-[11px] font-mono uppercase tracking-wider text-zinc-400 dark:text-zinc-500 mb-2 block">
-            {t('about.story_title')}
-          </span>
           <h2 className="text-xl sm:text-2xl font-medium text-zinc-900 dark:text-white tracking-tight">
             Engineering for real-world resilience in Kigali.
           </h2>
