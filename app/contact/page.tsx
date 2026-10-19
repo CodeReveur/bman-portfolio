@@ -19,12 +19,31 @@ import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function ContactPage() {
   const { t } = useLanguage();
+  const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({ name: '', contact: '', message: '' });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    try {
+      await fetch('/api/public/corporate/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.contact,
+          phone: formData.contact,
+          subject: 'Inquiry from bman.rw',
+          message: formData.message,
+        }),
+      });
+    } catch {
+      // Ignore network errors on local/offline environments
+    } finally {
+      setLoading(false);
+      setSubmitted(true);
+    }
   };
 
   const getSocialIcon = (iconName: string) => {
@@ -66,7 +85,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <div className="text-sm font-medium text-zinc-900 dark:text-white">{t('contact.headquarters')}</div>
-                <div className="text-sm text-zinc-500 font-normal">KN 3 Rd, Downtown Kigali, Rwanda</div>
+                <div className="text-sm text-zinc-500 font-normal">Kigali, Rwanda</div>
               </div>
             </div>
 
@@ -76,9 +95,14 @@ export default function ContactPage() {
               </div>
               <div>
                 <div className="text-sm font-medium text-zinc-900 dark:text-white">{t('contact.general_email')}</div>
-                <a href="mailto:contact@bman.rw" className="text-sm text-zinc-700 dark:text-zinc-300 hover:text-black dark:hover:text-white font-mono transition-colors">
-                  contact@bman.rw
-                </a>
+                <div className="flex flex-col gap-0.5">
+                  <a href="mailto:info@bman.rw" className="text-sm text-zinc-700 dark:text-zinc-300 hover:text-black dark:hover:text-white font-mono transition-colors">
+                    info@bman.rw
+                  </a>
+                  <a href="mailto:support@bman.rw" className="text-xs text-zinc-500 hover:text-black dark:hover:text-white font-mono transition-colors">
+                    support@bman.rw
+                  </a>
+                </div>
               </div>
             </div>
 
@@ -88,9 +112,12 @@ export default function ContactPage() {
               </div>
               <div>
                 <div className="text-sm font-medium text-zinc-900 dark:text-white">{t('contact.direct_line')}</div>
-                <a href="tel:+250788000000" className="text-sm text-zinc-500 font-mono">
-                  +250 788 000 000
-                </a>
+                <div className="flex flex-col gap-0.5">
+                  <a href="tel:+250781121117" className="text-sm text-zinc-700 dark:text-zinc-300 font-mono hover:text-emerald-500 transition-colors">
+                    +250 781 121 117
+                  </a>
+                  <span className="text-xs text-zinc-500">Mon–Sat, 08:00–18:00 CAT (Phone &amp; WhatsApp)</span>
+                </div>
               </div>
             </div>
           </div>

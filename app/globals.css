@@ -116,3 +116,24 @@ body {
   background-color: var(--fg);
   color: var(--bg);
 }
+
+/* Infinite Partner Slideshow Animation */
+@keyframes slide-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-slide-marquee {
+  display: flex;
+  width: max-content;
+  animation: slide-marquee 25s linear infinite;
+}
+
+.animate-slide-marquee:hover {
+  animation-play-state: paused;
+}
+

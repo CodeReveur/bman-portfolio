@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ArrowRight, ShieldCheck, Zap, Server, CheckCircle2 } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { PARTNERS } from '@/lib/corporate';
+import PartnerSlideshow from '@/components/PartnerSlideshow';
 
 export default function HomePage() {
   const { t } = useLanguage();
@@ -188,30 +189,9 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {PARTNERS.map((partner, idx) => (
-            <div
-              key={idx}
-              className="p-6 rounded-2xl mono-card flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-sm font-semibold text-zinc-900 dark:text-white font-mono">
-                    {partner.logoText}
-                  </span>
-                  <span className="text-xs font-mono px-2.5 py-0.5 rounded-full bg-zinc-100 dark:bg-white/5 text-zinc-600 dark:text-zinc-400">
-                    {partner.category}
-                  </span>
-                </div>
-                <h3 className="text-base font-medium text-zinc-900 dark:text-white">
-                  {partner.name}
-                </h3>
-                <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400 font-normal leading-relaxed">
-                  {partner.description}
-                </p>
-              </div>
-            </div>
-          ))}
+        {/* Unique Sliding Slideshow for Partners (Logo on Top, Partner Name Underneath) */}
+        <div className="w-full">
+          <PartnerSlideshow partners={PARTNERS} />
         </div>
       </section>
     </div>

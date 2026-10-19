@@ -48,10 +48,10 @@ export default function AboutPage() {
             Engineering for real-world resilience in Kigali.
           </h2>
           <p className="mt-4 text-sm sm:text-base text-zinc-600 dark:text-zinc-300 font-normal leading-relaxed">
-            BMan Technologies was founded with a singular conviction: African business software cannot assume Silicon Valley connectivity conditions. When cloud-only software breaks during midday fiber cuts or power fluctuations, real shops stop selling, lines form, and merchants lose livelihoods.
+            BMAN is a technology company that creates, develops, and partners software. We were founded with a singular conviction: mission-critical software cannot rely on idealized connectivity assumptions. When cloud-only systems stall during network cuts or power drops, businesses halt operations, queues form, and revenue is lost.
           </p>
           <p className="mt-3 text-sm sm:text-base text-zinc-600 dark:text-zinc-300 font-normal leading-relaxed">
-            We build sovereign systems engineered from the counter up: local-first transactional databases that run on counter PCs and smartphones without internet, sync automatically when bandwidth returns, and keep Rwandan enterprise data safely hosted within domestic borders.
+            We engineer resilient software from the ground up: local-first transactional architectures that operate continuously without internet, synchronize automatically when bandwidth returns, and keep enterprise data secure and compliant.
           </p>
         </div>
       </div>
@@ -63,7 +63,7 @@ export default function AboutPage() {
             Leadership &amp; Architecture
           </h2>
           <p className="text-sm sm:text-base text-zinc-500 dark:text-zinc-400 font-normal mt-2">
-            Engineers and operators guiding BMan&apos;s product development and nationwide deployment.
+            Engineers and operators guiding BMAN&apos;s product development and nationwide deployment.
           </p>
         </div>
 

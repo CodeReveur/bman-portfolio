@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%">
+  <rect width="120" height="120" rx="28" fill="#1E1B4B"/>
+  <circle cx="60" cy="52" r="22" fill="none" stroke="#6366F1" stroke-width="3.5"/>
+  <circle cx="60" cy="52" r="10" fill="#06B6D4"/>
+  <path d="M42 52h36M60 34v36" stroke="#6366F1" stroke-width="2"/>
+  <text x="60" y="96" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="13" fill="#A5B4FC" text-anchor="middle" letter-spacing="1.5">KIC</text>
+</svg>

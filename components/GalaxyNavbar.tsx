@@ -33,19 +33,17 @@ export default function GalaxyNavbar() {
     <header className="fixed top-4 inset-x-0 mx-auto max-w-5xl z-50 px-4 sm:px-6 lg:px-8">
       <nav className="w-full flex items-center justify-between h-14 px-4 sm:px-6 rounded-full bg-white/80 dark:bg-black/85 border border-black/10 dark:border-white/10 shadow-sm dark:shadow-[0_8px_30px_rgb(0,0,0,0.8)] backdrop-blur-xl transition-colors">
         {/* Brand Logo -> Home */}
-        <Link href="/" className="flex items-center gap-2.5 pl-1 group" title="BMan Technologies">
-          <div className="relative w-7 h-7 rounded-full overflow-hidden bg-black flex items-center justify-center border border-black/10 dark:border-white/20">
-            <Image
-              src="/logo.png"
-              alt="BMan"
-              width={22}
-              height={22}
-              className="w-5 h-5 object-contain"
-              priority
-            />
-          </div>
-          <span className="text-sm font-semibold tracking-tight text-zinc-900 dark:text-white flex items-center gap-1.5">
-            BMan
+        <Link href="/" className="flex items-center gap-2.5 pl-1 group" title="BMAN">
+          <Image
+            src="/logo.png"
+            alt="BMAN"
+            width={32}
+            height={32}
+            className="w-8 h-8 object-contain shrink-0 transition-transform group-hover:scale-105"
+            priority
+          />
+          <span className="text-base font-semibold tracking-tight text-zinc-900 dark:text-white flex items-center gap-1.5">
+            BMAN
             <span className="w-1.5 h-1.5 rounded-full rainbow-dot" />
           </span>
         </Link>

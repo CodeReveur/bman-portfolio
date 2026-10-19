@@ -1,23 +1,23 @@
-# BMan Technologies Corporate Universe & Portfolio (`bman.rw`)
+# BMAN — Corporate Universe & Portfolio (`bman.rw`)
 
-> **Sovereign Software Infrastructure & African Deep-Tech Inventions**
+> **We create, develop, and partner software.**
 
-The official corporate portfolio, product showcase, and innovation universe for **BMan Technologies Ltd** (`https://bman.rw`), engineered with Next.js, React, Tailwind CSS, and WebGL cosmic starfield simulations.
+The official corporate portfolio for **BMAN** (`https://bman.rw`), engineered with Next.js, React, Tailwind CSS, and WebGL cosmic starfield simulations.
 
 ---
 
 ## 🌌 Overview
 
-`bman.rw` is the corporate mothership of BMan Technologies Ltd. It provides a visual cosmic universe showcasing:
-- **Inventions & Innovations**: Hardware-agnostic POS engines, sovereign logistics telemetry, local-first zero-internet accounting synchronizers.
-- **Product Ecosystem**: Managed live through the Super Admin Backoffice on `mobile.bman.rw`.
-  - **BMan Stock** (`https://stock.bman.rw`): Offline-First POS & Inventory.
-  - **BMan Agent Portal** (`https://agent.bman.rw`): Decentralized agent sales and commissions network.
-  - **BMan Mail** (`https://mail.bman.rw`): Sovereign corporate email infrastructure.
+`bman.rw` is the corporate portfolio of **BMAN** — a technology company that creates, develops, and partners software. It showcases:
+- **Created & Partnered Software**:
+  - **Stock** (`https://stock.bman.rw`): Offline-First POS & Inventory.
+  - **Agent Portal** (`https://agent.bman.rw`): Decentralized agent sales and commissions network.
+  - **Sovereign Mail** (`https://mail.bman.rw`): Corporate email infrastructure.
   - **E-Indege Logistics** (`https://logistics.bman.rw`): Real-time telematics and supply chain tracking.
-  - **BMan Pay Gateway** (`https://pay.bman.rw`): Multi-channel payment aggregation (MTN MoMo, Airtel Money, Bank rails).
-- **Commercial Services**: Architectural audits, offline-first engineering, custom enterprise systems, and payment gateway integration.
-- **Leadership & About**: Founder Joseph Maranatha, Lead Architect Olivier Turikumwe, and core principles.
+  - **Pay Gateway** (`https://pay.bman.rw`): Multi-channel payment aggregation.
+- **Contributed & Partnered Projects**: Real-world commercial deployments and contract engineering.
+- **Commercial Services**: Architectural audits, offline-first engineering, custom enterprise systems, and payment rails integration.
+- **Leadership & About**: Founder Joseph Maranatha, Co-Founder Olivier Turikumwe, and core principles.
 - **Careers & Culture**: Kigali-based deep engineering roles.
 - **Verified Communication Channels**: Official contacts, socials, and instant inquiries.
 
@@ -74,4 +74,4 @@ npm start
 
 ## 🛡️ License
 
-Copyright © 2026 BMan Technologies Ltd. All rights reserved. Sovereign Rwandan Technology.
+Copyright © 2026 BMAN. All rights reserved.

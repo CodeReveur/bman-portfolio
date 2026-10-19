@@ -2,7 +2,7 @@
   "name": "bman-portfolio",
   "version": "1.0.0",
   "private": true,
-  "description": "BMan Technologies Sovereign Systems & Corporate Universe (bman.rw)",
+  "description": "BMAN — We create, develop, and partner software (bman.rw)",
   "scripts": {
     "dev": "next dev -p 3005",
     "build": "next build",

@@ -62,12 +62,12 @@ export default function ProductsClient({ products }: { products: CorporateProduc
             {/* Left Info */}
             <div className="max-w-2xl">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-9 h-9 rounded-full bg-black p-1.5 flex items-center justify-center border border-black/10 dark:border-white/10 shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-zinc-100 dark:bg-white/5 p-1.5 flex items-center justify-center border border-black/10 dark:border-white/10 shrink-0">
                   <Image
                     src={product.logo_url || '/logo.png'}
                     alt={product.name}
-                    width={24}
-                    height={24}
+                    width={28}
+                    height={28}
                     className="w-full h-full object-contain"
                   />
                 </div>

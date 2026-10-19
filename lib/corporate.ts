@@ -43,10 +43,10 @@ export interface ContributedProject {
 }
 
 export interface Partner {
+  id?: string;
   name: string;
-  category: string;
-  description: string;
-  logoText: string;
+  logoUrl: string;
+  display_order?: number;
 }
 
 export interface TeamMember {
@@ -157,7 +157,7 @@ export const CONTRIBUTED_PROJECTS: ContributedProject[] = [
     client: 'Gikondo Commercial Depots & Wholesale Hub',
     category: 'Wholesale & Retail ERP',
     summary:
-      'BMan was contracted to build and deploy an offline-first POS and stock tracking network across 18 high-throughput wholesale counters, syncing local cash registers with warehouse inventory without internet reliance.',
+      'BMAN was contracted to build and deploy an offline-first POS and stock tracking network across 18 high-throughput wholesale counters, syncing local cash registers with warehouse inventory without internet reliance.',
     impact: '100% counter uptime across 18 checkout lanes; zero sales halts during daytime fiber blackouts.',
     year: '2025–2026',
     status: 'Finished',
@@ -178,7 +178,7 @@ export const CONTRIBUTED_PROJECTS: ContributedProject[] = [
   {
     id: 'proj-agent-disbursement',
     title: 'Field Agent Sales Network & MoMo Payouts',
-    client: 'East Africa FMCG Distribution Network',
+    client: 'Regional FMCG Distribution Network',
     category: 'Fintech & Workforce',
     summary:
       'Engineered a distributed field sales agent mobile application, automated commission ledger, and batch MTN Mobile Money disbursement engine for 350+ regional sales representatives.',
@@ -228,39 +228,27 @@ export const CONTRIBUTED_PROJECTS: ContributedProject[] = [
 export const PARTNERS: Partner[] = [
   {
     name: 'MTN Mobile Money',
-    category: 'Payment Rails',
-    description: 'Official API integration partner for instant merchant collection and automated agent payouts.',
-    logoText: 'MTN MoMo',
+    logoUrl: '/partners/mtn-momo.svg',
   },
   {
     name: 'Airtel Money Rwanda',
-    category: 'Telecom Clearing',
-    description: 'Direct cellular payment rails for nationwide retail counters and subscription renewals.',
-    logoText: 'Airtel Money',
+    logoUrl: '/partners/airtel-money.svg',
   },
   {
     name: 'Bank of Kigali',
-    category: 'Banking Rails',
-    description: 'Direct bank statement reconciliation and proof-of-payment audit verification.',
-    logoText: 'Bank of Kigali',
+    logoUrl: '/partners/bank-of-kigali.svg',
   },
   {
     name: 'Rwanda Development Board',
-    category: 'Institutional Alliance',
-    description: 'Certified national technology enterprise advancing domestic Rwandan software sovereignty.',
-    logoText: 'RDB Rwanda',
+    logoUrl: '/partners/rdb.svg',
   },
   {
     name: 'Kigali Innovation City',
-    category: 'Ecosystem Partner',
-    description: 'Collaborative deep-tech engineering and local developer ecosystem mentorship.',
-    logoText: 'KIC Ecosystem',
+    logoUrl: '/partners/kic.svg',
   },
   {
     name: 'Rwanda Retailers Network',
-    category: 'Commercial Merchant Alliance',
-    description: 'Over 1,200 participating shops, supermarkets, and wholesalers utilizing BMan POS.',
-    logoText: 'Retailers Alliance',
+    logoUrl: '/partners/retailers.svg',
   },
 ];
 
@@ -293,7 +281,7 @@ export const DEFAULT_SERVICES: CorporateService[] = [
     slug: 'payment-rails-integration',
     summary: 'Direct integrations with MTN Mobile Money, Airtel, and banking APIs.',
     description:
-      'We connect your business systems to African mobile money networks with instant webhook reconciliation, duplicate payment prevention, and automated disbursements.',
+      'We connect your business systems to mobile money and banking payment rails with instant webhook reconciliation, duplicate payment prevention, and automated disbursements.',
     icon: 'Wallet',
     delivery_model: 'Integration Module',
     display_order: 3,
@@ -338,7 +326,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Joseph Maranatha',
     role: 'Founder & CEO',
     title: 'Lead Systems Architect',
-    bio: 'Software engineer and founder of BMan Ltd. Focused on offline-first architectures, distributed databases, and high-reliability systems that power African businesses from the counter up.',
+    bio: 'Software engineer and founder of BMAN. Focused on offline-first architectures, distributed databases, and high-reliability systems that power commercial enterprises from the counter up.',
     initials: 'JM',
     socials: {
       linkedin: 'https://linkedin.com/in/joseph-maranatha',
@@ -363,7 +351,7 @@ export const SOCIAL_LINKS = [
   {
     name: 'LinkedIn',
     url: 'https://linkedin.com/company/bman-ltd',
-    handle: 'BMan Ltd',
+    handle: 'BMAN',
     icon: 'Linkedin',
   },
   {
@@ -381,7 +369,7 @@ export const SOCIAL_LINKS = [
   {
     name: 'YouTube',
     url: 'https://youtube.com/@bman_technologies',
-    handle: 'BMan Technologies',
+    handle: 'BMAN',
     icon: 'Youtube',
   },
   {
@@ -395,6 +383,7 @@ export const SOCIAL_LINKS = [
 export async function fetchCorporateData(): Promise<{
   products: CorporateProduct[];
   services: CorporateService[];
+  partners: Partner[];
 }> {
   try {
     const baseUrl = typeof window === 'undefined' ? (process.env.INTERNAL_BACKEND_URL || BACKEND_URL) : '';
@@ -406,11 +395,13 @@ export async function fetchCorporateData(): Promise<{
     return {
       products: data.products?.length ? data.products : DEFAULT_PRODUCTS,
       services: data.services?.length ? data.services : DEFAULT_SERVICES,
+      partners: data.partners?.length ? data.partners : PARTNERS,
     };
   } catch {
     return {
       products: DEFAULT_PRODUCTS,
       services: DEFAULT_SERVICES,
+      partners: PARTNERS,
     };
   }
 }
