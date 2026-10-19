@@ -1,7 +1,15 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
-import { getBlackHolePosition } from './CosmicCursor';
+import React, { useEffect, useState, useRef } from 'react';
+
+export function getBlackHolePosition(width: number, height: number) {
+  return {
+    x: Math.max(80, Math.min(200, width * 0.12)),
+    y: Math.max(90, Math.min(160, height * 0.14)),
+    eventHorizonRadius: 24,
+    gravityRadius: 160,
+  };
+}
 
 interface Star {
   x: number;
@@ -39,6 +47,7 @@ interface AccretionParticle {
 
 export default function GalaxyCanvas() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const [bhPos, setBhPos] = useState({ x: 120, y: 120, r: 24 });
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -61,7 +70,10 @@ export default function GalaxyCanvas() {
     const handleResize = () => {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
+      const currentBh = getBlackHolePosition(width, height);
+      setBhPos({ x: currentBh.x, y: currentBh.y, r: currentBh.eventHorizonRadius });
     };
+    handleResize();
     window.addEventListener('resize', handleResize);
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -406,10 +418,24 @@ export default function GalaxyCanvas() {
   }, []);
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="pointer-events-none fixed inset-0 z-0 h-full w-full opacity-90 transition-opacity duration-1000"
-      aria-hidden="true"
-    />
+    <>
+      <canvas
+        ref={canvasRef}
+        className="pointer-events-none fixed inset-0 z-0 h-full w-full opacity-90 transition-opacity duration-1000"
+        aria-hidden="true"
+      />
+      {/* Celestial Black Hole Singularity Event Horizon - Absorbs Cursor On Hover */}
+      <div
+        className="fixed z-20 pointer-events-auto rounded-full"
+        style={{
+          left: bhPos.x - bhPos.r,
+          top: bhPos.y - bhPos.r,
+          width: bhPos.r * 2,
+          height: bhPos.r * 2,
+          cursor: 'none',
+        }}
+        aria-hidden="true"
+      />
+    </>
   );
 }

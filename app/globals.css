@@ -41,6 +41,43 @@
   --footer-bg: rgba(0, 0, 0, 0.92);
 }
 
+/* ---------------------------------------------------------------------------
+   True 3D Hardware Cursor (Faceted Volumetric Pointer with Drop Shadow)
+--------------------------------------------------------------------------- */
+html,
+body,
+div,
+section,
+main,
+header,
+footer,
+nav,
+article,
+p,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  cursor: url('/cursors/3d-cursor.svg') 3 2, auto;
+}
+
+a,
+button,
+[role="button"],
+input,
+select,
+textarea,
+label,
+summary,
+[type="button"],
+[type="submit"],
+[type="reset"] {
+  cursor: url('/cursors/3d-cursor-pointer.svg') 3 2, pointer !important;
+}
+
 html {
   font-size: 15px;
   scroll-behavior: smooth;
