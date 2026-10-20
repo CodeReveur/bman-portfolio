@@ -40,8 +40,8 @@ export default function GalaxyFooter() {
 
   return (
     <footer className="relative border-t border-black/10 dark:border-white/10 bg-white/90 dark:bg-black/90 backdrop-blur-xl mt-auto transition-colors">
-      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-10">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-6 border-b border-black/10 dark:border-white/10">
+      <div className="mx-auto max-w-5xl px-3 sm:px-6 lg:px-8 py-8 sm:py-10">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-5 sm:gap-6 pb-6 border-b text-center sm:text-left border-black/10 dark:border-white/10">
           {/* Brand */}
           <div className="flex items-center gap-2.5">
             <Image
@@ -59,7 +59,7 @@ export default function GalaxyFooter() {
           </div>
 
           {/* Quick Page Links */}
-          <div className="flex flex-wrap items-center gap-6 text-sm text-zinc-600 dark:text-zinc-400 font-normal">
+          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 sm:gap-6 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 font-normal">
             <Link href="/products" className="hover:text-black dark:hover:text-white transition-colors">
               {t('nav.products')}
             </Link>

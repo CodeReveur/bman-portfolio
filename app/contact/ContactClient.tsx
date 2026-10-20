@@ -69,10 +69,10 @@ export default function ContactClient({ config }: { config: CorporateConfig }) {
   };
 
   return (
-    <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-5xl px-3 sm:px-6 lg:px-8">
       {/* Centered Page Header */}
       <div className="mb-12 sm:mb-16 text-center max-w-2xl mx-auto">
-        <h1 className="text-3xl sm:text-5xl font-medium tracking-tight text-zinc-900 dark:text-white">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-zinc-900 dark:text-white">
           {t('contact.title')}
         </h1>
         <p className="mt-3 text-base sm:text-lg text-zinc-600 dark:text-zinc-300 font-normal max-w-lg mx-auto leading-relaxed">
@@ -80,10 +80,10 @@ export default function ContactClient({ config }: { config: CorporateConfig }) {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
         {/* Contact Info & Socials */}
         <div className="lg:col-span-5 space-y-6">
-          <div className="p-7 rounded-3xl mono-card space-y-5">
+          <div className="p-5 sm:p-7 rounded-2xl sm:rounded-3xl mono-card space-y-5">
             <div className="flex items-center gap-3.5">
               <div className="w-9 h-9 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-black/10 dark:border-white/10 flex items-center justify-center text-zinc-900 dark:text-white shrink-0">
                 <MapPin size={17} />

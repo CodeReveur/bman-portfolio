@@ -48,10 +48,10 @@ export default function ProductsClient({
   };
 
   return (
-    <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-5xl px-3 sm:px-6 lg:px-8">
       {/* 1. Centered Page Header */}
       <div className="mb-12 sm:mb-16 text-center max-w-2xl mx-auto">
-        <h1 className="text-3xl sm:text-5xl font-medium tracking-tight text-zinc-900 dark:text-white">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-zinc-900 dark:text-white">
           {t('products.title')}
         </h1>
         <p className="mt-3 text-base sm:text-lg text-zinc-600 dark:text-zinc-300 font-normal max-w-lg mx-auto leading-relaxed">
@@ -64,7 +64,7 @@ export default function ProductsClient({
         {products.map((product) => (
           <div
             key={product.id || product.slug}
-            className="p-7 sm:p-8 rounded-3xl mono-card flex flex-col md:flex-row md:items-center justify-between gap-6"
+            className="p-5 sm:p-7 lg:p-8 rounded-2xl sm:rounded-3xl mono-card flex flex-col md:flex-row md:items-center justify-between gap-5 sm:gap-6"
           >
             {/* Left Info */}
             <div className="max-w-2xl">
@@ -149,7 +149,7 @@ export default function ProductsClient({
           </p>
 
           {/* Filter Pills */}
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2">
             <button
               onClick={() => setFilter('ALL')}
               className={`px-4 py-1.5 text-xs sm:text-sm rounded-full transition-colors ${
@@ -194,11 +194,11 @@ export default function ProductsClient({
         </div>
 
         {/* Contributed Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
           {filteredProjects.map((project) => (
             <div
               key={project.id}
-              className="p-7 sm:p-8 rounded-3xl mono-card flex flex-col justify-between"
+              className="p-5 sm:p-7 lg:p-8 rounded-2xl sm:rounded-3xl mono-card flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between gap-2 mb-3">

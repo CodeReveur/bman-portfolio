@@ -25,8 +25,8 @@ export default function PartnerSlideshow({ partners }: PartnerSlideshowProps) {
   return (
     <div className="relative w-full overflow-hidden py-10 select-none group">
       {/* Edge Gradient Masks for Smooth Gliding In and Out */}
-      <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-32 z-10 bg-gradient-to-r from-[var(--bg)] to-transparent" />
-      <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-32 z-10 bg-gradient-to-l from-[var(--bg)] to-transparent" />
+      <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-6 sm:w-20 lg:w-32 z-10 bg-gradient-to-r from-[var(--bg)] to-transparent" />
+      <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-6 sm:w-20 lg:w-32 z-10 bg-gradient-to-l from-[var(--bg)] to-transparent" />
 
       {/* Manual Navigation Controls (Fade in on hover) */}
       <button
@@ -51,7 +51,7 @@ export default function PartnerSlideshow({ partners }: PartnerSlideshowProps) {
         className="flex overflow-x-auto no-scrollbar scroll-smooth"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
-        <div className="animate-slide-marquee flex items-center gap-8 sm:gap-12 py-4 px-4">
+        <div className="animate-slide-marquee flex items-center gap-5 sm:gap-10 lg:gap-12 py-3 px-2">
           {displayPartners.map((partner, idx) => {
             // Stagger wave delay across partners so the whole row ripples like a fluid wave
             const waveDelay = `${(idx % partners.length) * 0.55}s`;
@@ -63,7 +63,7 @@ export default function PartnerSlideshow({ partners }: PartnerSlideshowProps) {
                 style={{ animationDelay: waveDelay }}
               >
                 {/* Pure Photo Logo (NO card, NO background, larger prominent sizing) */}
-                <div className="relative h-16 sm:h-20 lg:h-22 w-40 sm:w-52 flex items-center justify-center">
+                <div className="relative h-12 sm:h-18 lg:h-20 w-32 sm:w-44 lg:w-52 flex items-center justify-center">
                   <Image
                     src={partner.logoUrl}
                     alt={partner.name}

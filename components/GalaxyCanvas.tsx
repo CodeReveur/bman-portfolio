@@ -426,7 +426,7 @@ export default function GalaxyCanvas() {
       />
       {/* Celestial Black Hole Singularity Event Horizon - Absorbs Cursor On Hover */}
       <div
-        className="fixed z-20 pointer-events-auto rounded-full"
+        className="fixed z-20 pointer-events-none md:pointer-events-auto rounded-full hidden md:block"
         style={{
           left: bhPos.x - bhPos.r,
           top: bhPos.y - bhPos.r,

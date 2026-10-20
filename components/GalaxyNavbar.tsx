@@ -30,8 +30,8 @@ export default function GalaxyNavbar() {
   ];
 
   return (
-    <header className="fixed top-4 inset-x-0 mx-auto max-w-5xl z-50 px-4 sm:px-6 lg:px-8">
-      <nav className="w-full flex items-center justify-between h-14 px-4 sm:px-6 rounded-full bg-white/80 dark:bg-black/85 border border-black/10 dark:border-white/10 shadow-sm dark:shadow-[0_8px_30px_rgb(0,0,0,0.8)] backdrop-blur-xl transition-colors">
+    <header className="fixed top-2 sm:top-4 inset-x-0 mx-auto max-w-5xl z-50 px-3 sm:px-6 lg:px-8">
+      <nav className="w-full flex items-center justify-between h-13 sm:h-14 px-3 sm:px-6 rounded-full bg-white/80 dark:bg-black/85 border border-black/10 dark:border-white/10 shadow-sm dark:shadow-[0_8px_30px_rgb(0,0,0,0.8)] backdrop-blur-xl transition-colors">
         {/* Brand Logo -> Home */}
         <Link href="/" className="flex items-center gap-2.5 pl-1 group" title="BMan">
           <Image
@@ -149,7 +149,14 @@ export default function GalaxyNavbar() {
 
       {/* Mobile Drawer Menu */}
       {mobileOpen && (
-        <div className="md:hidden mt-2 p-4 rounded-2xl bg-white/95 dark:bg-black/95 border border-black/10 dark:border-white/10 shadow-2xl backdrop-blur-2xl flex flex-col gap-2">
+        <>
+          {/* Mobile backdrop overlay */}
+          <div
+            className="fixed inset-0 bg-black/40 dark:bg-black/60 backdrop-blur-sm z-40 md:hidden"
+            onClick={() => setMobileOpen(false)}
+            aria-hidden="true"
+          />
+          <div className="relative z-50 md:hidden mt-2 p-4 rounded-2xl bg-white/95 dark:bg-zinc-950/95 border border-black/10 dark:border-white/10 shadow-2xl backdrop-blur-2xl flex flex-col gap-2 max-h-[calc(100vh-5rem)] overflow-y-auto">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
@@ -201,6 +208,7 @@ export default function GalaxyNavbar() {
             </a>
           </div>
         </div>
+        </>
       )}
     </header>
   );

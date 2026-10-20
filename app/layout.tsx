@@ -79,6 +79,9 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: '#ffffff' },
     { media: '(prefers-color-scheme: dark)', color: '#000000' },
@@ -155,7 +158,7 @@ export default function RootLayout({
           <GalaxyNavbar />
 
           {/* Page Content */}
-          <div className="relative z-10 flex-1 flex flex-col pt-24 pb-16">
+          <div className="relative z-10 flex-1 flex flex-col pt-20 sm:pt-24 pb-12 sm:pb-16 w-full overflow-x-hidden">
             {children}
           </div>
 

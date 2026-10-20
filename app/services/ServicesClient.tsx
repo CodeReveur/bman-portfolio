@@ -60,10 +60,10 @@ export default function ServicesClient({ services }: { services: CorporateServic
   ];
 
   return (
-    <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-5xl px-3 sm:px-6 lg:px-8">
       {/* Centered Page Header */}
       <div className="mb-12 sm:mb-16 text-center max-w-2xl mx-auto">
-        <h1 className="text-3xl sm:text-5xl font-medium tracking-tight text-zinc-900 dark:text-white">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-zinc-900 dark:text-white">
           {t('services.title')}
         </h1>
         <p className="mt-3 text-base sm:text-lg text-zinc-600 dark:text-zinc-300 font-normal max-w-lg mx-auto leading-relaxed">
@@ -78,7 +78,7 @@ export default function ServicesClient({ services }: { services: CorporateServic
           return (
             <div
               key={service.id || service.slug}
-              className="p-7 sm:p-8 rounded-3xl mono-card flex flex-col justify-between"
+              className="p-5 sm:p-7 lg:p-8 rounded-2xl sm:rounded-3xl mono-card flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
@@ -125,9 +125,9 @@ export default function ServicesClient({ services }: { services: CorporateServic
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           {processSteps.map((step) => (
-            <div key={step.num} className="p-6 rounded-2xl mono-card flex flex-col justify-between">
+            <div key={step.num} className="p-5 sm:p-6 rounded-2xl mono-card flex flex-col justify-between">
               <div>
                 <span className="text-xs font-mono text-zinc-400 dark:text-zinc-500 mb-2 block">
                   {step.num}

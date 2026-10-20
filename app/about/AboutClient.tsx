@@ -38,10 +38,10 @@ export default function AboutClient({
   const email = config?.email || 'ceo@bman.rw';
 
   return (
-    <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-5xl px-3 sm:px-6 lg:px-8">
       {/* 1. Centered Page Header */}
       <div className="mb-12 sm:mb-16 text-center max-w-2xl mx-auto">
-        <h1 className="text-3xl sm:text-5xl font-medium tracking-tight text-zinc-900 dark:text-white">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-zinc-900 dark:text-white">
           {t('about.title')}
         </h1>
         <p className="mt-3 text-base sm:text-lg text-zinc-600 dark:text-zinc-300 font-normal max-w-lg mx-auto leading-relaxed">
@@ -50,7 +50,7 @@ export default function AboutClient({
       </div>
 
       {/* 2. Company Story & Origin */}
-      <div className="mb-16 p-8 sm:p-10 rounded-3xl mono-card">
+      <div className="mb-12 sm:mb-16 p-5 sm:p-8 lg:p-10 rounded-2xl sm:rounded-3xl mono-card">
         <div className="max-w-3xl">
           <h2 className="text-xl sm:text-2xl font-medium text-zinc-900 dark:text-white tracking-tight">
             Engineering for real-world resilience in Kigali.
@@ -75,11 +75,11 @@ export default function AboutClient({
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
           {team.map((member) => (
             <div
               key={member.name}
-              className="p-7 sm:p-8 rounded-3xl mono-card flex flex-col justify-between"
+              className="p-5 sm:p-7 lg:p-8 rounded-2xl sm:rounded-3xl mono-card flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
@@ -153,7 +153,7 @@ export default function AboutClient({
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {tenets.map((tenet, idx) => (
-            <div key={idx} className="p-7 rounded-3xl mono-card">
+            <div key={idx} className="p-5 sm:p-7 rounded-2xl sm:rounded-3xl mono-card">
               <div className="text-xs font-mono text-zinc-900 dark:text-white mb-2">0{idx + 1}</div>
               <h4 className="text-base font-medium text-zinc-900 dark:text-white tracking-tight">{tenet.title}</h4>
               <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400 font-normal leading-relaxed">{tenet.desc}</p>
