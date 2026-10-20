@@ -106,7 +106,7 @@ export default function RootLayout({
               name: 'BMan',
               url: 'https://bman.rw',
               logo: 'https://bman.rw/logo.png',
-              email: 'ceo@bman.rw',
+              email: 'info@bman.rw',
               telephone: '+250781121117',
               description:
                 'BMan is a technology company that creates, develops, and partners software systems, retail engines, and resilient digital infrastructure.',
@@ -158,7 +158,7 @@ export default function RootLayout({
           <GalaxyNavbar />
 
           {/* Page Content */}
-          <div className="relative z-10 flex-1 flex flex-col pt-20 sm:pt-24 pb-12 sm:pb-16 w-full overflow-x-hidden">
+          <div className="relative z-10 flex-1 flex flex-col pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 w-full overflow-x-hidden">
             {children}
           </div>
 

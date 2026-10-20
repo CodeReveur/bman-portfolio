@@ -385,6 +385,7 @@ export interface CorporateConfig {
   phone: string;
   email: string;
   support_email: string;
+  career_email: string;
   address: string;
   working_hours: string;
 }
@@ -392,8 +393,9 @@ export interface CorporateConfig {
 export const DEFAULT_CONFIG: CorporateConfig = {
   company_name: 'BMan',
   phone: '+250 781 121 117',
-  email: 'ceo@bman.rw',
-  support_email: 'ceo@bman.rw',
+  email: 'info@bman.rw',
+  support_email: 'info@bman.rw',
+  career_email: 'ceo@bman.rw',
   address: 'Kigali, Rwanda',
   working_hours: 'Mon – Fri: 8:00 AM – 6:00 PM CAT',
 };
@@ -476,13 +478,27 @@ export async function fetchCorporateData(): Promise<{
       company_name: rawConfig.company_name || DEFAULT_CONFIG.company_name,
       phone: rawConfig.phone || DEFAULT_CONFIG.phone,
       email: rawConfig.email || DEFAULT_CONFIG.email,
-      support_email: rawConfig.email || DEFAULT_CONFIG.email, // Unified single email
+      support_email: rawConfig.support_email || rawConfig.email || DEFAULT_CONFIG.support_email,
+      career_email: rawConfig.career_email || rawConfig.careerEmail || DEFAULT_CONFIG.career_email,
       address: rawConfig.address || DEFAULT_CONFIG.address,
       working_hours: rawConfig.working_hours || DEFAULT_CONFIG.working_hours,
     };
 
+    const rawProducts = data.products || [];
+    const productsMap = new Map<string, CorporateProduct>();
+    DEFAULT_PRODUCTS.forEach((p) => productsMap.set(p.slug, p));
+    rawProducts.forEach((p: CorporateProduct) => {
+      productsMap.set(p.slug, {
+        ...(productsMap.get(p.slug) || {}),
+        ...p,
+      });
+    });
+    const products = Array.from(productsMap.values()).sort(
+      (a, b) => (a.display_order ?? 0) - (b.display_order ?? 0)
+    );
+
     return {
-      products: data.products?.length ? data.products : DEFAULT_PRODUCTS,
+      products,
       projects,
       services: data.services?.length ? data.services : DEFAULT_SERVICES,
       partners,

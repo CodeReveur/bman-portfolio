@@ -23,7 +23,8 @@ export default function ContactClient({ config }: { config: CorporateConfig }) {
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({ name: '', contact: '', message: '' });
 
-  const email = config?.email || 'ceo@bman.rw';
+  const email = config?.email || 'info@bman.rw';
+  const careerEmail = config?.career_email || 'ceo@bman.rw';
   const phone = config?.phone || '+250 781 121 117';
   const address = config?.address || 'Kigali, Rwanda';
   const workingHours = config?.working_hours || 'Mon–Fri, 08:00–18:00 CAT (Phone & WhatsApp)';
@@ -94,7 +95,7 @@ export default function ContactClient({ config }: { config: CorporateConfig }) {
               </div>
             </div>
 
-            {/* Single Unified Corporate Email */}
+            {/* General Corporate Email */}
             <div className="flex items-center gap-3.5">
               <div className="w-9 h-9 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-black/10 dark:border-white/10 flex items-center justify-center text-zinc-900 dark:text-white shrink-0">
                 <Mail size={17} />
@@ -104,6 +105,21 @@ export default function ContactClient({ config }: { config: CorporateConfig }) {
                 <div className="flex flex-col gap-0.5">
                   <a href={`mailto:${email}`} className="text-sm text-zinc-700 dark:text-zinc-300 hover:text-black dark:hover:text-white font-mono transition-colors">
                     {email}
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Career & Executive Email */}
+            <div className="flex items-center gap-3.5">
+              <div className="w-9 h-9 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-black/10 dark:border-white/10 flex items-center justify-center text-zinc-900 dark:text-white shrink-0">
+                <Mail size={17} />
+              </div>
+              <div>
+                <div className="text-sm font-medium text-zinc-900 dark:text-white">Career &amp; Executive</div>
+                <div className="flex flex-col gap-0.5">
+                  <a href={`mailto:${careerEmail}`} className="text-sm text-zinc-700 dark:text-zinc-300 hover:text-black dark:hover:text-white font-mono transition-colors">
+                    {careerEmail}
                   </a>
                 </div>
               </div>

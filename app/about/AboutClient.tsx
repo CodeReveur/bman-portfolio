@@ -35,7 +35,7 @@ export default function AboutClient({
     { title: 'Field Operations & Merchant Rollout', stack: 'Kigali HQ & Commercial District Hubs' },
   ];
 
-  const email = config?.email || 'ceo@bman.rw';
+  const careerEmail = config?.career_email || 'ceo@bman.rw';
 
   return (
     <div className="mx-auto max-w-5xl px-3 sm:px-6 lg:px-8">
@@ -187,10 +187,10 @@ export default function AboutClient({
             Kigali Office · High agency &amp; craftsmanship · Direct economic impact
           </span>
           <a
-            href={`mailto:${email}`}
+            href={`mailto:${careerEmail}`}
             className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full text-sm font-medium bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200 transition-colors shrink-0 w-fit shadow-sm"
           >
-            <span>{email}</span>
+            <span>{careerEmail}</span>
             <ArrowUpRight size={14} />
           </a>
         </div>

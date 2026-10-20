@@ -40,42 +40,53 @@ export default function HomeClient({ partners = PARTNERS }: { partners?: Partner
   return (
     <div className="mx-auto max-w-5xl px-3 sm:px-6 lg:px-8 flex flex-col gap-14 sm:gap-24 lg:gap-32">
       {/* 1. Hero Section */}
-      <section className="text-center pt-6 sm:pt-16">
+      <section className="text-center pt-2 sm:pt-8 md:pt-12 px-1 sm:px-0">
+        {/* Status / Location Badge */}
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono bg-zinc-100/90 dark:bg-white/[0.06] border border-black/10 dark:border-white/10 text-zinc-700 dark:text-zinc-300 mb-5 sm:mb-6 shadow-xs backdrop-blur-sm">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+          <span>Kigali, Rwanda</span>
+          <span className="text-zinc-400 dark:text-zinc-600">·</span>
+          <span>Engineering &amp; Operations</span>
+        </div>
+
         {/* Main Headline */}
-        <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-zinc-900 dark:text-white leading-[1.12] max-w-4xl mx-auto text-balance">
+        <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-zinc-900 dark:text-white leading-[1.16] sm:leading-[1.12] max-w-4xl mx-auto break-words">
           {t('home.title')}
         </h1>
 
         {/* Subtitle */}
-        <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-zinc-600 dark:text-zinc-300 max-w-2xl mx-auto leading-relaxed font-normal text-pretty">
+        <p className="mt-4 sm:mt-6 text-sm sm:text-lg md:text-xl text-zinc-600 dark:text-zinc-300 max-w-2xl mx-auto leading-relaxed font-normal px-2 sm:px-0">
           {t('home.subtitle')}
         </p>
 
         {/* CTAs */}
-        <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-3.5 w-full max-w-md sm:max-w-none mx-auto">
+        <div className="mt-6 sm:mt-8 flex flex-row flex-wrap items-center justify-center gap-2.5 sm:gap-3.5 w-full max-w-md sm:max-w-none mx-auto">
           <Link
             href="/products"
-            className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 rounded-full text-sm sm:text-base font-medium bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200 transition-colors shadow-sm"
+            className="inline-flex items-center justify-center gap-2 px-5 sm:px-7 py-2.5 sm:py-3 rounded-full text-xs sm:text-base font-medium bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200 transition-colors shadow-sm"
           >
             <span>{t('home.cta_products')}</span>
-            <ArrowRight size={15} />
+            <ArrowRight size={14} className="sm:w-4 sm:h-4" />
           </Link>
           <Link
             href="/about"
-            className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 rounded-full text-sm sm:text-base font-medium bg-zinc-100 text-zinc-800 hover:text-black border border-black/10 dark:bg-zinc-950 dark:text-zinc-300 dark:hover:text-white dark:border-white/10 dark:hover:border-white/20 transition-colors"
+            className="inline-flex items-center justify-center gap-2 px-5 sm:px-7 py-2.5 sm:py-3 rounded-full text-xs sm:text-base font-medium bg-zinc-100 text-zinc-800 hover:text-black border border-black/10 dark:bg-zinc-950 dark:text-zinc-300 dark:hover:text-white dark:border-white/10 dark:hover:border-white/20 transition-colors"
           >
             <span>{t('home.cta_about')}</span>
           </Link>
         </div>
 
         {/* Key Operational Numbers */}
-        <div className="mt-12 sm:mt-16 pt-8 sm:pt-10 border-t border-black/10 dark:border-white/10 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 text-center">
+        <div className="mt-10 sm:mt-16 pt-8 sm:pt-10 border-t border-black/10 dark:border-white/10 grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-4 lg:gap-6 text-center">
           {stats.map((stat, i) => (
-            <div key={i} className="p-3">
-              <div className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-zinc-900 dark:text-white">
+            <div
+              key={i}
+              className="p-3 sm:p-4 rounded-2xl bg-zinc-50/70 dark:bg-white/[0.03] border border-black/5 dark:border-white/5 flex flex-col justify-center items-center transition-transform hover:scale-[1.02]"
+            >
+              <div className="text-xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-zinc-900 dark:text-white">
                 {stat.value}
               </div>
-              <div className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 mt-1 font-normal">
+              <div className="text-[11px] sm:text-xs md:text-sm text-zinc-500 dark:text-zinc-400 mt-1 font-normal text-balance">
                 {stat.label}
               </div>
             </div>
