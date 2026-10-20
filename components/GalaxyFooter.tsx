@@ -39,7 +39,7 @@ export default function GalaxyFooter() {
   };
 
   return (
-    <footer className="relative border-t border-black/10 dark:border-white/10 bg-white/90 dark:bg-black/90 backdrop-blur-xl mt-auto transition-colors">
+    <footer className="relative border-t border-black/10 dark:border-white/10 bg-white/90 dark:bg-black/90 backdrop-blur-xl mt-auto transition-colors w-full max-w-full overflow-hidden">
       <div className="mx-auto max-w-5xl px-3 sm:px-6 lg:px-8 py-8 sm:py-10">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-5 sm:gap-6 pb-6 border-b text-center sm:text-left border-black/10 dark:border-white/10">
           {/* Brand */}

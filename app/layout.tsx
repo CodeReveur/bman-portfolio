@@ -158,7 +158,7 @@ export default function RootLayout({
           <GalaxyNavbar />
 
           {/* Page Content */}
-          <div className="relative z-10 flex-1 flex flex-col pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 w-full overflow-x-hidden">
+          <div className="relative z-10 flex-1 flex flex-col pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 w-full max-w-full min-w-0 overflow-x-hidden">
             {children}
           </div>
 

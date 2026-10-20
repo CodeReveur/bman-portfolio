@@ -3,11 +3,22 @@
 import React, { useEffect, useState, useRef } from 'react';
 
 export function getBlackHolePosition(width: number, height: number) {
+  // On mobile (< 768px), disable black hole to avoid obscuring hero content
+  if (width < 768) {
+    return {
+      x: -1000,
+      y: -1000,
+      eventHorizonRadius: 0,
+      gravityRadius: 0,
+      visible: false,
+    };
+  }
   return {
     x: Math.max(80, Math.min(200, width * 0.12)),
     y: Math.max(90, Math.min(160, height * 0.14)),
     eventHorizonRadius: 24,
     gravityRadius: 160,
+    visible: true,
   };
 }
 
@@ -273,7 +284,7 @@ export default function GalaxyCanvas() {
         const bhdy = bh.y - projY;
         const bhdist = Math.hypot(bhdx, bhdy);
 
-        if (bhdist < bh.gravityRadius && bhdist > 0) {
+        if (bh.visible && bhdist < bh.gravityRadius && bhdist > 0) {
           const pullForce = Math.pow(1 - bhdist / bh.gravityRadius, 1.6) * 4.5;
           s.offsetX += (bhdx / bhdist) * pullForce;
           s.offsetY += (bhdy / bhdist) * pullForce;
@@ -347,63 +358,65 @@ export default function GalaxyCanvas() {
       }
       ctx.globalAlpha = 1;
 
-      // 5. DRAW THE CELESTIAL BLACK HOLE IN THE SKY (TOP-LEFT)
-      // A) Gravitational Lensing Outer Halo
-      const lensGrad = ctx.createRadialGradient(
-        bh.x,
-        bh.y,
-        bh.eventHorizonRadius * 0.8,
-        bh.x,
-        bh.y,
-        bh.eventHorizonRadius * 3.4
-      );
-      lensGrad.addColorStop(0, 'rgba(0, 0, 0, 0.95)');
-      lensGrad.addColorStop(0.35, 'rgba(56, 189, 248, 0.25)'); // Cyan relativistic photon ring
-      lensGrad.addColorStop(0.65, 'rgba(168, 85, 247, 0.15)'); // Violet warping
-      lensGrad.addColorStop(1, 'transparent');
+      // 5. DRAW THE CELESTIAL BLACK HOLE IN THE SKY (TOP-LEFT) - Desktop only (>= 768px)
+      if (bh.visible) {
+        // A) Gravitational Lensing Outer Halo
+        const lensGrad = ctx.createRadialGradient(
+          bh.x,
+          bh.y,
+          bh.eventHorizonRadius * 0.8,
+          bh.x,
+          bh.y,
+          bh.eventHorizonRadius * 3.4
+        );
+        lensGrad.addColorStop(0, 'rgba(0, 0, 0, 0.95)');
+        lensGrad.addColorStop(0.35, 'rgba(56, 189, 248, 0.25)'); // Cyan relativistic photon ring
+        lensGrad.addColorStop(0.65, 'rgba(168, 85, 247, 0.15)'); // Violet warping
+        lensGrad.addColorStop(1, 'transparent');
 
-      ctx.fillStyle = lensGrad;
-      ctx.beginPath();
-      ctx.arc(bh.x, bh.y, bh.eventHorizonRadius * 3.4, 0, Math.PI * 2);
-      ctx.fill();
-
-      // B) Swirling Accretion Disk Matter
-      for (let i = 0; i < accretionParticles.length; i++) {
-        const ap = accretionParticles[i];
-        ap.angle += ap.speed;
-
-        // Flatten disk in perspective
-        const px = bh.x + Math.cos(ap.angle) * ap.radius;
-        const py = bh.y + Math.sin(ap.angle) * (ap.radius * 0.45);
-
-        ctx.fillStyle = ap.color;
-        ctx.globalAlpha = ap.alpha * (0.6 + Math.sin(ap.angle + blackHoleTime) * 0.4);
+        ctx.fillStyle = lensGrad;
         ctx.beginPath();
-        ctx.arc(px, py, ap.size, 0, Math.PI * 2);
+        ctx.arc(bh.x, bh.y, bh.eventHorizonRadius * 3.4, 0, Math.PI * 2);
         ctx.fill();
+
+        // B) Swirling Accretion Disk Matter
+        for (let i = 0; i < accretionParticles.length; i++) {
+          const ap = accretionParticles[i];
+          ap.angle += ap.speed;
+
+          // Flatten disk in perspective
+          const px = bh.x + Math.cos(ap.angle) * ap.radius;
+          const py = bh.y + Math.sin(ap.angle) * (ap.radius * 0.45);
+
+          ctx.fillStyle = ap.color;
+          ctx.globalAlpha = ap.alpha * (0.6 + Math.sin(ap.angle + blackHoleTime) * 0.4);
+          ctx.beginPath();
+          ctx.arc(px, py, ap.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.globalAlpha = 1;
+
+        // C) Relativistic Photon Sphere Ring
+        ctx.save();
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.85)';
+        ctx.lineWidth = 1.4;
+        ctx.shadowColor = '#38bdf8';
+        ctx.shadowBlur = 12;
+        ctx.beginPath();
+        ctx.arc(bh.x, bh.y, bh.eventHorizonRadius + 1.5, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.restore();
+
+        // D) Deep Pitch Black Event Horizon Singularity Core
+        ctx.save();
+        ctx.fillStyle = '#000000';
+        ctx.shadowColor = '#000000';
+        ctx.shadowBlur = 8;
+        ctx.beginPath();
+        ctx.arc(bh.x, bh.y, bh.eventHorizonRadius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
       }
-      ctx.globalAlpha = 1;
-
-      // C) Relativistic Photon Sphere Ring
-      ctx.save();
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.85)';
-      ctx.lineWidth = 1.4;
-      ctx.shadowColor = '#38bdf8';
-      ctx.shadowBlur = 12;
-      ctx.beginPath();
-      ctx.arc(bh.x, bh.y, bh.eventHorizonRadius + 1.5, 0, Math.PI * 2);
-      ctx.stroke();
-      ctx.restore();
-
-      // D) Deep Pitch Black Event Horizon Singularity Core
-      ctx.save();
-      ctx.fillStyle = '#000000';
-      ctx.shadowColor = '#000000';
-      ctx.shadowBlur = 8;
-      ctx.beginPath();
-      ctx.arc(bh.x, bh.y, bh.eventHorizonRadius, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.restore();
 
       animationFrameId = requestAnimationFrame(render);
     };
@@ -425,17 +438,19 @@ export default function GalaxyCanvas() {
         aria-hidden="true"
       />
       {/* Celestial Black Hole Singularity Event Horizon - Absorbs Cursor On Hover */}
-      <div
-        className="fixed z-20 pointer-events-none md:pointer-events-auto rounded-full hidden md:block"
-        style={{
-          left: bhPos.x - bhPos.r,
-          top: bhPos.y - bhPos.r,
-          width: bhPos.r * 2,
-          height: bhPos.r * 2,
-          cursor: 'none',
-        }}
-        aria-hidden="true"
-      />
+      {bhPos.r > 0 && (
+        <div
+          className="fixed z-20 pointer-events-none md:pointer-events-auto rounded-full hidden md:block"
+          style={{
+            left: bhPos.x - bhPos.r,
+            top: bhPos.y - bhPos.r,
+            width: bhPos.r * 2,
+            height: bhPos.r * 2,
+            cursor: 'none',
+          }}
+          aria-hidden="true"
+        />
+      )}
     </>
   );
 }

@@ -23,7 +23,7 @@ export default function PartnerSlideshow({ partners }: PartnerSlideshowProps) {
   const displayPartners = [...partners, ...partners];
 
   return (
-    <div className="relative w-full overflow-hidden py-10 select-none group">
+    <div className="relative w-full max-w-full overflow-hidden py-10 select-none group min-w-0">
       {/* Edge Gradient Masks for Smooth Gliding In and Out */}
       <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-6 sm:w-20 lg:w-32 z-10 bg-gradient-to-r from-[var(--bg)] to-transparent" />
       <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-6 sm:w-20 lg:w-32 z-10 bg-gradient-to-l from-[var(--bg)] to-transparent" />
@@ -48,7 +48,7 @@ export default function PartnerSlideshow({ partners }: PartnerSlideshowProps) {
       {/* Sliding Track with Wave Motion */}
       <div
         ref={scrollRef}
-        className="flex overflow-x-auto no-scrollbar scroll-smooth"
+        className="flex w-full max-w-full overflow-x-hidden no-scrollbar scroll-smooth min-w-0"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         <div className="animate-slide-marquee flex items-center gap-5 sm:gap-10 lg:gap-12 py-3 px-2">

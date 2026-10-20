@@ -81,16 +81,21 @@ summary,
 html {
   touch-action: manipulation;
   width: 100%;
+  max-width: 100%;
   font-size: 15px;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
 }
 
 body {
   background-color: var(--bg);
   color: var(--fg);
   font-family: var(--font-sans);
+  width: 100%;
+  max-width: 100%;
   overflow-x: hidden;
+  position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   letter-spacing: -0.015em;
